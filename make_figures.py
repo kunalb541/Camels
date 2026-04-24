@@ -63,12 +63,14 @@ def fig01_score_matrix():
         ax.set_title(title, fontsize=9, fontweight="bold")
         ax.set_ylim(0, 1.0)
         ax.axhline(0, color="k", lw=0.5)
-        ax.text(0.98, 0.97, "ALL TIES", transform=ax.transAxes,
-                ha="right", va="top", fontsize=7.5, color="#888",
+        # "ALL TIES" placed at lower-centre, well clear of both legend and bars
+        ax.text(0.50, 0.12, "ALL TIES", transform=ax.transAxes,
+                ha="center", va="bottom", fontsize=7.5, color="#aaa",
                 style="italic")
 
     axes[0].set_ylabel("Score")
-    axes[1].legend(loc="upper right", frameon=False, handlelength=1.2)
+    # Legend in left panel (TNG) where there's space below the high quenching bars
+    axes[0].legend(loc="upper left", frameon=False, handlelength=1.2, fontsize=7.5)
     fig.suptitle("Whole-sample predictor-family scores", fontsize=9, y=1.01)
     fig.savefig(OUT / "fig01_score_matrix.pdf", bbox_inches="tight")
     plt.close(fig)
@@ -108,7 +110,7 @@ def fig02_phase_diagram():
     ax1.axvline(10.65, color="grey", lw=0.7, ls=":", alpha=0.6)
     ax1.set_ylabel("Marginal $R^2$ (L1 control)")
     ax1.set_ylim(-0.02, 0.30)
-    ax1.legend(frameon=False, loc="upper left")
+    ax1.legend(frameon=False, loc="lower right")
     ax1.set_title("L1 (static halo structure)", fontsize=8.5)
 
     # Lower: L3
@@ -124,12 +126,14 @@ def fig02_phase_diagram():
     ax2.set_ylabel("Marginal $R^2$ (L3 control)")
     ax2.set_xlabel("Sliding-window centre (log $M_*$, dex)")
     ax2.set_ylim(-0.02, 0.22)
-    ax2.legend(frameon=False, loc="upper left")
+    ax2.legend(frameon=False, loc="upper right")
     ax2.set_title("L3 (full 13-feature assembly history)", fontsize=8.5)
-
-    for ax in [ax1, ax2]:
-        ax.text(9.55, ax.get_ylim()[1] * 0.95, "9.55", fontsize=7, color="grey",
-                ha="left", va="top")
+    # label the window boundaries at the bottom of the axes to avoid legend clash
+    for ax, lo, hi in [(ax1, 9.55, 10.65), (ax2, 9.55, 10.55)]:
+        ax.text(lo + 0.01, ax.get_ylim()[0] + 0.005, f"{lo}", fontsize=6.5,
+                color="grey", ha="left", va="bottom")
+        ax.text(hi - 0.01, ax.get_ylim()[0] + 0.005, f"{hi}", fontsize=6.5,
+                color="grey", ha="right", va="bottom")
 
     fig.savefig(OUT / "fig02_phase_diagram.pdf", bbox_inches="tight")
     plt.close(fig)
