@@ -63,9 +63,9 @@ def fig01_score_matrix():
         ax.set_title(title, fontsize=9, fontweight="bold")
         ax.set_ylim(0, 1.0)
         ax.axhline(0, color="k", lw=0.5)
-        # "ALL TIES" placed at lower-centre, well clear of both legend and bars
-        ax.text(0.50, 0.12, "ALL TIES", transform=ax.transAxes,
-                ha="center", va="bottom", fontsize=7.5, color="#aaa",
+        # "ALL TIES" tucked in the open air between Quenching and Halo Growth groups
+        ax.text(1.5, 0.42, "ALL TIES", transform=ax.transData,
+                ha="center", va="center", fontsize=7.5, color="#bbb",
                 style="italic")
 
     axes[0].set_ylabel("Score")
@@ -98,7 +98,7 @@ def fig02_phase_diagram():
     marg_l3h_sig    = [0.061, 0.063, 0.072]
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(4.5, 5.5), sharex=True)
-    fig.subplots_adjust(hspace=0.08)
+    fig.subplots_adjust(hspace=0.38)
 
     # Upper: L1
     ax1.plot(centres_l1i, marg_l1i, color=C_INT, lw=1.8, marker="o", ms=4,
@@ -128,12 +128,6 @@ def fig02_phase_diagram():
     ax2.set_ylim(-0.02, 0.22)
     ax2.legend(frameon=False, loc="upper right")
     ax2.set_title("L3 (full 13-feature assembly history)", fontsize=8.5)
-    # label the window boundaries at the bottom of the axes to avoid legend clash
-    for ax, lo, hi in [(ax1, 9.55, 10.65), (ax2, 9.55, 10.55)]:
-        ax.text(lo + 0.01, ax.get_ylim()[0] + 0.005, f"{lo}", fontsize=6.5,
-                color="grey", ha="left", va="bottom")
-        ax.text(hi - 0.01, ax.get_ylim()[0] + 0.005, f"{hi}", fontsize=6.5,
-                color="grey", ha="right", va="bottom")
 
     fig.savefig(OUT / "fig02_phase_diagram.pdf", bbox_inches="tight")
     plt.close(fig)
