@@ -371,22 +371,13 @@ CI spanning or approaching zero.
 \label{fig:matrix}}
 \end{figure*}
 
-The compression of scores within each target --- all three classes achieving
-similar performance --- is robust to simulation family.
-TNG and SIMBA differ in \textit{level} of predictability (quenching AUC:
-0.865 vs.\ 0.743; halo growth $R^2$: 0.015 vs.\ 0.158) but not in winner
-structure.
-The ordering within the tie is target-dependent: growth favors
-halo/internal (TNG) or internal (SIMBA); quenching favors internal in both;
-halo growth favors halo in both.
-This target-dependence motivates the regime-decomposition analysis below.
-
-Family-specific predictability differences (TNG vs.\ SIMBA quenching, TNG
-vs.\ SIMBA halo growth) are real in the data, but the SIMBA halo-growth
-difference is confounded by spatial-matching selection
-(Section~\ref{sec:confound}).
-We do not interpret cross-family quantitative predictability differences
-as clean physics signals.
+The tie is robust across both simulation families: TNG and SIMBA agree on
+winner structure despite differing in overall predictability level.
+Within-target ordering is target-dependent (growth favors internal at mid
+mass; quenching favors internal in both), motivating the mass-regime
+decomposition below.
+Cross-family quantitative differences are partly a matching artifact
+(Section~\ref{sec:confound}) and are not interpreted as clean physics signals.
 
 \subsection{Matching Method Confound}
 \label{sec:confound}
@@ -568,7 +559,7 @@ $\geq10.75$ & ns & ns & & ns & \\
 \tablecomments{$*$ denotes 95\% CI lower bound $> 0$.}
 \end{deluxetable*}
 
-Under L3, the internal baryonic-autonomy window remains \textbf{9.55--10.55
+Under L3, the internal-predictive window remains \textbf{9.55--10.55
 dex} (\WindowNWindowsL{} consecutive significant windows).
 The onset is unchanged.
 The close moves one window inward (10.55 vs.\ 10.65 at L1).
@@ -639,7 +630,7 @@ $\geq10.85$ & \nodata & ns & \nodata & \\
 \begin{figure}[t!]
 \centering
 \includegraphics[width=\columnwidth]{outputs/figures/fig03_paired_gap.pdf}
-\caption{Flat paired gap across the baryonic-autonomy window.
+\caption{Flat internal--halo paired gap across the intermediate-mass window.
   L3 shared-bootstrap paired gap $\delta = R^2(\mathrm{L3+internal}) -
   R^2(\mathrm{L3+halo})$ versus window centre with 95\% CI shading.
   Significant (CI entirely positive) across 9.55--10.75 dex
@@ -706,7 +697,7 @@ L3 residualization.
 \begin{figure}[t!]
 \centering
 \includegraphics[width=\columnwidth]{outputs/figures/fig04_feature_winner.pdf}
-\caption{Feature-winner map across the baryonic-autonomy window.
+\caption{Feature-winner map across the intermediate-mass growth window.
   L3-residualized permutation importance at four window positions.
   Gas mass (dark green) dominates the internal class at onset through peak;
   stellar mass (hatched) is the sole surviving internal feature at the close.
@@ -910,7 +901,7 @@ not as a matched mechanistic replication of the TNG decomposition.
 
 \subsection{What the Intermediate-Mass Internal Window Means}
 
-The baryonic-autonomy window ($9.55$--$10.55$ dex under L3 in this suite)
+The intermediate-mass window ($9.55$--$10.55$ dex under L3 in this suite)
 identifies the mass range where a galaxy's baryonic state at $z \approx
 0.77$ carries \textit{predictive} information about its $z = 0$ stellar
 growth that is not fully captured by its gravitational trajectory ---
@@ -1054,7 +1045,7 @@ not currently available at CAMELS resolution.
     $25\, h^{-1}\,\mathrm{Mpc}$ boxes with $256^3$ particles.
     At the low-mass end ($\logM \lesssim 9.5$), stellar mass resolution
     limits suppress signal recovery.
-    The exact mass boundaries of the baryonic-autonomy window
+    The exact mass boundaries of the identified window
     ($9.55$--$10.55$ dex) may shift with larger volume or higher resolution;
     the claim is the existence and approximate location of the regime
     structure in the tested suite, not universal exact boundaries.
@@ -1243,40 +1234,29 @@ The main findings are:
 \section{\textbf{Future Work}}
 \label{sec:future}
 
-Several directions can extend the present results.
+The two most direct extensions are:
 
-\textbf{SIMBA merger-tree control.}  The SIMBA branch of our analysis uses
-only spatial matching (no merger tree), which inflates halo baselines by
-$\SpatialInflation\times$ and prevents a direct L3-equivalent test.
-Constructing SubLink-like trees for SIMBA-CAMELS at 25\,$h^{-1}$\,Mpc
-would enable a fully symmetric comparison and test whether the SIMBA
-quenching signal also survives a 13-feature assembly-history control.
+\textbf{SIMBA merger-tree control.}  The SIMBA branch uses only spatial
+matching, which inflates halo baselines by $\SpatialInflation\times$ and
+prevents a direct L3-equivalent test.
+Constructing SubLink-like trees for SIMBA-CAMELS would enable a fully
+symmetric comparison and determine whether the SIMBA quenching signal
+survives a 13-feature assembly-history control.
 
-\textbf{Volume and resolution check.}  Our results come from 25\,$h^{-1}$\,Mpc
-boxes with $256^3$ particles; the high-mass end ($\log M_* > 10.5$) is
-sparsely sampled.  Running the same ODD battery on larger CAMELS extensions
-(e.g.\ the CAMELS-SAM suite or the forthcoming CAMELS-$300^3$ suite) will
-determine whether this predictive window broadens or shifts at higher mass.
+\textbf{Volume and resolution.}  Results come from $25\,h^{-1}$\,Mpc boxes
+with $256^3$ particles.  Running the same analysis on larger CAMELS
+extensions will determine whether the predictive window shifts or broadens
+at higher mass.
 
-\textbf{Redshift evolution.}  All analysis here is performed at $z = 0$.
-Repeating the sliding-window scan at earlier snapshots (e.g.\ $z \approx
-0.5$, $1.0$) will reveal whether the window shifts or narrows as the
-assembly-history information grows, and whether the SIMBA vs.\ TNG
-divergence in target channel also changes with cosmic time.
-
-\textbf{Gas-cycle causal mechanism.}  Gas mass is the dominant feature
-winner across the window, but permutation importance does not identify the
-direction of causation.  Tracking net gas inflows and outflows along
-individual galaxy trajectories (available in CAMELS IllustrisTNG snapshots)
-would test whether the signal reflects sustained cold-gas accretion, delayed
-feedback-driven ejection, or a combination.
-
-\textbf{Observational counterpart.}  The ODD framework is directly
-applicable to photometric or spectroscopic survey catalogs where halo
-proxies (weak-lensing mass, group membership) can serve as the
-assembly-history baseline, and cold-gas tracers (HI 21\,cm, CO) can serve
-as internal features.  Surveys such as xGASS/xCOLD~GASS provide exactly
-this combination in the $\log M_* \sim 9.5$--$10.5$ window identified here.
+Three further directions are worth pursuing: (\textit{i})~repeating the
+sliding-window scan at $z \approx 0.5$ and $1.0$ to track whether the
+window evolves as assembly history accumulates; (\textit{ii})~tracking net
+gas inflows and outflows along individual TNG trajectories to identify
+whether the gas-mass signal reflects accretion or feedback-driven depletion;
+(\textit{iii})~applying the marginal-predictive framework to survey catalogs
+with halo-mass proxies (weak-lensing, group membership) and cold-gas tracers
+(HI 21\,cm, CO), where xGASS/xCOLD\,GASS provide exactly this combination
+in the relevant stellar-mass range \citep{saintonge2017}.
 
 % ---------------------------------------------------------------------------
 \begin{acknowledgments}
