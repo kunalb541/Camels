@@ -40,16 +40,16 @@ survives escalating controls for halo structure and assembly history.
 No family systematically leads across all targets: the $3 \times 3$
 performance matrix shows statistical ties in both families, with the leading
 predictor depending on both target and mass regime.
-This whole-sample tie conceals a finite intermediate-mass window
-($9.55 \lesssim \logM \lesssim 10.55$) where internal galaxy state retains
-substantial marginal predictive power for stellar growth beyond a 13-feature
-halo assembly-history baseline comprising static structural position, four
-accretion-rate windows, peak halo mass, half-mass assembly epoch, merger
-counts, and major-merger timing.
-Across \WindowNWindowsL{} consecutive sliding windows in this range, the
-assembly-history-controlled internal marginal $\Rmarg$ is significant with a
-flat internal--halo gap of $\PairedGapLo$ to $\PairedGapHi$
-(all 95\% CIs positive).
+This whole-sample tie conceals a finite intermediate-mass \textit{marginal
+window} ($9.55 \lesssim \logM \lesssim 10.55$; \WindowNWindowsL{} consecutive
+windows) where the assembly-history-controlled internal $\Rmarg$ is
+individually significant beyond a 13-feature halo assembly-history baseline
+comprising static structural position, four accretion-rate windows, peak halo
+mass, half-mass assembly epoch, merger counts, and major-merger timing.
+Across the broader \textit{gap window} ($9.55 \lesssim \logM \lesssim 10.75$;
+\PairedGapNWindows{} consecutive windows), the shared-bootstrap
+internal--halo paired gap is flat and positive ($\PairedGapLo$ to
+$\PairedGapHi$, all 95\% CIs positive).
 Gas mass is the dominant surviving internal carrier; peak assembly timing ---
 not merger history --- is the dominant gravitational absorber of the
 internal predictive signal (removing peak-mass ratio and half-mass epoch
@@ -144,10 +144,11 @@ simulation families.
 Spatial matching inflates the assembly-history baseline \SpatialInflation$\times$
 relative to merger-tree matching, a confound that must be accounted for
 before cross-family assembly-control comparisons.
-Within the continuous mass range $9.55$--$10.55$ dex, internal galaxy state
-retains significant marginal predictive power for stellar growth beyond the
-full 13-feature assembly-history control, with a flat positive internal--halo
-gap across all \WindowNWindowsL{} sliding-window positions.
+Within the \textit{marginal window} ($9.55$--$10.55$ dex; \WindowNWindowsL{}
+windows), internal galaxy state retains significant marginal predictive power
+for stellar growth beyond the full 13-feature assembly-history control; the
+paired internal--halo gap is flat and positive across the broader \textit{gap
+window} ($9.55$--$10.75$ dex; \PairedGapNWindows{} windows).
 Mechanistically, gas mass is the dominant surviving internal carrier; halo
 assembly timing --- not merger history --- is the main assembly-history
 feature absorbing the internal signal; and the internal channel is not
@@ -284,14 +285,11 @@ AUC analog computed on the $(x - 0.5)$ excess.
 \subsection{Robustness Tests}
 \label{sec:robustness_design}
 
-Three robustness checks are applied throughout:
+Two robustness checks are applied throughout:
 \begin{enumerate}
   \item \textit{Simulation jackknife}: leave one of 27 CV realizations out;
     report the fraction $n_\mathrm{agree}/27$ that preserve the full-sample
     ordering.
-  \item \textit{Combined predictor}: concatenate internal and halo features;
-    compute redundancy $= (\text{combined} - \text{max single}) / \text{max
-    single}$.
   \item \textit{Permutation importance}: shuffle each feature column; measure
     the mean drop in CV $R^2$ over $n_\mathrm{boot} = 500$ draws.
 \end{enumerate}
@@ -329,6 +327,11 @@ mass; quenching favors internal in both), motivating the mass-regime
 decomposition below.
 Cross-family quantitative differences are partly a matching artifact
 (Section~\ref{sec:confound}) and are not interpreted as clean physics signals.
+Halo growth ($\Delta\log M_\mathrm{sub}$) is near-unpredictable by any family
+at $z \approx 0.77$ ($R^2 \leq 0.015$ across all three families in TNG;
+Table~\ref{tab:whole_sample}), suggesting that dark matter accretion between
+$z = 0.77$ and $z = 0$ is driven by large-scale density fluctuations not
+encoded in the snapshot properties of individual galaxies.
 
 \subsection{Matching Method Confound}
 \label{sec:confound}
@@ -399,10 +402,9 @@ The close is gradual rather than sharp: internal remains significant through
 above that mass with neither carrying growth information beyond structural
 position.
 The full L1 extent is thus 9.55--10.65 dex (13 consecutive significant
-windows).
-We refer to this as the intermediate-mass internal window; under the full
-13-feature L3 baseline it tightens by one step to 9.55--10.55 dex
-(Section~\ref{sec:l3window}).
+windows), which we term the \textit{L1 marginal window}.
+Under the full 13-feature L3 baseline it tightens to 9.55--10.55 dex
+(the \textit{marginal window}; Section~\ref{sec:l3window}).
 
 \subsection{The Window Survives Full Gravity Control}
 \label{sec:l3window}
@@ -420,8 +422,9 @@ Nonetheless, the internal window survives under L3
 (Figure~\ref{fig:phase_diagram}, lower panel;
 selected positions in Table~\ref{tab:l3scan}, Appendix~\ref{app:tables}).
 
-Under L3, the internal-predictive window remains \textbf{9.55--10.55
-dex} (\WindowNWindowsL{} consecutive significant windows).
+Under L3, the \textit{marginal window} --- where internal $\Rmarg$ is
+individually significant --- spans \textbf{9.55--10.55 dex}
+(\WindowNWindowsL{} consecutive significant windows).
 The onset is unchanged.
 The close moves one window inward (10.55 vs.\ 10.65 at L1).
 The amplitude at the peak window is $\approx 65\%$ of the L1 peak: full
@@ -444,11 +447,12 @@ information is entirely gravity-proxied.
 \caption{Intermediate-mass growth-window phase diagram.
   Internal (solid) and halo L1 marginal $R^2$ (upper) and L3 marginal $R^2$
   (lower) versus sliding-window centre (0.5-dex windows, step 0.1 dex).
-  L1 internal window: 9.55--10.65 dex (13 windows).
-  L3 internal window: 9.55--10.55 dex (\WindowNWindowsL{} consecutive
-  significant windows; green shading).
+  L1 marginal window: 9.55--10.65 dex (13 windows).
+  L3 marginal window (green shading): 9.55--10.55 dex (\WindowNWindowsL{}
+  consecutive significant windows), where internal $\Rmarg$ is individually
+  significant.
   L3 halo collapses to 3 non-contiguous windows (triangles).
-  Vertical dotted lines at 9.55 and 10.55 dex mark the L3 window.
+  Vertical dotted lines at 9.55 and 10.55 dex mark the L3 marginal window.
 \label{fig:phase_diagram}}
 \end{figure*}
 
@@ -491,20 +495,22 @@ $\geq10.85$ & \nodata & ns & \nodata & \\
 \begin{figure}[t!]
 \centering
 \includegraphics[width=\columnwidth]{outputs/figures/fig03_paired_gap.pdf}
-\caption{Flat internal--halo paired gap across the intermediate-mass window.
+\caption{Flat internal--halo paired gap across the gap window.
   L3 shared-bootstrap paired gap $\delta = R^2(\mathrm{L3+internal}) -
   R^2(\mathrm{L3+halo})$ versus window centre with 95\% CI shading.
-  Significant (CI entirely positive) across 9.55--10.75 dex
-  (\PairedGapNWindows{} consecutive windows).
+  The \textit{gap window} (9.55--10.75 dex; \PairedGapNWindows{} consecutive
+  windows) extends two windows beyond the marginal window (9.55--10.55 dex),
+  because the geometry cancellation in the paired test removes baseline noise.
   Gap ranges $\PairedGapLo$--$\PairedGapHi$ with no strong mass dependence.
 \label{fig:gap}}
 \end{figure}
 
 The gap is significant at every window from 9.55 to 10.75 dex ---
-\PairedGapNWindows{} consecutive windows.
-The geometry cancellation extends the significant range by two windows
-beyond where internal's marginal itself is significant (internal marginal
-becomes ns at 10.65; gap persists to 10.75).
+\PairedGapNWindows{} consecutive windows, defining the \textit{gap window}.
+The geometry cancellation extends the gap window two windows beyond the
+marginal window: internal $\Rmarg$ becomes ns at 10.65 dex, but the paired
+gap persists to 10.75 dex because the baseline cancels algebraically in the
+shared-bootstrap paired test.
 
 The gap is also remarkably \textit{flat}: across 1.2 dex of stellar mass,
 $\delta$ ranges $\PairedGapLo$ to $\PairedGapHi$ with no strong peaking or
@@ -607,6 +613,14 @@ Late-lookback accretion (4--8 Gyr) accounts for a further
 \AblationLongAccretionPct\%.
 Merger counts recover zero internal signal: the residual internal signal in
 the mid-mass window is entirely merger-count-independent.
+Together, the three tested components account for approximately 29\% of the
+absorbed internal signal at mid-mass (timing: \AblationTimingPct\%, long
+accretion: \AblationLongAccretionPct\%, mergers: 0\%); the remaining
+$\approx 71\%$ is not resolved to specific assembly-history features in this
+decomposition.
+The early-accretion band (1--2 Gyr lookback, $\Delta\log M_\mathrm{halo}$
+over 4 and 8 SubLink steps) is included in the L3 baseline but not
+individually ablated here and may carry a portion of the unresolved fraction.
 
 The gravitational clock most correlated with baryonic growth information is
 \textit{when} the halo assembled most of its mass and whether it has been
@@ -709,11 +723,11 @@ significant only at 10.05--10.35 dex (\TNGQuenchNWindows{} windows, peak
 $\TNGQuenchPeakMarg^*$), with halo non-significant at every window under L3.
 
 The cross-family comparison reveals a contrast in target-channel expression:
-in TNG, the residual internal signal concentrates in stellar growth
-(\WindowNWindowsL-window L3 band, flat positive gap $\PairedGapLo$--$\PairedGapHi$);
-in SIMBA, the stronger beyond-gravity signal concentrates in quenching
-(10+ window L1 band, peak marginal AUC $\SimbaQuenchPeak$), while the SIMBA
-growth window is fragmented and weaker.
+in TNG, the residual internal signal concentrates in stellar growth (marginal
+window: \WindowNWindowsL{} windows, flat positive gap window
+$\PairedGapLo$--$\PairedGapHi$); in SIMBA, the stronger beyond-gravity
+signal concentrates in quenching (10+ window L1 band, peak marginal AUC
+$\SimbaQuenchPeak$), while the SIMBA growth window is fragmented and weaker.
 
 It is important to qualify the scope of this comparison.
 The TNG branch supports the full mechanistic decomposition --- static
@@ -734,9 +748,14 @@ not as a matched mechanistic replication of the TNG decomposition.
   (right). TNG window is clean and contiguous (peak $+0.245$); SIMBA is
   fragmented and \SimbaGrowthRatio$\times$ weaker (peak $+0.069$).
   \textit{Lower panels}: quenching marginal AUC for TNG L3 (left) and SIMBA
-  L1 (right). TNG quenching is weak (4 windows, peak $\TNGQuenchPeakMarg$);
-  SIMBA quenching is strong across 9.65--10.75 dex (peak
-  $+\SimbaQuenchPeak$). Green and orange shading mark the significant windows.
+  L1 (right). Note the differing control levels: TNG is shown at the more
+  conservative L3 control (merger-tree assembly history; 4 windows, peak
+  $\TNGQuenchPeakMarg$), while SIMBA is at L1 only (tree-based assembly
+  control unavailable for SIMBA at CAMELS resolution; 10+ windows, peak
+  $+\SimbaQuenchPeak$). TNG quenching is weak at both L1 and L3 ---
+  the 3--4$\times$ amplitude difference relative to SIMBA is not a
+  control-level artifact.
+  Green and orange shading mark the significant windows.
 \label{fig:cross_family}}
 \end{figure*}
 
@@ -746,7 +765,7 @@ not as a matched mechanistic replication of the TNG decomposition.
 
 \subsection{What the Intermediate-Mass Internal Window Means}
 
-The intermediate-mass window ($9.55$--$10.55$ dex under L3 in this suite)
+The \textit{marginal window} ($9.55$--$10.55$ dex under L3 in this suite)
 identifies the mass range where a galaxy's baryonic state at $z \approx
 0.77$ carries \textit{predictive} information about its $z = 0$ stellar
 growth that is not fully captured by its gravitational trajectory ---
@@ -801,8 +820,13 @@ The assembly ablation result (Section~\ref{sec:mechanism}) constrains which
 part of the halo assembly-history baseline most overlaps with the internal
 predictive signal.
 Peak mass ratio and half-mass assembly snapshot account for
-\AblationTimingPct\% of the absorbed internal advantage; merger counts
+\AblationTimingPct\% of the absorbed internal advantage; late-lookback
+accretion accounts for a further \AblationLongAccretionPct\%; merger counts
 account for 0\%.
+Together these three decomposed components account for $\sim 29\%$ of the
+absorbed signal at mid-mass --- a meaningful but minority fraction, indicating
+that the dominant absorbing channels within L3 are not yet individually
+identified.
 
 Peak mass ratio and half-mass assembly epoch together encode the galaxy's
 gravitational \textit{maturity} in the sense of \citet{lacey1993} ---
@@ -890,9 +914,24 @@ assembly-history control cannot be applied. The SIMBA quenching result
 (Section~\ref{sec:cross_family}) is at L1 only.
 All findings are correlational throughout: predictive advantage means a
 family carries information about the target, not that it causes the outcome.
+The 13 L3 assembly-history features were selected for physical breadth ---
+covering static position, multiple accretion-rate lookbacks, peak-mass epoch,
+half-mass assembly, and merger history --- rather than optimized for
+predictive importance against the internal target.
+A feature-selected or higher-dimensional assembly-history control could absorb
+a larger share of the internal window, though the robustness of the surviving
+signal in the permutation-importance test (gas mass) and the $\fstar$ boundary
+check suggests the window result is not dominated by L3 feature-set
+sensitivity.
 Finally, SubLink matching excludes galaxies that merge or are disrupted
 between $z = 0.77$ and $z = 0$, leaving the mid-mass sample modestly biased
 toward galaxies with surviving central descendants.
+Excluded galaxies --- those undergoing mergers or disruption --- likely have
+disturbed gas reservoirs and atypically elevated star-formation rates relative
+to the retained sample; including them would tend to suppress rather than
+amplify the internal marginal signal near the 9.55 dex window onset.
+The lower boundary of the marginal window is therefore a conservative
+estimate.
 
 % ---------------------------------------------------------------------------
 \section{\textbf{Conclusions}}
@@ -911,21 +950,21 @@ The main findings are:
     The overall tie pattern is simulation-robust but does not describe the
     full mass-regime structure.
 
-  \item \textbf{A finite intermediate-mass window of residual internal
-    predictive power} exists at $9.55$--$10.55$ dex, where the internal
-    family retains significant marginal predictive power for stellar growth
-    under the full 13-feature assembly-history control
-    (\WindowNWindowsL{} consecutive sliding windows significant, peak
-    internal marginal $R^2 = \WindowPeakMarg^*$, 43\% retention at the
-    fixed mid-mass window).
+  \item \textbf{A finite intermediate-mass marginal window
+    ($9.55$--$10.55$ dex)} exists where internal galaxy state retains
+    significant marginal predictive power for stellar growth under the full
+    13-feature assembly-history control (\WindowNWindowsL{} consecutive
+    significant windows, peak internal marginal $R^2 = \WindowPeakMarg^*$,
+    43\% retention at the fixed mid-mass window).
     Outside this range, feature family advantages are largely
     assembly-history-mediated.
 
-  \item \textbf{Internal leads halo across the entire window}: the
-    shared-bootstrap paired gap (internal $-$ halo) under L3 is positive
-    and significant at every window from 9.55 to 10.75 dex
-    (\PairedGapNWindows{} consecutive windows, $\PairedGapLo$--$\PairedGapHi$,
-    all CIs positive).
+  \item \textbf{Internal leads halo across the gap window
+    ($9.55$--$10.75$ dex)}: the shared-bootstrap paired gap
+    (internal $-$ halo) under L3 is positive and significant at every
+    window in this range (\PairedGapNWindows{} consecutive windows,
+    $\PairedGapLo$--$\PairedGapHi$, all CIs positive), extending two
+    windows beyond the marginal window.
     The gap is flat --- it does not peak at a single mass.
 
   \item \textbf{Gas mass is the dominant surviving internal carrier}: the
@@ -950,10 +989,11 @@ The main findings are:
 
   \item \textbf{A beyond-gravity baryonic signal appears in both simulation
     families, but its target-channel expression differs}: in TNG it is
-    expressed through stellar growth (\WindowNWindowsL-window L3 band, flat
-    positive gap); in SIMBA the stronger signal appears in quenching
-    (10+ window L1 band, peak marginal AUC $= \SimbaQuenchPeak^*$), while
-    the SIMBA growth window is fragmented and \SimbaGrowthRatio$\times$
+    expressed through stellar growth (marginal window: \WindowNWindowsL{}
+    windows; gap window: \PairedGapNWindows{} windows,
+    $\PairedGapLo$--$\PairedGapHi$); in SIMBA the stronger signal appears in
+    quenching (10+ window L1 band, peak marginal AUC $= \SimbaQuenchPeak^*$),
+    while the SIMBA growth window is fragmented and \SimbaGrowthRatio$\times$
     weaker.
     The TNG branch supports the full mechanistic decomposition; the SIMBA
     branch supports a target-channel contrast.
