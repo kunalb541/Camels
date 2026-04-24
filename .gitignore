@@ -36,6 +36,12 @@ outputs/cache/
 outputs/figures/
 outputs/tables/
 outputs/logs/
+outputs/notes/
+outputs/baseline_A/
+outputs/baseline_B/
+outputs/simba_CV/
+outputs/data/results.json
+outputs/data/*.pkl
 paper.pdf
 
 # macOS
