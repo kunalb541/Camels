@@ -354,41 +354,17 @@ do not extend to SIMBA without SubLink-equivalent merger trees.
 \label{sec:mass_splits}
 
 The whole-sample tie conceals opposite orderings at different stellar masses
-(Table~\ref{tab:mass_splits}).
+(Table~\ref{tab:mass_splits}, Appendix~\ref{app:tables}).
 Mid mass ($9.5 \leq \logM < 10.5$) is the only regime with a clear growth
 winner: internal $R^2 = \MidMassInternalR$ versus halo $= \MidMassHaloR$,
 gap $= \MidMassGap$ (bootstrap 95\% CI lower bound $> 0.02$; see
-Table~\ref{tab:gap} for the assembly-history-controlled lower bound on this
-gap, $\PairedGapLo$--$\PairedGapHi$ across \PairedGapNWindows{} consecutive
+Table~\ref{tab:gap} for the assembly-history-controlled lower bound,
+$\PairedGapLo$--$\PairedGapHi$ across \PairedGapNWindows{} consecutive
 windows).
 At low mass, internal growth is near noise while environmental and halo
-features lead.
-At high mass, the quenching ordering partially inverts.
+features lead; at high mass, the quenching ordering partially inverts.
 The whole-sample tie is a population mixture of three regimes with different
 orderings.
-
-\begin{deluxetable*}{llccccc}
-\tablecaption{Predictive scores by stellar mass regime, TNG SubLink.
-  Bold = WINNER at raw (uncontrolled) level; the assembly-history-controlled
-  gap for mid-mass growth is $\PairedGapLo$--$\PairedGapHi$ across
-  \PairedGapNWindows{} consecutive windows (Table~\ref{tab:gap}).
-  \label{tab:mass_splits}}
-\tablehead{
-  \colhead{Target} & \colhead{Mass bin} & \colhead{$n$} &
-  \colhead{env} & \colhead{halo} & \colhead{internal} & \colhead{Verdict}
-}
-\startdata
-\multirow{3}{*}{Growth $R^2$}
-  & Low ($<9.5$)    & \LowMassN  & 0.166 & 0.160 & 0.040 & TIE \\
-  & Mid (9.5--10.5) & \MidMassN  & 0.083 & \MidMassHaloR & \textbf{\MidMassInternalR} & \textbf{WINNER: internal} \\
-  & High ($\geq10.5$) & \HighMassN & 0.068 & 0.107 & 0.118 & TIE \\
-\hline
-\multirow{3}{*}{Quenching AUC}
-  & Low ($<9.5$)    & \LowMassN  & 0.645 & 0.704 & 0.681 & TIE \\
-  & Mid (9.5--10.5) & \MidMassN  & 0.791 & 0.807 & 0.818 & TIE \\
-  & High ($\geq10.5$) & \HighMassN & 0.791 & 0.792 & 0.735 & TIE \\
-\enddata
-\end{deluxetable*}
 
 At low and high mass, predictor advantages largely disappear under
 assembly-history controls: the L1 halo structural baseline accounts for
@@ -401,7 +377,7 @@ Sections~\ref{sec:window}--\ref{sec:mechanism} concern mid-mass growth,
 where the internal family retains signal under progressively stronger
 assembly-history controls.
 
-\subsection{A Finite Baryonic-Autonomy Window}
+\subsection{A Finite Intermediate-Mass Internal Window}
 \label{sec:window}
 
 To characterize where internal state's advantage begins and ends, we apply
@@ -465,7 +441,7 @@ information is entirely gravity-proxied.
 \begin{figure*}[t!]
 \centering
 \includegraphics[width=\textwidth]{outputs/figures/fig02_phase_diagram.pdf}
-\caption{Baryonic-autonomy phase diagram.
+\caption{Intermediate-mass growth-window phase diagram.
   Internal (solid) and halo L1 marginal $R^2$ (upper) and L3 marginal $R^2$
   (lower) versus sliding-window centre (0.5-dex windows, step 0.1 dex).
   L1 internal window: 9.55--10.65 dex (13 windows).
@@ -545,10 +521,10 @@ leave-one-out configurations.
 \subsubsection{Gas mass is the dominant surviving internal carrier}
 
 To identify which features within the internal family carry the residual
-signal, we apply permutation importance to L3-residualized columns --- each
-feature regressed against the 13 assembly-history variables and replaced by
-its OLS residual before shuffling.
-For mid-mass growth, the result is unambiguous (Table~\ref{tab:importance}):
+signal, we apply permutation importance to L3-residualized columns at the
+mid-mass window, with each feature regressed against the 13 assembly-history
+variables and replaced by its OLS residual before shuffling
+(Table~\ref{tab:importance}).
 
 \begin{deluxetable}{lcccc}
 \tablecaption{L3-residualized permutation importance, mid-mass growth
@@ -572,8 +548,8 @@ $\log M_\mathrm{sub}$ & $0.031$ & $\approx0$ & spans zero & absorbed \\
 \enddata
 \end{deluxetable}
 
-After full gravity residualization, gas mass is the sole internal feature
-with a significant surviving importance.
+The result is unambiguous: gas mass is the sole internal feature retaining
+significant importance after full gravity residualization.
 All other internal features --- SFR, sSFR, stellar mass, metallicity,
 half-mass radius --- are absorbed by the L3 assembly-history.
 Stellar-to-halo fraction $\fstar$ is the most gravity-resistant feature in
@@ -1019,6 +995,29 @@ available at \url{https://github.com/kunalb541/Camels}.
 
 \section{\textbf{Supporting Tables}}
 \label{app:tables}
+
+\begin{deluxetable*}{llccccc}
+\tablecaption{Predictive scores by stellar mass regime, TNG SubLink.
+  Bold = WINNER at raw (uncontrolled) level; the assembly-history-controlled
+  gap for mid-mass growth is $\PairedGapLo$--$\PairedGapHi$ across
+  \PairedGapNWindows{} consecutive windows (Table~\ref{tab:gap}).
+  \label{tab:mass_splits}}
+\tablehead{
+  \colhead{Target} & \colhead{Mass bin} & \colhead{$n$} &
+  \colhead{env} & \colhead{halo} & \colhead{internal} & \colhead{Verdict}
+}
+\startdata
+\multirow{3}{*}{Growth $R^2$}
+  & Low ($<9.5$)    & \LowMassN  & 0.166 & 0.160 & 0.040 & TIE \\
+  & Mid (9.5--10.5) & \MidMassN  & 0.083 & \MidMassHaloR & \textbf{\MidMassInternalR} & \textbf{WINNER: internal} \\
+  & High ($\geq10.5$) & \HighMassN & 0.068 & 0.107 & 0.118 & TIE \\
+\hline
+\multirow{3}{*}{Quenching AUC}
+  & Low ($<9.5$)    & \LowMassN  & 0.645 & 0.704 & 0.681 & TIE \\
+  & Mid (9.5--10.5) & \MidMassN  & 0.791 & 0.807 & 0.818 & TIE \\
+  & High ($\geq10.5$) & \HighMassN & 0.791 & 0.792 & 0.735 & TIE \\
+\enddata
+\end{deluxetable*}
 
 \begin{deluxetable*}{llcccc}
 \tablecaption{Whole-sample predictive scores by feature family and
