@@ -1,4 +1,4 @@
-# A baryonic window in galaxy growth beyond halo assembly history: evidence from CAMELS IllustrisTNG and SIMBA
+# A Baryonic Window in Galaxy Growth Beyond Halo Assembly History: Evidence from CAMELS IllustrisTNG and SIMBA
 
 **Kunal Bhatia** — Independent Researcher, Heidelberg, Germany  
 ORCID: [0009-0007-4447-6325](https://orcid.org/0009-0007-4447-6325)
