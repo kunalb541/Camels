@@ -329,34 +329,11 @@ drop in CV $R^2$ over $n_\mathrm{boot} = 500$.
 \subsection{No Feature Family Leads Consistently Across Targets}
 \label{sec:whole_sample}
 
-Table~\ref{tab:whole_sample} presents the full $3 \times 3$ score matrix.
+The full $3 \times 3$ score matrix is in Appendix~\ref{app:tables}
+(Table~\ref{tab:whole_sample}).
 In both TNG SubLink and SIMBA spatial, every cell is a tie: no feature
 family leads across all three targets, and every pairwise gap has a 95\%
 CI spanning or approaching zero.
-
-\begin{deluxetable*}{llcccc}
-\tablecaption{Whole-sample predictive scores by feature family and
-  simulation.\label{tab:whole_sample}}
-\tablehead{
-  \colhead{Target} & \colhead{Family} &
-  \colhead{TNG SubLink} & \colhead{SIMBA Spatial} & \colhead{Verdict}
-}
-\startdata
-\multirow{3}{*}{Growth $R^2$}   & env      & 0.133 & 0.274 & TIE \\
-                                  & halo     & \textbf{0.257} & 0.342 & TIE \\
-                                  & internal & 0.247 & \textbf{0.354} & TIE \\
-\hline
-\multirow{3}{*}{Quenching AUC}  & env      & 0.846 & 0.717 & TIE \\
-                                  & halo     & 0.862 & 0.737 & TIE \\
-                                  & internal & \textbf{0.865} & \textbf{0.743} & TIE \\
-\hline
-\multirow{3}{*}{Halo growth $R^2$} & env   & 0.008 & 0.151 & TIE \\
-                                  & halo     & \textbf{0.015} & \textbf{0.158} & TIE \\
-                                  & internal & 0.006 & 0.144 & TIE \\
-\enddata
-\tablecomments{TNG SubLink: $n = \TNGSubLinkN$. SIMBA spatial:
-  $n = \SIMBASpatialN$.  Bold = highest score in column.}
-\end{deluxetable*}
 
 \begin{figure*}[t!]
 \centering
@@ -383,20 +360,11 @@ Cross-family quantitative differences are partly a matching artifact
 \label{sec:confound}
 
 The assembly-history baseline --- the $R^2$ achievable from static
-structural position alone --- differs dramatically by matching method:
-
-\begin{deluxetable}{lcc}
-\tablecaption{Assembly-history baseline by matching method.\label{tab:confound}}
-\tablehead{
-  \colhead{Matching} & \colhead{Family} &
-  \colhead{Baseline $R^2$}
-}
-\startdata
-SubLink & TNG    & $\SubLinkBaseline\, [0.051, 0.072]$ \\
-Spatial & TNG    & $\SpatialBaselineTNG$ \\
-Spatial & SIMBA  & $\SpatialBaselineSIMBA$ \\
-\enddata
-\end{deluxetable}
+structural position alone --- differs dramatically by matching method
+(Table~\ref{tab:confound} in Appendix~\ref{app:tables}):
+SubLink gives $R^2 = \SubLinkBaseline\,[0.051, 0.072]$; spatial matching
+gives $R^2 = \SpatialBaselineTNG$ (TNG) and $R^2 = \SpatialBaselineSIMBA$
+(SIMBA).
 
 Spatial matching selects galaxies that remain structurally stable between
 $z = 0.77$ and $z = 0$, inflating all predictor scores and the
@@ -465,33 +433,8 @@ assembly-history controls.
 To characterize where internal state's advantage begins and ends, we apply
 a sliding 0.5-dex window (step 0.1 dex, $n_\mathrm{boot} = 500$) across
 the full mass range and compute L1 marginal $R^2$ at each centre
-(Figure~\ref{fig:phase_diagram}).
-
-\begin{deluxetable*}{lccccc}
-\tablecaption{L1 marginal $R^2$ by window centre, selected positions
-  (full scan in Figure~\ref{fig:phase_diagram}).
-  The L1 control removes only static halo position (3 features); a positive
-  marginal means that family adds predictive power \textit{beyond} structural
-  position alone.  Internal is significant from 9.55--10.65 dex (13 windows);
-  halo enters three windows earlier.  The L3 assembly-history-controlled
-  equivalent is in Table~\ref{tab:l3scan}.
-  \label{tab:l1scan}}
-\tablehead{
-  \colhead{Centre (dex)} & \colhead{$n$} &
-  \colhead{Int marg} & \colhead{Sig} &
-  \colhead{Halo marg} & \colhead{Sig}
-}
-\startdata
-9.25--9.45 & \nodata & $<0$, wide CI & ns & $+0.053$--$+0.072$ & * \\
-\textbf{9.55} & 2,393 & $\mathbf{+0.149}$ & * & $+0.078$ & * \\
-9.65--10.45 & \nodata & $+0.153$--$+0.244$ & * & $+0.082$--$+0.171$ & * \\
-\textbf{10.25} & 1,407 & $\mathbf{+0.245}$ & * & $+0.171$ & * \\
-10.55--10.65 & \nodata & $+0.182$--$+0.111$ & * & $+0.107$--$+0.060$ & * \\
-\textbf{10.75} & 836 & $+0.083$ & ns & $+0.031$ & ns \\
-$\geq10.85$ & \nodata & ns & & ns & \\
-\enddata
-\tablecomments{$*$ denotes 95\% CI lower bound $> 0$.}
-\end{deluxetable*}
+(Figure~\ref{fig:phase_diagram}; selected window positions in
+Table~\ref{tab:l1scan}, Appendix~\ref{app:tables}).
 
 Several features define the window:
 \begin{enumerate}
@@ -535,29 +478,8 @@ L3 assembly-history baseline across the window averages $\Rgeom \approx
 0.16$--$0.18$, compared to L1's $\approx 0.004$ at mid mass --- the full
 assembly history prescription is far stronger than static position.
 Nonetheless, the internal window survives under L3
-(Figure~\ref{fig:phase_diagram}, lower panel).
-
-\begin{deluxetable*}{lccccc}
-\tablecaption{L3 internal marginal $R^2$ by window centre
-  (selected).\label{tab:l3scan}}
-\tablehead{
-  \colhead{Centre (dex)} &
-  \colhead{L1 int marg} & \colhead{L3 int marg} & \colhead{L3 Sig} &
-  \colhead{L3 halo marg} & \colhead{L3 halo Sig}
-}
-\startdata
-9.25--9.45 & $<0$ & $<0$ & ns & ns & ns \\
-\textbf{9.55} & $+0.149$ & $\mathbf{+0.110}$ & * & $+0.039$ & ns \\
-9.65--9.75 & $+0.153$--$+0.164$ & $+0.110$--$+0.117$ & * & ns & \\
-9.85 & $+0.180$ & $+0.132$ & * & $+0.061$ & * \\
-10.05--10.45 & $+0.175$--$+0.225$ & $+0.135$--$+0.161$ & * & $+0.063$--$+0.072$ & ns--* \\
-\textbf{10.35} & $+0.244$ & $\mathbf{\WindowPeakMarg}$ & * & $+0.072$ & * \\
-\textbf{10.55} & $+0.182$ & $\mathbf{+0.106}$ & * & $+0.054$ & ns \\
-10.65 & $+0.111$ & $+0.056$ & ns & ns & \\
-$\geq10.75$ & ns & ns & & ns & \\
-\enddata
-\tablecomments{$*$ denotes 95\% CI lower bound $> 0$.}
-\end{deluxetable*}
+(Figure~\ref{fig:phase_diagram}, lower panel;
+selected positions in Table~\ref{tab:l3scan}, Appendix~\ref{app:tables}).
 
 Under L3, the internal-predictive window remains \textbf{9.55--10.55
 dex} (\WindowNWindowsL{} consecutive significant windows).
@@ -1132,9 +1054,128 @@ The main findings are:
     CAMELS resolution.
 \end{enumerate}
 
+A detailed accounting of what is and is not claimed by these results ---
+including explicit statements on the absence of causal claims, universal
+mass thresholds, observational inference, and cross-simulation replication
+--- is given in Appendix~\ref{app:earned}.
+Directions for follow-up (SIMBA merger-tree control, volume and resolution
+tests, and redshift evolution of the window) are collected in
+Appendix~\ref{app:future}.
+
 % ---------------------------------------------------------------------------
-\section{\textbf{What is Earned and What is Not}}
-\label{sec:earned}
+\begin{acknowledgments}
+The author thanks the open-source scientific Python community for the
+libraries underlying this work: NumPy, SciPy, pandas, scikit-learn,
+matplotlib, and tqdm.
+The CAMELS simulations were produced by the CAMELS collaboration and are
+publicly available through the Flatiron Institute data portal.
+CAMELS IllustrisTNG uses the IllustrisTNG galaxy-formation model developed
+by the IllustrisTNG collaboration; CAMELS SIMBA uses the SIMBA model
+developed by R.\ Dav\'{e} and collaborators.
+\end{acknowledgments}
+
+% ---------------------------------------------------------------------------
+\section*{Data and Code Availability}
+
+The CAMELS simulation data used in this work are publicly available at
+\url{https://camels.readthedocs.io}.
+All analysis code, figure-generation scripts, and the compiled paper are
+available at \url{https://github.com/kunalb541/Camels}.
+
+% ---------------------------------------------------------------------------
+\appendix
+
+\section{\textbf{Supporting Tables}}
+\label{app:tables}
+
+\begin{deluxetable*}{llcccc}
+\tablecaption{Whole-sample predictive scores by feature family and
+  simulation.\label{tab:whole_sample}}
+\tablehead{
+  \colhead{Target} & \colhead{Family} &
+  \colhead{TNG SubLink} & \colhead{SIMBA Spatial} & \colhead{Verdict}
+}
+\startdata
+\multirow{3}{*}{Growth $R^2$}   & env      & 0.133 & 0.274 & TIE \\
+                                  & halo     & \textbf{0.257} & 0.342 & TIE \\
+                                  & internal & 0.247 & \textbf{0.354} & TIE \\
+\hline
+\multirow{3}{*}{Quenching AUC}  & env      & 0.846 & 0.717 & TIE \\
+                                  & halo     & 0.862 & 0.737 & TIE \\
+                                  & internal & \textbf{0.865} & \textbf{0.743} & TIE \\
+\hline
+\multirow{3}{*}{Halo growth $R^2$} & env   & 0.008 & 0.151 & TIE \\
+                                  & halo     & \textbf{0.015} & \textbf{0.158} & TIE \\
+                                  & internal & 0.006 & 0.144 & TIE \\
+\enddata
+\tablecomments{TNG SubLink: $n = \TNGSubLinkN$. SIMBA spatial:
+  $n = \SIMBASpatialN$.  Bold = highest score in column.}
+\end{deluxetable*}
+
+\begin{deluxetable}{lcc}
+\tablecaption{Assembly-history baseline by matching method.\label{tab:confound}}
+\tablehead{
+  \colhead{Matching} & \colhead{Family} &
+  \colhead{Baseline $R^2$}
+}
+\startdata
+SubLink & TNG    & $\SubLinkBaseline\, [0.051, 0.072]$ \\
+Spatial & TNG    & $\SpatialBaselineTNG$ \\
+Spatial & SIMBA  & $\SpatialBaselineSIMBA$ \\
+\enddata
+\end{deluxetable}
+
+\begin{deluxetable*}{lccccc}
+\tablecaption{L1 marginal $R^2$ by window centre, selected positions
+  (full scan in Figure~\ref{fig:phase_diagram}).
+  The L1 control removes only static halo position (3 features); a positive
+  marginal means that family adds predictive power \textit{beyond} structural
+  position alone.  Internal is significant from 9.55--10.65 dex (13 windows);
+  halo enters three windows earlier.  The L3 assembly-history-controlled
+  equivalent is in Table~\ref{tab:l3scan}.
+  \label{tab:l1scan}}
+\tablehead{
+  \colhead{Centre (dex)} & \colhead{$n$} &
+  \colhead{Int marg} & \colhead{Sig} &
+  \colhead{Halo marg} & \colhead{Sig}
+}
+\startdata
+9.25--9.45 & \nodata & $<0$, wide CI & ns & $+0.053$--$+0.072$ & * \\
+\textbf{9.55} & 2,393 & $\mathbf{+0.149}$ & * & $+0.078$ & * \\
+9.65--10.45 & \nodata & $+0.153$--$+0.244$ & * & $+0.082$--$+0.171$ & * \\
+\textbf{10.25} & 1,407 & $\mathbf{+0.245}$ & * & $+0.171$ & * \\
+10.55--10.65 & \nodata & $+0.182$--$+0.111$ & * & $+0.107$--$+0.060$ & * \\
+\textbf{10.75} & 836 & $+0.083$ & ns & $+0.031$ & ns \\
+$\geq10.85$ & \nodata & ns & & ns & \\
+\enddata
+\tablecomments{$*$ denotes 95\% CI lower bound $> 0$.}
+\end{deluxetable*}
+
+\begin{deluxetable*}{lccccc}
+\tablecaption{L3 internal marginal $R^2$ by window centre
+  (selected).\label{tab:l3scan}}
+\tablehead{
+  \colhead{Centre (dex)} &
+  \colhead{L1 int marg} & \colhead{L3 int marg} & \colhead{L3 Sig} &
+  \colhead{L3 halo marg} & \colhead{L3 halo Sig}
+}
+\startdata
+9.25--9.45 & $<0$ & $<0$ & ns & ns & ns \\
+\textbf{9.55} & $+0.149$ & $\mathbf{+0.110}$ & * & $+0.039$ & ns \\
+9.65--9.75 & $+0.153$--$+0.164$ & $+0.110$--$+0.117$ & * & ns & \\
+9.85 & $+0.180$ & $+0.132$ & * & $+0.061$ & * \\
+10.05--10.45 & $+0.175$--$+0.225$ & $+0.135$--$+0.161$ & * & $+0.063$--$+0.072$ & ns--* \\
+\textbf{10.35} & $+0.244$ & $\mathbf{\WindowPeakMarg}$ & * & $+0.072$ & * \\
+\textbf{10.55} & $+0.182$ & $\mathbf{+0.106}$ & * & $+0.054$ & ns \\
+10.65 & $+0.111$ & $+0.056$ & ns & ns & \\
+$\geq10.75$ & ns & ns & & ns & \\
+\enddata
+\tablecomments{$*$ denotes 95\% CI lower bound $> 0$.}
+\end{deluxetable*}
+
+% ---------------------------------------------------------------------------
+\section{\textbf{Scope of Claims}}
+\label{app:earned}
 
 \noindent\textbf{Earned in this paper.}
 \begin{itemize}[leftmargin=*,itemsep=2pt]
@@ -1222,8 +1263,8 @@ The main findings are:
 \end{itemize}
 
 % ---------------------------------------------------------------------------
-\section{\textbf{Future Work}}
-\label{sec:future}
+\section{\textbf{Future Directions}}
+\label{app:future}
 
 The two most direct extensions are:
 
@@ -1248,26 +1289,6 @@ whether the gas-mass signal reflects accretion or feedback-driven depletion;
 with halo-mass proxies (weak-lensing, group membership) and cold-gas tracers
 (HI 21\,cm, CO), where xGASS/xCOLD\,GASS provide exactly this combination
 in the relevant stellar-mass range \citep{saintonge2017}.
-
-% ---------------------------------------------------------------------------
-\begin{acknowledgments}
-The author thanks the open-source scientific Python community for the
-libraries underlying this work: NumPy, SciPy, pandas, scikit-learn,
-matplotlib, and tqdm.
-The CAMELS simulations were produced by the CAMELS collaboration and are
-publicly available through the Flatiron Institute data portal.
-CAMELS IllustrisTNG uses the IllustrisTNG galaxy-formation model developed
-by the IllustrisTNG collaboration; CAMELS SIMBA uses the SIMBA model
-developed by R.\ Dav\'{e} and collaborators.
-\end{acknowledgments}
-
-% ---------------------------------------------------------------------------
-\section*{Data and Code Availability}
-
-The CAMELS simulation data used in this work are publicly available at
-\url{https://camels.readthedocs.io}.
-All analysis code, figure-generation scripts, and the compiled paper are
-available at \url{https://github.com/kunalb541/Camels}.
 
 % ---------------------------------------------------------------------------
 \bibliographystyle{aasjournalv7}
