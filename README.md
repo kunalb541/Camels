@@ -52,7 +52,8 @@ TNG growth window is 3.5× larger in amplitude than SIMBA growth window. SIMBA q
 
 ```
 camels/
-├── paper.py              # Full analysis pipeline (data loading → figures → macros)
+├── paper.py              # Full analysis pipeline (data loading → analysis → macros)
+├── make_figures.py       # Generate all 6 paper figures (standalone, no data download)
 ├── paper.tex             # LaTeX source (AASTeX 7.0.1)
 ├── build.sh              # Run paper.py then latexmk → paper.pdf
 ├── refs.bib              # BibTeX references
@@ -89,7 +90,7 @@ tlmgr install latexmk aastex booktabs microtype
 
 ```bash
 ./build.sh                # full pipeline + LaTeX compile
-./build.sh --figures-only # regenerate figures only (uses cached results)
+python make_figures.py  # regenerate all 6 figures from paper data (no CAMELS download needed)
 ```
 
 ### Data
