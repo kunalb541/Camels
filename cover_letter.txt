@@ -1,8 +1,8 @@
 Dear Editors of New Astronomy,
 
 I am submitting the manuscript "A Finite Intermediate-Mass Window where
-Internal Galaxy State Outpredicts Halo Assembly History: Evidence from
-CAMELS IllustrisTNG and SIMBA" for consideration as a Research Article.
+Internal Galaxy State Outpredicts Halo Assembly History" for consideration
+as a Research Article.
 
 The paper addresses a fundamental question in galaxy formation: after
 controlling for everything the halo's structural and assembly history
