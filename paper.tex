@@ -49,16 +49,19 @@ mass, half-mass assembly epoch, merger counts, and major-merger timing.
 Across the broader \textit{gap window} ($9.55 \lesssim \logM \lesssim 10.75$;
 \PairedGapNWindows{} consecutive windows), the shared-bootstrap
 internal--halo paired gap is flat and positive ($\PairedGapLo$ to
-$\PairedGapHi$, all 95\% CIs positive).
+$\PairedGapHi$, all 95\% CIs positive); because the assembly-history baseline
+cancels algebraically in the paired test, this is the most statistically
+robust of the paper's main results.
 Gas mass is the dominant surviving internal carrier; peak assembly timing ---
 not merger history --- is the dominant gravitational absorber of the
 internal predictive signal (removing peak-mass ratio and half-mass epoch
 recovers \AblationTimingPct\% of the absorbed internal marginal; removing
 merger counts recovers 0\%).
 Adding stellar-to-halo fraction ($\fstar$) to the assembly-history baseline
-absorbs halo's surviving marginal entirely but leaves internal's intact
-($\Rmarg = \FstarInternalMarg\,[\FstarInternalCILo, \FstarInternalCIHi]$),
-showing the internal channel is not mediated by formation efficiency.
+absorbs halo's surviving signal entirely ($\LThreeHaloMarg^* \to
+\FstarHaloMarg$ ns) but leaves internal's intact ($\LThreeInternalMarg^* \to
+\FstarInternalMarg^*$), showing the two surviving signals track structurally
+different baryonic information.
 The cross-family comparison reveals different target-channel expression:
 in TNG the signal concentrates in stellar growth (\WindowNWindowsL-window
 L3 band, peak $\Rmarg = \WindowPeakMarg$); in SIMBA the stronger signal
@@ -463,7 +466,10 @@ Figure~\ref{fig:gap} shows the shared-bootstrap paired gap
 $\delta = R^2(\mathrm{L3+internal}) - R^2(\mathrm{L3+halo})$ at each
 sliding window centre.
 The assembly-history baseline cancels algebraically in this test, giving a
-direct internal-vs-halo comparison under full gravitational control.
+direct internal-vs-halo comparison under full gravitational control; this
+algebraic cancellation makes the paired gap the paper's most statistically
+robust diagnostic, immune to uncertainty in the absolute level of the
+baseline.
 
 \begin{deluxetable}{lcccc}
 \tablecaption{L3 paired gap (internal $-$ halo) by window
