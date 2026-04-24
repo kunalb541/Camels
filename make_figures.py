@@ -66,9 +66,6 @@ def fig01_score_matrix():
         # "ALL TIES" centred across all three bar groups at panel mid-width;
         # y=0.52 in axes coords (≡ data coords since ylim=0–1) sits above all
         # Stellar Growth bars (max 0.35) and below all Quenching bars (min 0.72)
-        ax.text(0.5, 0.52, "ALL TIES", transform=ax.transAxes,
-                ha="center", va="center", fontsize=7.5, color="#bbb",
-                style="italic")
 
     axes[0].set_ylabel("Score")
     # Legend in left panel (TNG) where there's space below the high quenching bars
