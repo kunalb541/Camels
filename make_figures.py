@@ -249,11 +249,15 @@ def fig06_cross_family():
     simba_g_c = [10.05, 10.15, 10.25, 10.35, 10.45]
     simba_g_m = [0.045, 0.058, 0.069, 0.065, 0.050]
 
-    # TNG quenching L3 — weak, 4 windows
-    tng_q_c  = [10.05, 10.15, 10.25, 10.35]
-    tng_q_m  = [0.034, 0.039, 0.041, 0.046]
+    # TNG quenching L1 — 6 windows, from results_mass_scan_l3_quench_pg.json
+    tng_q_l1_c = [9.85, 9.95, 10.05, 10.15, 10.25, 10.35]
+    tng_q_l1_m = [0.060, 0.048, 0.046, 0.053, 0.047, 0.037]
 
-    # SIMBA quenching L1 — from Table 7
+    # TNG quenching L3 — weak, 4 windows (from same source, actual values)
+    tng_q_l3_c = [10.05, 10.15, 10.25, 10.35]
+    tng_q_l3_m = [0.035, 0.046, 0.044, 0.034]
+
+    # SIMBA quenching L1 — from Tab 7
     simba_q_c = [9.65, 9.75, 9.85, 9.95, 10.05, 10.15, 10.25, 10.35, 10.45, 10.55, 10.65, 10.75]
     simba_q_m = [0.068, 0.090, 0.111, 0.122, 0.130, 0.141, 0.125, 0.123, 0.117, 0.105, 0.095, 0.086]
 
@@ -278,15 +282,17 @@ def fig06_cross_family():
     axes[0,1].text(0.97, 0.97, "peak +0.069\n(fragmented)", transform=axes[0,1].transAxes,
                    ha="right", va="top", fontsize=7.5, color=C_INT)
 
-    # (1,0) TNG quenching
-    axes[1,0].plot(tng_q_c, tng_q_m, color="#e08214", lw=2, marker="o", ms=4)
+    # (1,0) TNG quenching — L1 (solid) and L3 (dashed), same panel for direct comparison
+    axes[1,0].plot(tng_q_l1_c, tng_q_l1_m, color="#e08214", lw=2, marker="o", ms=4,
+                   label="L1 (6 win, peak $+$0.060)")
+    axes[1,0].plot(tng_q_l3_c, tng_q_l3_m, color="#e08214", lw=1.5, marker="s", ms=3.5,
+                   ls="--", alpha=0.55, label="L3 (4 win, peak $+$0.046)")
     axes[1,0].axhline(0, color="k", lw=0.5)
-    axes[1,0].set_title("TNG — Quenching AUC (L3)", fontsize=8.5, fontweight="bold")
+    axes[1,0].legend(loc="upper left", frameon=False, fontsize=6.5, handlelength=1.2)
+    axes[1,0].set_title("TNG — Quenching AUC", fontsize=8.5, fontweight="bold")
     axes[1,0].set_ylim(-0.01, 0.17)
     axes[1,0].set_ylabel("Marginal AUC")
     axes[1,0].set_xlabel("Window centre (log $M_*$, dex)")
-    axes[1,0].text(0.97, 0.97, "peak +0.046\n(4 windows)", transform=axes[1,0].transAxes,
-                   ha="right", va="top", fontsize=7.5, color="#e08214")
 
     # (1,1) SIMBA quenching
     axes[1,1].plot(simba_q_c, simba_q_m, color="#e08214", lw=2, marker="o", ms=4)

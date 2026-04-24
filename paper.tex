@@ -694,9 +694,11 @@ The SIMBA quenching scan tells a different story.
 Internal is significant from 9.65 to 10.75 dex (Table~\ref{tab:simba_quench}),
 with peak marginal AUC $= +\SimbaQuenchPeak^*$ at 10.15 dex; halo is also
 significant across most of this range (peak $+0.127^*$).
-The SIMBA quenching signal is 3--4$\times$ larger in amplitude than TNG's
-quenching signal at any control layer (TNG L3 quenching peak:
-$\TNGQuenchPeakMarg^*$, \TNGQuenchNWindows{} windows only).
+At the same L1 control level, the SIMBA quenching signal is $\sim$2.4$\times$
+larger in amplitude than TNG's (SIMBA: $\SimbaQuenchPeak^*$; TNG L1:
+$\TNGQuenchLonePeak^*$, \TNGQuenchLoneNWindows{} windows, 9.85--10.35 dex);
+at the more conservative TNG L3 control the ratio rises to $\sim$3$\times$
+(TNG L3 peak: $\TNGQuenchPeakMarg^*$, \TNGQuenchNWindows{} windows).
 
 \begin{deluxetable}{lcccccc}
 \tablecaption{SIMBA L1 quenching marginal AUC, selected
@@ -717,17 +719,26 @@ $\geq10.85$ & \nodata & ns & & ns & \\
 \enddata
 \end{deluxetable}
 
-Running the same L3 window scan for the quenching target in TNG confirms that
-quenching is not where TNG's beyond-gravity signal concentrates: internal is
-significant only at 10.05--10.35 dex (\TNGQuenchNWindows{} windows, peak
-$\TNGQuenchPeakMarg^*$), with halo non-significant at every window under L3.
+Running the same window scan for the quenching target in TNG at L1 yields a
+peak internal marginal AUC of $\TNGQuenchLonePeak^*$ at 9.85 dex
+(\TNGQuenchLoneNWindows{} significant windows, 9.85--10.35 dex); at L3 this
+tightens to \TNGQuenchNWindows{} windows (10.05--10.35 dex, peak
+$\TNGQuenchPeakMarg^*$), confirming that TNG quenching is weak at both
+control levels.
+Placing both simulation families at L1 for quenching gives a
+$\SimbaQuenchPeak / \TNGQuenchLonePeak \approx 2.4\times$ amplitude difference;
+the ratio narrows from $\sim3\times$ when TNG is evaluated at the more
+conservative L3 control but the contrast remains substantial and confirms
+the cross-simulation signal is not a control-level artifact
+(Figure~\ref{fig:cross_family}, lower-left, shows both TNG L1 and L3 lines).
 
 The cross-family comparison reveals a contrast in target-channel expression:
 in TNG, the residual internal signal concentrates in stellar growth (marginal
 window: \WindowNWindowsL{} windows, flat positive gap window
 $\PairedGapLo$--$\PairedGapHi$); in SIMBA, the stronger beyond-gravity
 signal concentrates in quenching (10+ window L1 band, peak marginal AUC
-$\SimbaQuenchPeak$), while the SIMBA growth window is fragmented and weaker.
+$\SimbaQuenchPeak$, $\sim 2.4\times$ TNG L1 amplitude), while the SIMBA
+growth window is fragmented and weaker.
 
 It is important to qualify the scope of this comparison.
 The TNG branch supports the full mechanistic decomposition --- static
@@ -747,14 +758,15 @@ not as a matched mechanistic replication of the TNG decomposition.
   \textit{Upper panels}: L1 growth marginal $R^2$ for TNG (left) and SIMBA
   (right). TNG window is clean and contiguous (peak $+0.245$); SIMBA is
   fragmented and \SimbaGrowthRatio$\times$ weaker (peak $+0.069$).
-  \textit{Lower panels}: quenching marginal AUC for TNG L3 (left) and SIMBA
-  L1 (right). Note the differing control levels: TNG is shown at the more
-  conservative L3 control (merger-tree assembly history; 4 windows, peak
-  $\TNGQuenchPeakMarg$), while SIMBA is at L1 only (tree-based assembly
-  control unavailable for SIMBA at CAMELS resolution; 10+ windows, peak
-  $+\SimbaQuenchPeak$). TNG quenching is weak at both L1 and L3 ---
-  the 3--4$\times$ amplitude difference relative to SIMBA is not a
-  control-level artifact.
+  \textit{Lower panels}: quenching marginal AUC for TNG (left, both L1 solid
+  and L3 dashed) and SIMBA L1 (right). TNG L1 quenching: \TNGQuenchLoneNWindows{}
+  windows, peak $\TNGQuenchLonePeak^*$; TNG L3: \TNGQuenchNWindows{} windows,
+  peak $\TNGQuenchPeakMarg^*$. TNG quenching is weak at both control levels.
+  SIMBA quenching at L1: 10+ windows, peak $+\SimbaQuenchPeak^*$.
+  Evaluated at the same L1 control, the SIMBA--TNG amplitude ratio is
+  $\sim$2.4$\times$ (L1 vs.\ L1), shrinking from $\sim$3$\times$ when TNG
+  is at the more conservative L3 (tree-based assembly control unavailable
+  for SIMBA at CAMELS resolution).
   Green and orange shading mark the significant windows.
 \label{fig:cross_family}}
 \end{figure*}
@@ -799,6 +811,25 @@ mass, the gas-to-growth link is increasingly absorbed by gravitational
 history while the galaxy's position in the quenching trajectory ---
 reflected in accumulated stellar mass \citep{genel2019} --- retains an
 independent predictive contribution.
+
+\textbf{Observational prediction.}
+The marginal window is not merely a simulation result --- it is a quantitative
+prediction testable on real galaxy surveys.
+The prediction is: in observed galaxies at $9.55 \lesssim \logM \lesssim 10.55$
+(roughly $z \lesssim 0.1$), cold-gas mass should retain marginal predictive
+power for stellar growth $\sim 1$--$2$ Gyr later, above and beyond what
+halo-mass proxies (weak-lensing mass, group membership, velocity dispersion)
+already predict.
+The xGASS and xCOLD\,GASS surveys \citep{saintonge2017} observe total cold-gas
+content (HI + H$_2$) for star-forming galaxies in precisely this stellar-mass
+range, with group-membership and halo-mass proxies available from companion
+catalogs.
+A marginal-predictive battery run on xGASS/xCOLD\,GASS --- with halo-mass
+proxies as the assembly-history control and cold-gas mass as the test predictor
+--- would constitute a direct observational test of the window.
+If the window survives in observed galaxies, it would establish that the
+baryonic autonomy of gas content relative to halo assembly is not an artifact
+of the CAMELS feedback prescriptions.
 
 \subsection{What the Window Does Not Mean}
 
@@ -1251,15 +1282,14 @@ with $256^3$ particles.  Running the same analysis on larger CAMELS
 extensions will determine whether the predictive window shifts or broadens
 at higher mass.
 
-Three further directions are worth pursuing: (\textit{i})~repeating the
-sliding-window scan at $z \approx 0.5$ and $1.0$ to track whether the
+Two further simulation directions are worth pursuing: (\textit{i})~repeating
+the sliding-window scan at $z \approx 0.5$ and $1.0$ to track whether the
 window evolves as assembly history accumulates; (\textit{ii})~tracking net
 gas inflows and outflows along individual TNG trajectories to identify
-whether the gas-mass signal reflects accretion or feedback-driven depletion;
-(\textit{iii})~applying the marginal-predictive framework to survey catalogs
-with halo-mass proxies (weak-lensing, group membership) and cold-gas tracers
-(HI 21\,cm, CO), where xGASS/xCOLD\,GASS provide exactly this combination
-in the relevant stellar-mass range \citep{saintonge2017}.
+whether the gas-mass signal reflects accretion or feedback-driven depletion.
+The direct observational test of the marginal window via xGASS/xCOLD\,GASS
+\citep{saintonge2017} is discussed and formulated as a prediction in
+Section~\ref{sec:discussion}.
 
 % ---------------------------------------------------------------------------
 \bibliographystyle{aasjournalv7}

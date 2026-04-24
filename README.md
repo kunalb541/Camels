@@ -9,7 +9,7 @@ ORCID: [0009-0007-4447-6325](https://orcid.org/0009-0007-4447-6325)
 
 We compare three predictor families — **internal galaxy properties**, **halo structural properties**, and **environmental measures** — as independent predictors of stellar growth, quenching, and halo growth in the CAMELS CV suites of IllustrisTNG and SIMBA. We then test how much of each family's signal survives escalating controls for halo structure and assembly history.
 
-The central finding is a finite **intermediate-mass internal window** (9.55 ≲ log M★ ≲ 10.55) where internal galaxy state retains significant marginal predictive power for stellar growth beyond a full 13-feature halo assembly-history baseline — surviving merger trees, peak-mass epoch, half-mass assembly snapshot, and four accretion-rate lookback windows.
+The central finding is a finite **marginal window** (9.55 ≲ log M★ ≲ 10.55, 11 consecutive windows) where internal galaxy state retains significant marginal predictive power for stellar growth beyond a full 13-feature halo assembly-history baseline. A broader **gap window** (9.55–10.75 dex, 13 windows) is where the paired internal–halo gap is flat and positive.
 
 ---
 
@@ -19,14 +19,13 @@ The central finding is a finite **intermediate-mass internal window** (9.55 ≲ 
 
 Every cell in the 3×3 (family × target) performance matrix is a statistical tie in both TNG and SIMBA. No feature family leads globally. The whole-sample tie conceals a structured mass-regime pattern.
 
-### The intermediate-mass internal window
+### The intermediate-mass windows
 
-| Layer | Window | N sig. windows | Peak internal marginal R² |
-|-------|--------|-----------------|--------------------------|
-| L1 (static halo) | 9.55–10.65 dex | 13 | +0.245 |
-| L3 (full assembly history) | 9.55–10.55 dex | 11 | +0.161* |
-
-Flat internal–halo gap: +0.052 to +0.089 across 13 consecutive windows (all 95% CIs positive).
+| Window | Extent | N windows | Key quantity |
+|--------|--------|-----------|--------------|
+| **Marginal window** (L3 internal $R^2$ significant) | 9.55–10.55 dex | 11 | Peak internal marginal $R^2$ = +0.161* |
+| **Gap window** (paired internal−halo gap positive) | 9.55–10.75 dex | 13 | Gap range +0.052 to +0.089, all CIs positive |
+| L1 marginal window | 9.55–10.65 dex | 13 | Peak internal L1 $R^2$ = +0.245* |
 
 ### Mechanistic decomposition
 
@@ -34,17 +33,22 @@ Flat internal–halo gap: +0.052 to +0.089 across 13 consecutive windows (all 95
 |-----------|--------|
 | Dominant internal carrier | Gas mass (only surviving feature after L3 residualization) |
 | Main absorbing gravity channel | Peak-mass ratio + half-mass epoch (19% recovery when ablated) |
+| Ablation coverage | Three components account for ~29% of absorbed signal; ~71% unresolved |
 | Merger counts | 0% recovery — window is merger-count-independent |
 | f★ test | Internal survives (0.086* [+0.043, +0.133]); halo absorbed (0.017 ns) |
 
 ### Cross-family contrast (TNG vs. SIMBA)
 
-| Family | Stronger signal in | Peak marginal |
-|--------|--------------------|---------------|
-| TNG | Stellar growth (L3) | R² = 0.161* (11 windows) |
-| SIMBA | Quenching (L1) | AUC = 0.141* (10+ windows) |
+| Family | Stronger signal in | Peak marginal | At same L1 control |
+|--------|--------------------|---------------|-------------------|
+| TNG | Stellar growth (L3 marginal window) | $R^2$ = 0.161* (11 windows) | TNG L1 quench peak = +0.060* (6 windows) |
+| SIMBA | Quenching (L1) | AUC = 0.141* (10+ windows) | SIMBA–TNG amplitude ratio ≈ 2.4× at L1 |
 
-TNG growth window is 3.5× larger in amplitude than SIMBA growth window. SIMBA quenching window is 3–4× larger than TNG quenching at any control layer.
+TNG growth marginal window 3.5× larger in amplitude than SIMBA growth window. SIMBA quenching signal ~2.4× larger than TNG quenching at the same L1 control (the ratio narrows from ~3× when TNG is evaluated at the more conservative L3 level).
+
+### Observational prediction
+
+In real galaxies (9.55–10.55 dex, z ≲ 0.1), cold-gas mass should retain marginal predictive power for stellar growth above and beyond what halo-mass proxies already predict. The xGASS/xCOLD GASS surveys cover exactly this stellar-mass range with companion halo-mass proxies — a marginal-predictive battery on those catalogs would constitute a direct test.
 
 ---
 
@@ -105,11 +109,11 @@ Set paths in `config.py`.
 | Figure | Description |
 |--------|-------------|
 | Fig. 1 | Full 3×3 score matrix for TNG and SIMBA |
-| Fig. 2 | Intermediate-mass growth-window phase diagram (L1 and L3 marginal R² vs. mass) |
-| Fig. 3 | Flat paired gap across the window |
+| Fig. 2 | Phase diagram: L1 marginal window (9.55–10.65 dex) and L3 marginal window (9.55–10.55 dex, green shading) vs. mass |
+| Fig. 3 | Flat paired gap across the gap window (9.55–10.75 dex, 13 windows) |
 | Fig. 4 | Feature-winner map (L3-residualized permutation importance) |
 | Fig. 5 | Assembly ablation map |
-| Fig. 6 | Target-channel contrast: TNG vs. SIMBA |
+| Fig. 6 | Target-channel contrast: TNG (growth marginal window upper-left; quenching at L1 solid + L3 dashed lower-left) vs. SIMBA (growth fragmented upper-right; quenching L1 lower-right). Same-control-level quenching comparison: TNG L1 peak +0.060, SIMBA L1 peak +0.141 (~2.4×). |
 
 ---
 
