@@ -137,39 +137,26 @@ halo assembly-history control, evaluated by shared bootstrap.
 This directly measures whether a feature family carries predictive
 information beyond the halo's gravitational record.
 
-The key developments of this paper are:
-\begin{enumerate}
-  \item \textbf{No feature family leads consistently across all targets and
-    mass regimes}: the $3 \times 3$ performance matrix shows statistical
-    ties in both simulation families, with the leading family depending on
-    the target and the mass range.
-
-  \item \textbf{Matching method confound}: spatial matching inflates the
-    halo assembly-history baseline \SpatialInflation$\times$ relative to
-    merger-tree matching, which must be accounted for before cross-family
-    assembly-control comparisons.
-
-  \item \textbf{A finite intermediate-mass window of residual internal
-    predictive power}: a continuous mass range ($9.55$--$10.55$ dex) where
-    internal galaxy state retains significant marginal predictive power for
-    stellar growth beyond the full 13-feature halo assembly-history control,
-    with a flat positive internal--halo gap across all \WindowNWindowsL{}
-    sliding-window positions in this range.
-
-  \item \textbf{Mechanistic decomposition}: gas mass is the dominant
-    surviving internal carrier; halo assembly timing --- not merger history
-    --- is the main assembly-history feature absorbing the internal signal;
-    the internal channel is not mediated by integrated stellar formation
-    efficiency ($\fstar$).
-
-  \item \textbf{Cross-family expression}: a residual internal signal beyond
-    assembly-history controls appears in both TNG and SIMBA, but its target
-    differs --- in TNG it is expressed through stellar growth, while in
-    SIMBA the stronger signal appears in quenching.
-
-  \item \textbf{Robustness}: results are stable across all 27 CAMELS CV
-    realizations and to the choice of halo structural variable.
-\end{enumerate}
+The key developments are as follows.
+No feature family leads consistently across all targets and mass regimes:
+the $3 \times 3$ performance matrix shows statistical ties in both
+simulation families.
+Spatial matching inflates the assembly-history baseline \SpatialInflation$\times$
+relative to merger-tree matching, a confound that must be accounted for
+before cross-family assembly-control comparisons.
+Within the continuous mass range $9.55$--$10.55$ dex, internal galaxy state
+retains significant marginal predictive power for stellar growth beyond the
+full 13-feature assembly-history control, with a flat positive internal--halo
+gap across all \WindowNWindowsL{} sliding-window positions.
+Mechanistically, gas mass is the dominant surviving internal carrier; halo
+assembly timing --- not merger history --- is the main assembly-history
+feature absorbing the internal signal; and the internal channel is not
+mediated by integrated stellar formation efficiency ($\fstar$).
+A residual internal signal appears in both TNG and SIMBA, but its
+target-channel expression differs: TNG concentrates it in stellar growth,
+SIMBA in quenching.
+All results are stable across all 27 CAMELS CV realizations and to the
+choice of halo structural variable.
 
 % ---------------------------------------------------------------------------
 \section{\textbf{Data and Methods}}
@@ -181,12 +168,11 @@ The key developments of this paper are:
 We use the Cosmic Variance (CV) sub-suite of CAMELS, comprising 27
 independent realizations each of IllustrisTNG and SIMBA at fixed
 cosmological and astrophysical parameters \citep{villaescuza-navarro2021}.
-Box size: $25\, h^{-1}\,\mathrm{Mpc}$, $256^3$ dark matter particles.
-Snapshots: 066 and 090 ($z = 0.7747$ and $z = 0$).
-
-We restrict to \textit{central} galaxies with $\logM(z=0.77) \geq 9.0$.
-After matching, the TNG SubLink sample contains $n = \TNGSubLinkN$ galaxies;
-the SIMBA spatial sample $n = \SIMBASpatialN$.
+Each box is $25\, h^{-1}\,\mathrm{Mpc}$ with $256^3$ dark matter particles;
+we use snapshots 066 and 090 ($z = 0.7747$ and $z = 0$).
+We restrict to \textit{central} galaxies with $\logM(z=0.77) \geq 9.0$;
+after matching the TNG SubLink sample contains $n = \TNGSubLinkN$ galaxies
+and the SIMBA spatial sample $n = \SIMBASpatialN$.
 
 \subsection{Predictor Feature Families}
 \label{sec:features}
@@ -224,30 +210,24 @@ any other family when scored.
 \subsection{Targets}
 \label{sec:targets}
 
-\begin{itemize}
-  \item \textbf{Stellar growth}: $\dlogM = \logM(z=0) - \logM(z=0.77)$,
-    Ridge $R^2$, 5-fold CV.
-  \item \textbf{Quenching}: binary indicator
-    $\mathrm{sSFR}(z=0) < 10^{-11}\,\mathrm{yr}^{-1}$,
-    logistic Ridge AUC, 5-fold CV.
-  \item \textbf{Halo growth}: $\Delta\log M_\mathrm{sub}$, Ridge $R^2$.
-\end{itemize}
+Three outcomes are predicted at $z = 0$: stellar growth
+($\dlogM = \logM(z=0) - \logM(z=0.77)$, Ridge $R^2$, 5-fold CV);
+binary quenching ($\mathrm{sSFR}(z=0) < 10^{-11}\,\mathrm{yr}^{-1}$,
+logistic Ridge AUC, 5-fold CV); and halo growth ($\Delta\log M_\mathrm{sub}$,
+Ridge $R^2$).
 Hyperparameters are tuned by inner cross-validation on the training fold.
 
 \subsection{Matching Methods}
 \label{sec:matching}
 
-\textbf{SubLink (TNG only).}
-Tree-based progenitor matching via SubLink \citep{rodriguez-gomez2015}.
-Introduces no structural selection bias; used for all assembly-history
+Tree-based SubLink matching \citep{rodriguez-gomez2015}, available for TNG
+only, links each early-epoch galaxy to its $z=0$ descendant via merger trees,
+introducing no structural selection bias; it is used for all assembly-history
 control analyses.
-
-\textbf{Spatial (both families).}
-Match early-epoch galaxy to nearest late-epoch galaxy within $3\times$
-half-mass radius.
-Preferentially selects structurally stable galaxies, inflating the
-assembly-history baseline (Section~\ref{sec:confound}).
-Used for SIMBA only as SubLink-equivalent trees are unavailable.
+Spatial matching --- nearest late-epoch galaxy within $3\times$ the
+early-epoch half-mass radius --- preferentially selects structurally stable
+systems, inflating the assembly-history baseline (Section~\ref{sec:confound}).
+It is used for SIMBA, where SubLink-equivalent trees are unavailable.
 
 \subsection{Significance Rule}
 \label{sec:verdict}
@@ -280,47 +260,38 @@ To assess whether predictor family signals persist beyond what the halo
 structural and assembly history already predicts, we apply a three-layer
 control procedure to TNG SubLink.
 
-\textbf{Layer 1 (L1 --- static halo structure):}
-$\log M_\mathrm{halo}$, $\log \rho_\mathrm{local}$, $\log M_\mathrm{sub}$
---- where the halo sits at $z = 0.77$.
-
-\textbf{Layer 2 (L2 --- + recent accretion history):}
-L1 plus $\Delta\log M_\mathrm{halo}$ over 4 and 8 SubLink steps
-($\approx$1--2 Gyr before $z = 0.77$) and halo formation snapshot.
-
-\textbf{Layer 3 (L3 --- full assembly history):}
-L2 plus $\Delta\log M_\mathrm{halo}$ over 12 and 16 steps
-($\approx$3--4 Gyr lookback), peak mass ratio, half-mass assembly
+L1 (static halo structure) uses three features describing where the halo
+sits at $z = 0.77$: $\log M_\mathrm{halo}$, $\log \rho_\mathrm{local}$,
+and $\log M_\mathrm{sub}$.
+L2 augments L1 with $\Delta\log M_\mathrm{halo}$ over 4 and 8 SubLink steps
+($\approx 1$--$2$ Gyr lookback) and halo formation snapshot.
+L3 extends L2 with $\Delta\log M_\mathrm{halo}$ over 12 and 16 steps
+($\approx 3$--$4$ Gyr lookback), peak mass ratio, half-mass assembly
 snapshot, merger count, major-merger count (mass ratio $\geq 0.25$), and
-last major-merger snapshot.
-Total: 13 assembly-history features.
+last major-merger snapshot, for a total of 13 assembly-history features.
 
-Three control statistics:
-\begin{itemize}
-  \item \textbf{Residualization}: OLS-residualize predictor feature columns
-    against the assembly-history control set; compute $R^2$/AUC on the
-    residualized features.
-    It is the predictor columns that are residualized, not the target: each
-    feature is regressed against the 13 assembly-history variables and
-    replaced by its OLS residual before the predictive model is fit.
-  \item \textbf{Retention}: residualized score / original score (AUC analog
-    uses $(x-0.5)/(y-0.5)$).
-  \item \textbf{Marginal $R^2$/AUC}: control+predictor score $-$
-    control-only score; 95\% CI from shared bootstrap ($n_\mathrm{boot} =
-    1000$).
-\end{itemize}
+Three control statistics are computed for each predictor family.
+The \textit{marginal} $R^2$/AUC is the increment in cross-validated score
+when the family is added to the assembly-history control; 95\% CIs come from
+a shared bootstrap ($n_\mathrm{boot} = 1000$).
+\textit{Residualization} OLS-regresses each predictor feature column against
+the assembly-history control set and replaces it with the OLS residual before
+the predictive model is fit (it is the feature columns, not the target, that
+are residualized).
+\textit{Retention} is the ratio of residualized to original score, with the
+AUC analog computed on the $(x - 0.5)$ excess.
 
 \subsection{Robustness Tests}
 \label{sec:robustness_design}
 
-\textbf{Simulation jackknife}: Leave one of 27 CV simulations out; report
-$n_\mathrm{agree}/27$ preserving the full-sample ordering.
-
-\textbf{Combined predictor}: Concatenate internal + halo features;
-redundancy $= (\text{combined} - \text{max single}) / \text{max single}$.
-
-\textbf{Permutation importance}: Shuffle each feature column; measure mean
-drop in CV $R^2$ over $n_\mathrm{boot} = 500$.
+Three robustness checks are applied throughout. A simulation jackknife leaves
+one of the 27 CV realizations out and reports the fraction $n_\mathrm{agree}/27$
+that preserve the full-sample ordering.
+A combined-predictor test concatenates internal and halo features and computes
+redundancy $= (\text{combined} - \text{max single}) / \text{max single}$ to
+measure how much unique information the two families share.
+Permutation importance shuffles each feature column in turn and measures the
+mean drop in CV $R^2$ over $n_\mathrm{boot} = 500$ bootstrap draws.
 
 % ---------------------------------------------------------------------------
 \section{\textbf{Results}}
@@ -706,20 +677,16 @@ two classes are tracking.
 \subsection{Robustness}
 \label{sec:robustness}
 
-\textbf{Simulation-level jackknife.}
-The ordering internal $>$ halo $>$ env for mid-mass growth is preserved in
-27/27 LOO configurations.
-The same holds for mid-mass quenching and for all three targets in the
-whole-sample analysis.
-No single simulation drives any verdict.
-
-\textbf{Structural variable choice.}
+The ordering internal $>$ halo $>$ env for mid-mass growth is preserved
+in 27/27 LOO jackknife configurations; the same holds for mid-mass
+quenching and for all three targets in the whole-sample analysis, so no
+single simulation drives any verdict.
 Replacing $\log M_\mathrm{sub}$ with $\log V_\mathrm{max}$ in the L1
-control raises the baseline ($R^2 = 0.175$ vs.\ $0.004$) but preserves the
-ordering: internal $+0.137^*\,[+0.092, +0.179]$ vs.\ halo
-$+0.075^*\,[+0.034, +0.116]$, ratio $\approx 1.8\times$ (L1 Msub ratio
-$1.3\times$).
-The internal lead is robust to choice of halo structural variable.
+control raises the baseline ($R^2 = 0.175$ vs.\ $0.004$) but preserves
+the ordering: internal $+0.137^*\,[+0.092, +0.179]$ vs.\ halo
+$+0.075^*\,[+0.034, +0.116]$, a ratio of $\approx 1.8\times$ compared to
+$1.3\times$ under $M_\mathrm{sub}$.
+The lead is robust to the choice of halo structural variable.
 
 
 \subsection{Cross-Simulation Comparison: Family-Specific Target-Channel Expression}
@@ -731,24 +698,22 @@ To test family robustness, we run the L1 sliding-window mass scan on SIMBA
 spatial (Figure~\ref{fig:cross_family}), restricting to the growth and
 quenching targets.
 
-\textbf{SIMBA growth window (L1).}
-Internal is significant in only two isolated ranges --- 9.25 dex (one
-window) and 10.05--10.45 dex (five consecutive windows) --- with peak
-marginal $R^2 = +0.069$ at 10.25 dex.
-The SIMBA growth window is fragmented and \SimbaGrowthRatio$\times$ weaker
-in amplitude than TNG's ($+0.069$ vs.\ $+0.245$ at the same mass).
-The paired L1 gap (internal $-$ halo) is significant only at 10.25 and
-10.35 dex in SIMBA ($+0.028^*$ and $+0.035^*$), compared to TNG where the
-L3 gap is significant across 1.2 dex.
+In the SIMBA growth scan, internal is significant only in two isolated
+ranges --- 9.25 dex (one window) and 10.05--10.45 dex (five consecutive
+windows) --- with peak marginal $R^2 = +0.069$ at 10.25 dex.
+This is fragmented and \SimbaGrowthRatio$\times$ weaker than TNG's growth
+signal at the same mass ($+0.245$).
+The paired L1 gap (internal $-$ halo) is significant at only two mass
+centres in SIMBA ($+0.028^*$ at 10.25 dex and $+0.035^*$ at 10.35 dex),
+compared to TNG where the L3 gap is significant across 1.2 dex.
 
-\textbf{SIMBA quenching window (L1).}
-Internal is significant at 9.65--10.75 dex (Table~\ref{tab:simba_quench}),
-with peak marginal AUC $= +\SimbaQuenchPeak^*$ at 10.15 dex.
-Both internal and halo are significant across this range (halo peak $=
-+0.127^*$ at 10.15 dex).
+The SIMBA quenching scan tells a different story.
+Internal is significant from 9.65 to 10.75 dex (Table~\ref{tab:simba_quench}),
+with peak marginal AUC $= +\SimbaQuenchPeak^*$ at 10.15 dex; halo is also
+significant across most of this range (peak $+0.127^*$).
 The SIMBA quenching signal is 3--4$\times$ larger in amplitude than TNG's
-quenching signal at any geometry layer (TNG L3 quenching peak: $\TNGQuenchPeakMarg^*$,
-\TNGQuenchNWindows{} windows only).
+quenching signal at any control layer (TNG L3 quenching peak:
+$\TNGQuenchPeakMarg^*$, \TNGQuenchNWindows{} windows only).
 
 \begin{deluxetable}{lcccccc}
 \tablecaption{SIMBA L1 quenching marginal AUC, selected
@@ -769,12 +734,10 @@ $\geq10.85$ & \nodata & ns & & ns & \\
 \enddata
 \end{deluxetable}
 
-\textbf{TNG L3 quenching.}
-Running the L3 window scan for the quenching target in TNG confirms that
-the quenching baryonic window is weak and narrow: internal is significant
-at 10.05--10.35 dex only (\TNGQuenchNWindows{} windows, peak
+Running the same L3 window scan for the quenching target in TNG confirms that
+quenching is not where TNG's beyond-gravity signal concentrates: internal is
+significant only at 10.05--10.35 dex (\TNGQuenchNWindows{} windows, peak
 $\TNGQuenchPeakMarg^*$), with halo non-significant at every window under L3.
-Quenching is not where TNG's beyond-gravity baryonic signal concentrates.
 
 The cross-family comparison reveals a contrast in target-channel expression:
 in TNG, the residual internal signal concentrates in stellar growth
@@ -852,21 +815,17 @@ independent predictive contribution.
 
 \subsection{What the Window Does Not Mean}
 
-The window result should not be read as:
-\begin{itemize}
-  \item \textbf{Anti-gravitational or anti-halo}: the assembly-history
-    baseline accounts for roughly half the internal family's signal within
-    the window (L3 retention $\approx 43\%$ from an L1 baseline near
-    100\%).  Halo assembly history is the dominant information source; the
-    window is a residual beyond it.
-  \item \textbf{A regime where only baryonic class information matters}:
-    halo structure also survives L3 in the window (albeit in fewer mass
-    bins and with a smaller marginal).  The window is not a halo-free
-    regime.
-  \item \textbf{Universal}: the window is mass-regime-specific.
-    It is absent at low mass and at high mass.  The whole-sample tie
-    (Section~\ref{sec:whole_sample}) is real.
-\end{itemize}
+Three misreadings of the window result should be avoided.
+It is not anti-gravitational: the assembly-history baseline accounts for
+roughly half the internal family's signal within the window (L3 retention
+$\approx 43\%$ from an L1 baseline near 100\%), so halo assembly history
+remains the dominant information source and the window is a residual beyond
+it.
+It does not mean that only baryonic information matters in this regime: halo
+structure also survives L3 in the window, albeit in fewer mass bins and with
+a smaller marginal.
+Nor is it universal: the window is absent at low and high mass, and the
+whole-sample tie of Section~\ref{sec:whole_sample} is real.
 
 \subsection{Why Assembly Timing is the Main Gravitational Competitor}
 
@@ -939,52 +898,33 @@ not currently available at CAMELS resolution.
 \subsection{Caveats}
 \label{sec:caveats}
 
-\begin{enumerate}
-  \item \textbf{Modest explained variance and missing information}: even at
-    the best mass window, the internal predictor family explains $R^2
-    \approx 0.31$ of mid-mass growth variance, leaving $\approx 69\%$
-    unexplained.
-    This remaining variance likely reflects a combination of: stochastic
-    processes not recoverable from snapshot-based features; finite
-    simulation resolution suppressing small-scale ISM physics; the
-    compression of internal state into six scalar features; and genuine
-    stochasticity in the system.
-    The paper's goal is to characterize the predictive content of three
-    predictor families and identify where one carries information beyond the
-    assembly-history baseline; the unresolved variance is consistent with
-    that goal.
+Several limitations apply to these results.
+Even at the best mass window, the internal predictor family explains only
+$R^2 \approx 0.31$ of mid-mass growth variance, leaving $\approx 69\%$
+unexplained.
+This residual likely reflects stochastic processes not recoverable from
+snapshot features, finite resolution suppressing small-scale ISM physics,
+the compression of internal state into six scalar features, and genuine
+physical stochasticity.
 
-  \item \textbf{CAMELS volume and resolution}: The CV suite uses
-    $25\, h^{-1}\,\mathrm{Mpc}$ boxes with $256^3$ particles.
-    At the low-mass end ($\logM \lesssim 9.5$), stellar mass resolution
-    limits suppress signal recovery.
-    The exact mass boundaries of the identified window
-    ($9.55$--$10.55$ dex) may shift with larger volume or higher resolution;
-    the claim is the existence and approximate location of the regime
-    structure in the tested suite, not universal exact boundaries.
+The CAMELS CV suite uses $25\, h^{-1}\,\mathrm{Mpc}$ boxes with $256^3$
+particles, and at the low-mass end ($\logM \lesssim 9.5$) resolution limits
+suppress signal recovery.
+The exact mass boundaries ($9.55$--$10.55$ dex) may shift with larger volume
+or higher resolution; the claim is the existence and approximate location of
+the regime structure within this suite, not universal thresholds.
+The CV suite also holds astrophysical parameters fixed, so results are
+valid for the specific TNG and SIMBA prescriptions at CAMELS resolution; the
+effect of varying feedback strength is not explored here.
 
-  \item \textbf{CAMELS CV parameters}: The CV suite holds all parameters
-    fixed; feedback strength is not varied.
-    Results are valid for the specific TNG and SIMBA prescriptions at
-    CAMELS resolution.
-
-  \item \textbf{SIMBA assembly-history control}: Without SubLink-equivalent
-    trees, SIMBA L3-equivalent assembly-history control is not available.
-    The SIMBA quenching result (Section~\ref{sec:cross_family}) is at L1
-    only; whether it survives a full assembly-history control is not tested
-    here.
-
-  \item \textbf{Correlational results}: All findings are correlational.
-    Predictive advantage means a class carries information about the target,
-    not that it causes the outcome.
-    Language throughout is ``carries information about'' rather than
-    ``drives.''
-
-  \item \textbf{Matching completeness}: SubLink matching excludes galaxies
-    that merge or are disrupted between $z = 0.77$ and $z = 0$.
-    The mid-mass sample is modestly biased toward galaxies with surviving
-    central descendants.
-\end{enumerate}
+On the SIMBA side, SubLink-equivalent merger trees are not available, so L3
+assembly-history control cannot be applied. The SIMBA quenching result
+(Section~\ref{sec:cross_family}) is at L1 only.
+All findings are correlational throughout: predictive advantage means a
+family carries information about the target, not that it causes the outcome.
+Finally, SubLink matching excludes galaxies that merge or are disrupted
+between $z = 0.77$ and $z = 0$, leaving the mid-mass sample modestly biased
+toward galaxies with surviving central descendants.
 
 % ---------------------------------------------------------------------------
 \section{\textbf{Conclusions}}
