@@ -9,7 +9,7 @@ ORCID: [0009-0007-4447-6325](https://orcid.org/0009-0007-4447-6325)
 
 We compare three predictor families — **internal galaxy properties**, **halo structural properties**, and **environmental measures** — as independent predictors of stellar growth, quenching, and halo growth in the CAMELS CV suites of IllustrisTNG and SIMBA. We then test how much of each family's signal survives escalating controls for halo structure and assembly history.
 
-The central finding is a finite **baryonic-autonomy window** at intermediate stellar mass (9.55 ≲ log M★ ≲ 10.55) where internal galaxy state retains significant marginal predictive power for stellar growth beyond a full 13-feature halo assembly-history baseline — surviving merger trees, peak-mass epoch, half-mass assembly snapshot, and four accretion-rate lookback windows.
+The central finding is a finite **intermediate-mass internal window** (9.55 ≲ log M★ ≲ 10.55) where internal galaxy state retains significant marginal predictive power for stellar growth beyond a full 13-feature halo assembly-history baseline — surviving merger trees, peak-mass epoch, half-mass assembly snapshot, and four accretion-rate lookback windows.
 
 ---
 
@@ -19,7 +19,7 @@ The central finding is a finite **baryonic-autonomy window** at intermediate ste
 
 Every cell in the 3×3 (family × target) performance matrix is a statistical tie in both TNG and SIMBA. No feature family leads globally. The whole-sample tie conceals a structured mass-regime pattern.
 
-### The baryonic-autonomy window
+### The intermediate-mass internal window
 
 | Layer | Window | N sig. windows | Peak internal marginal R² |
 |-------|--------|-----------------|--------------------------|
@@ -105,7 +105,7 @@ Set paths in `config.py`.
 | Figure | Description |
 |--------|-------------|
 | Fig. 1 | Full 3×3 score matrix for TNG and SIMBA |
-| Fig. 2 | Baryonic-autonomy phase diagram (L1 and L3 marginal R² vs. mass) |
+| Fig. 2 | Intermediate-mass growth-window phase diagram (L1 and L3 marginal R² vs. mass) |
 | Fig. 3 | Flat paired gap across the window |
 | Fig. 4 | Feature-winner map (L3-residualized permutation importance) |
 | Fig. 5 | Assembly ablation map |

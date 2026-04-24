@@ -194,7 +194,7 @@ def fig04_feature_winner():
     ax.set_xticks(x)
     ax.set_xticklabels(positions)
     ax.set_ylabel("L3-residualized permutation importance")
-    ax.set_title("Feature-winner map across the baryonic-autonomy window", fontsize=8.5)
+    ax.set_title("Feature-winner map across the intermediate-mass growth window", fontsize=8.5)
     ax.axhline(0, color="k", lw=0.5)
     ax.legend(frameon=False, loc="upper right", fontsize=7.5)
     ax.set_ylim(0, 0.042)
