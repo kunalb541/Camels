@@ -1,0 +1,6 @@
+• Internal galaxy state (gas mass) predicts stellar growth beyond full 13-feature halo assembly history in a finite mass window (9.55–10.55 dex)
+• Window survives peak-mass ratio, half-mass assembly epoch, merger counts, accretion rates, and stellar-to-halo fraction controls
+• Gas mass is the sole surviving internal carrier after assembly-history residualization
+• Peak assembly timing (not merger history) is the main competing gravity channel; mergers recover 0%
+• Internal channel is not mediated by stellar formation efficiency: survives f★ augmentation (0.086* [+0.043, +0.133])
+• Cross-family contrast: TNG expresses baryonic autonomy through stellar growth; SIMBA expresses it through quenching
