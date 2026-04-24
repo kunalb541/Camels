@@ -1,0 +1,62 @@
+Dear Editors of New Astronomy,
+
+I am submitting the manuscript "A baryonic window in galaxy growth beyond
+halo assembly history: evidence from CAMELS IllustrisTNG and SIMBA" for
+consideration as a Research Article.
+
+The paper addresses a fundamental question in galaxy formation: after
+controlling for everything the halo's structural and assembly history
+already predicts, does a galaxy's internal baryonic state carry additional
+information about its future stellar growth — and does the answer depend on
+stellar mass?
+
+Using the CAMELS Cosmic Variance suite (27 independent realizations each of
+IllustrisTNG and SIMBA), I compare three predictor families — internal
+galaxy properties, halo structural properties, and environmental measures —
+as independent predictors of stellar growth, quenching, and halo growth.
+The central diagnostic is a marginal predictive score: how much each family
+adds beyond a 13-feature halo assembly-history baseline (static position,
+four accretion-rate lookback windows, peak mass ratio, half-mass assembly
+epoch, merger counts, and major-merger timing).
+
+The main findings are:
+
+1. A finite intermediate-mass window (9.55–10.55 dex) where internal galaxy
+   state retains significant marginal predictive power for stellar growth
+   under the full assembly-history control, with a flat internal–halo gap of
+   +0.052 to +0.089 across 13 consecutive sliding windows (all 95% CIs
+   positive).
+
+2. Gas mass is the sole surviving internal carrier after full assembly-
+   history residualization. Peak-mass timing — not merger history — is the
+   main gravitational competitor (removing merger counts recovers 0% of the
+   absorbed internal signal).
+
+3. The internal channel survives augmenting the baseline with stellar-to-
+   halo fraction (marginal R² = 0.086, CI [+0.043, +0.133]), demonstrating
+   orthogonality to formation efficiency.
+
+4. A cross-family comparison reveals that both TNG and SIMBA show beyond-
+   assembly baryonic signals, but in different channels: TNG through stellar
+   growth, SIMBA through quenching.
+
+This work is appropriate for New Astronomy as a quantitative, simulation-
+based study of predictive information content in galaxy formation — directly
+relevant to the journal's scope of computational and theoretical
+astrophysics. The methodology (marginal predictive scoring with escalating
+assembly-history controls, shared bootstrap, SubLink tree matching) is
+self-contained and fully reproducible. The cross-family CAMELS comparison
+and mass-regime decomposition are novel contributions.
+
+Code and outputs are publicly available at https://github.com/kunalb541/Camels
+(MIT license). All analysis uses the publicly accessible CAMELS CV data release.
+
+I confirm that this manuscript has not been published elsewhere and is not
+under consideration at any other journal.
+
+Sincerely,
+
+Kunal Bhatia
+Independent Researcher
+Heidelberg, Germany
+ORCID: 0009-0007-4447-6325

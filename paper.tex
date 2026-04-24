@@ -665,7 +665,7 @@ None (full L3) & \nodata & $0.185$ & $0.135^*\,[0.095, 0.184]$ & \nodata & $\LTh
 \textbf{Long accretion} & $\Delta\log M_{sl12}$, $\Delta\log M_{sl16}$ & $0.170$ & $0.149^*\,[0.108, 0.193]$ & $\mathbf{\AblationLongAccretionRecovery}$ & $0.095^*$ & $+0.012$ \\
 \textbf{Peak/halfmass} & peak mass ratio, $t_{1/2}$ & $0.160$ & $0.161^*\,[0.122, 0.208]$ & $\mathbf{\AblationTimingRecovery}$ & $0.107^*$ & $+0.024$ \\
 \enddata
-\tablecomments{Recovery $= \Delta \Rmarg_\mathrm{int} =$ ablated marginal $-$
+\tablecomments{Recovery $= \Delta R^2_{\mathrm{marg,int}} =$ ablated marginal $-$
   full L3 marginal.}
 \end{deluxetable*}
 
@@ -695,13 +695,13 @@ stellar efficiency carries $+0.066\ R^2$ beyond the 13 assembly features.
   \colhead{L3+$\fstar$ marg} & \colhead{95\% CI} & \colhead{Verdict}
 }
 \startdata
-internal & $\L^*$ & $\mathbf{\FstarInternalMarg^*}$ & $[\FstarInternalCILo, \FstarInternalCIHi]$ & \textbf{SURVIVES} \\
+internal & $\LThreeInternalMarg^*$ & $\mathbf{\FstarInternalMarg^*}$ & $[\FstarInternalCILo, \FstarInternalCIHi]$ & \textbf{SURVIVES} \\
 halo     & $\LThreeHaloMarg^*$ & $\FstarHaloMarg$ & $[-0.030, +0.064]$ & \textbf{ABSORBED} \\
 env      & $0.024$ (ns) & $0.013$ (ns) & $[-0.032, +0.060]$ & ns \\
 \enddata
 \end{deluxetable}
 
-Internal's marginal drops from \L{} to \FstarInternalMarg{} but remains
+Internal's marginal drops from \LThreeInternalMarg{} to \FstarInternalMarg{} but remains
 significant, with a CI entirely above zero.
 Halo's marginal drops to \FstarHaloMarg{} and becomes non-significant:
 halo's surviving L3 signal is entirely mediated through stellar-to-halo
@@ -1026,7 +1026,7 @@ The main findings are:
   \item \textbf{The internal channel is not mediated by stellar efficiency}:
     adding $\fstar$ to the L3 assembly-history absorbs halo's surviving
     marginal entirely ($\LThreeHaloMarg^* \to \FstarHaloMarg$ ns) but leaves
-    internal's intact ($\L^* \to \FstarInternalMarg^*\,
+    internal's intact ($\LThreeInternalMarg^* \to \FstarInternalMarg^*\,
     [\FstarInternalCILo, \FstarInternalCIHi]$).
     Internal carries baryonic growth information orthogonal to both
     gravitational assembly history and galaxy formation efficiency.
