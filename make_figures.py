@@ -63,9 +63,10 @@ def fig01_score_matrix():
         ax.set_title(title, fontsize=9, fontweight="bold")
         ax.set_ylim(0, 1.0)
         ax.axhline(0, color="k", lw=0.5)
-        # "ALL TIES" in the inter-group gap between Stellar Growth and Quenching,
-        # at y=0.52 — above all Stellar Growth bars (max 0.35), below all Quenching bars (min 0.72)
-        ax.text(0.5, 0.52, "ALL TIES", transform=ax.transData,
+        # "ALL TIES" centred across all three bar groups at panel mid-width;
+        # y=0.52 in axes coords (≡ data coords since ylim=0–1) sits above all
+        # Stellar Growth bars (max 0.35) and below all Quenching bars (min 0.72)
+        ax.text(0.5, 0.52, "ALL TIES", transform=ax.transAxes,
                 ha="center", va="center", fontsize=7.5, color="#bbb",
                 style="italic")
 
