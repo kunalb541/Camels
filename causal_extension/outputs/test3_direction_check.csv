@@ -1,0 +1,2 @@
+status,reason
+STRUCTURAL_BLOCKER,"Test 3 requires subhalo stellar mass, sSFR, and gas mass at z≈1.5 (SubLink SnapNum ≈ 13) as predictor state. Only groups catalogs at z≈0.77 (SnapNum=21) and z=0 (SnapNum=33) are available locally. The SubLink tree contains SnapNum 0–33 but stores only total halo mass (Mass, MassHistory) — not stellar mass, sSFR, or gas mass. Downloading the missing groups catalog is out of scope for this test run."

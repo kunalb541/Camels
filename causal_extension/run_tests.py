@@ -151,9 +151,15 @@ def _paired_boot_auc(
         Xb_b, Xa_b, yb = X_base[idx], X_aug[idx], y[idx]
         if len(np.unique(yb)) < 2:
             continue
-        a_base = _logistic_cv_auc_fast(Xb_b, yb, C_base)
-        a_aug  = _logistic_cv_auc_fast(Xa_b, yb, C_aug)
-        deltas[i] = a_aug - a_base
+        counts = np.bincount(yb.astype(int), minlength=2)
+        if counts.min() < max(CV_FOLDS, 2):
+            continue
+        try:
+            a_base = _logistic_cv_auc_fast(Xb_b, yb, C_base)
+            a_aug  = _logistic_cv_auc_fast(Xa_b, yb, C_aug)
+            deltas[i] = a_aug - a_base
+        except Exception:
+            continue
     return deltas
 
 
@@ -204,10 +210,18 @@ def _marginal_auc_window(
     if n < MIN_N or len(np.unique(yf)) < 2:
         return {"marg": None, "lo": None, "hi": None, "n": int(n)}
 
-    C_b = _fit_best_C_logistic(Xb, yf)
-    C_a = _fit_best_C_logistic(Xa, yf)
-    auc_b = _logistic_cv_auc_fast(Xb, yf, C_b)
-    auc_a = _logistic_cv_auc_fast(Xa, yf, C_a)
+    counts = np.bincount(yf.astype(int), minlength=2)
+    if counts.min() < max(CV_FOLDS, 2):
+        return {"marg": None, "lo": None, "hi": None, "n": int(n)}
+
+    try:
+        C_b = _fit_best_C_logistic(Xb, yf)
+        C_a = _fit_best_C_logistic(Xa, yf)
+        auc_b = _logistic_cv_auc_fast(Xb, yf, C_b)
+        auc_a = _logistic_cv_auc_fast(Xa, yf, C_a)
+    except Exception as e:
+        print(f"    {label}: skipped ({type(e).__name__})")
+        return {"marg": None, "lo": None, "hi": None, "n": int(n)}
     marg_obs = auc_a - auc_b
 
     boots = _paired_boot_auc(Xb, Xa, yf, C_b, C_a, n_boot=N_BOOT, seed=SEED)
