@@ -284,14 +284,17 @@ AUC analog computed on the $(x - 0.5)$ excess.
 \subsection{Robustness Tests}
 \label{sec:robustness_design}
 
-Three robustness checks are applied throughout. A simulation jackknife leaves
-one of the 27 CV realizations out and reports the fraction $n_\mathrm{agree}/27$
-that preserve the full-sample ordering.
-A combined-predictor test concatenates internal and halo features and computes
-redundancy $= (\text{combined} - \text{max single}) / \text{max single}$ to
-measure how much unique information the two families share.
-Permutation importance shuffles each feature column in turn and measures the
-mean drop in CV $R^2$ over $n_\mathrm{boot} = 500$ bootstrap draws.
+Three robustness checks are applied throughout:
+\begin{enumerate}
+  \item \textit{Simulation jackknife}: leave one of 27 CV realizations out;
+    report the fraction $n_\mathrm{agree}/27$ that preserve the full-sample
+    ordering.
+  \item \textit{Combined predictor}: concatenate internal and halo features;
+    compute redundancy $= (\text{combined} - \text{max single}) / \text{max
+    single}$.
+  \item \textit{Permutation importance}: shuffle each feature column; measure
+    the mean drop in CV $R^2$ over $n_\mathrm{boot} = 500$ draws.
+\end{enumerate}
 
 % ---------------------------------------------------------------------------
 \section{\textbf{Results}}
@@ -407,34 +410,23 @@ the full mass range and compute L1 marginal $R^2$ at each centre
 (Figure~\ref{fig:phase_diagram}; selected window positions in
 Table~\ref{tab:l1scan}, Appendix~\ref{app:tables}).
 
-Several features define the window:
-\begin{enumerate}
-  \item \textbf{Onset near 9.55 dex.}  Internal marginal is negative or
-    noisy below 9.55 dex and enters significance at that window
-    ($+0.149^*$) within this suite.  Halo enters three windows earlier
-    (9.25 dex), indicating structural accretion carries growth information
-    at lower mass.
+The window opens near 9.55 dex: internal marginal is negative or noisy
+below this mass and enters significance at $+0.149^*$ in that first window.
+Halo enters three windows earlier (9.25 dex), indicating structural accretion
+carries growth information at lower mass before internal state does.
+The signal rises to a peak of $+0.245^*$ at 10.25 dex --- the highest value
+in the scan --- with both families significant and internal leading by a
+growing margin toward the centre.
 
-  \item \textbf{Peak is at 10.25 dex.}  Internal marginal reaches
-    $+0.245^*$ --- the highest value in the scan.  Both internal and halo
-    are significant in this range; internal leads by a growing margin toward
-    the centre.
-
-  \item \textbf{Close is gradual.}  Internal remains significant through
-    10.65 dex, then drops to ns at 10.75 dex.
-    Halo closes at approximately the same mass.
-    Both classes collapse together above 10.75 dex; neither carries growth
-    information beyond structural position at high mass.
-
-  \item \textbf{Window extent: 9.55--10.65 dex}
-    (13 consecutive significant windows for internal).
-    We define the \textit{baryonic-autonomy window} as shorthand for the
-    stellar-mass range in which internal galaxy properties carry significant
-    positive marginal predictive power for stellar growth after conditioning
-    on the tested assembly-history baseline; under L1 controls this spans
-    9.55--10.65 dex, tightening to 9.55--10.55 dex under the full
-    13-feature L3 baseline (Section~\ref{sec:l3window}).
-\end{enumerate}
+The close is gradual rather than sharp: internal remains significant through
+10.65 dex, drops to ns at 10.75 dex, and both families collapse together
+above that mass with neither carrying growth information beyond structural
+position.
+The full L1 extent is thus 9.55--10.65 dex (13 consecutive significant
+windows).
+We use \textit{baryonic-autonomy window} as shorthand for this stellar-mass
+range; under the full 13-feature L3 baseline the window tightens by one step
+to 9.55--10.55 dex (Section~\ref{sec:l3window}).
 
 \subsection{The Window Survives Full Gravity Control}
 \label{sec:l3window}
@@ -552,10 +544,11 @@ leave-one-out configurations.
 
 \subsubsection{Gas mass is the dominant surviving internal carrier}
 
-Permutation importance on L3-residualized feature columns (each feature
-column regressed against the 13 L3 assembly-history features before
-permutation) isolates the within-gravity contribution of each feature.
-For mid-mass growth:
+To identify which features within the internal family carry the residual
+signal, we apply permutation importance to L3-residualized columns --- each
+feature regressed against the 13 assembly-history variables and replaced by
+its OLS residual before shuffling.
+For mid-mass growth, the result is unambiguous (Table~\ref{tab:importance}):
 
 \begin{deluxetable}{lcccc}
 \tablecaption{L3-residualized permutation importance, mid-mass growth
@@ -784,22 +777,21 @@ growth that is not fully captured by its gravitational trajectory ---
 even given static position, accretion rate over multiple lookback windows,
 peak mass, half-mass assembly epoch, merger counts, and major-merger timing.
 
-The onset near $\sim 9.5$ dex and decline near $\sim 10.5$ dex are
-consistent with --- though not proven by --- the following reading of
-competing information sources within this simulation setup.
-Below $\sim 9.5$ dex, galaxies are sufficiently susceptible to
-environmental effects (ram pressure, tidal stripping, filamentary gas
+The onset near $\sim 9.5$ dex is consistent with --- though not proven by
+--- a picture in which galaxies below this mass are sufficiently susceptible
+to environmental effects (ram pressure, tidal stripping, filamentary gas
 supply \citep{dekel2009}) that their gravitational trajectory largely
-predicts their fate.
-Above $\sim 10.5$ dex, assembly history --- peak mass, formation epoch
-\citep{lacey1993}, merger record --- encodes enough information to largely
-prescribe future growth, and baryonic state provides little additional
-predictive power.
-In the regime between, the current gas supply and feedback state carry
-predictive information about star formation in ways that the 13 tested
-gravitational descriptors do not fully recover.
-We emphasise that these boundaries are defined within the CAMELS CV setup;
-their exact values may shift with volume and resolution (see \S\ref{sec:caveats}).
+predicts their fate, leaving little room for an independent baryonic
+contribution.
+
+Above $\sim 10.5$ dex, the logic reverses: assembly history --- peak mass,
+formation epoch \citep{lacey1993}, merger record --- encodes enough
+information to largely prescribe future growth.
+In the intermediate regime, the current gas supply and feedback state carry
+predictive information that the 13 tested gravitational descriptors do not
+fully recover.
+These boundaries are defined within the CAMELS CV setup and may shift with
+volume and resolution (see \S\ref{sec:caveats}).
 
 The window has a carrier structure within it
 (Section~\ref{sec:mechanism}): gas mass dominates the surviving internal
@@ -836,7 +828,6 @@ Peak mass ratio and half-mass assembly snapshot account for
 \AblationTimingPct\% of the absorbed internal advantage; merger counts
 account for 0\%.
 
-This has an interpretive reading.
 Peak mass ratio and half-mass assembly epoch together encode the galaxy's
 gravitational \textit{maturity} in the sense of \citet{lacey1993} ---
 when it assembled most of its mass and whether it has been on a declining
@@ -844,11 +835,12 @@ trajectory since \citep{wechsler2006,mao2018}.
 A galaxy that peaked early and has been stripped carries different
 predictive content from one still near its peak mass, even at the same
 present-day halo mass.
+
 This timing information partially \textit{overlaps} with the baryonic signal
-(a galaxy near its mass peak is more likely to have a well-stocked gas
-reservoir at the relevant epoch \citep{saintonge2017}): the overlap is
-partial and predictive, not a causal decomposition --- which is why the
-internal signal survives after ablating those features.
+because a galaxy near its mass peak is more likely to have a well-stocked
+gas reservoir at the relevant epoch \citep{saintonge2017}.
+The overlap is partial and predictive, not a causal decomposition --- which
+is precisely why the internal signal survives after ablating those features.
 
 Merger counts do not participate in this overlap.
 The number of mergers experienced, or when the last major merger occurred,
