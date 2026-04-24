@@ -1,8 +1,8 @@
 Dear Editors of New Astronomy,
 
-I am submitting the manuscript "A Baryonic Window in Galaxy Growth Beyond
-halo assembly history: Evidence from CAMELS IllustrisTNG and SIMBA" for
-consideration as a Research Article.
+I am submitting the manuscript "When Does Internal Galaxy State Add
+Predictive Information Beyond Halo Assembly History? Evidence from CAMELS
+IllustrisTNG and SIMBA" for consideration as a Research Article.
 
 The paper addresses a fundamental question in galaxy formation: after
 controlling for everything the halo's structural and assembly history
