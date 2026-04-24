@@ -51,9 +51,10 @@ assembly-history-controlled internal marginal $\Rmarg$ is significant with a
 flat internal--halo gap of $\PairedGapLo$ to $\PairedGapHi$
 (all 95\% CIs positive).
 Gas mass is the dominant surviving internal carrier; peak assembly timing ---
-not merger history --- is the main competing gravity channel (removing
-peak-mass ratio and half-mass epoch recovers \AblationTimingPct\% of the
-absorbed internal marginal; removing merger counts recovers 0\%).
+not merger history --- is the dominant gravitational absorber of the
+internal predictive signal (removing peak-mass ratio and half-mass epoch
+recovers \AblationTimingPct\% of the absorbed internal marginal; removing
+merger counts recovers 0\%).
 Adding stellar-to-halo fraction ($\fstar$) to the assembly-history baseline
 absorbs halo's surviving marginal entirely but leaves internal's intact
 ($\Rmarg = \FstarInternalMarg\,[\FstarInternalCILo, \FstarInternalCIHi]$),
@@ -82,23 +83,27 @@ properties of its host dark matter halo (mass, concentration, spin,
 formation history), and the large-scale environment (local density, group
 richness, filamentary structure).
 A substantial literature has addressed each family in isolation
-\citep[e.g.,][]{dave2012,wetzel2013,behroozi2019}, but systematic
-comparisons under the same sample, time horizon, and control structure are
-less common.
+\citep[e.g.,][]{dave2012,wetzel2013,behroozi2019,moster2013,peng2010},
+and a growing body of work connects galaxies to their dark matter halos
+across cosmic time \citep{wechsler2018,gao2005,wechsler2006,mao2018},
+but systematic comparisons under the same sample, time horizon, and
+control structure are less common.
 
 The difficulty is that these families are not independent.
 Halo mass correlates with environment.
 Gas content correlates with halo assembly history through the rate at which
-gas is accreted and feedback-driven outflows are recycled
-\citep{bouche2010,lilly2013}.
+gas is accreted --- via cold streams at high redshift and hot-halo cooling
+at later times \citep{dekel2009} --- and feedback-driven outflows are
+recycled \citep{bouche2010,lilly2013}.
 Stellar mass --- part of any internal description --- is itself a record of
 past growth, and therefore implicitly encodes assembly history.
 Correlations between a property family and a future outcome can therefore
 reflect the gravitational context rather than baryonic processes specific to
 that family.
 The standard approach of correlating present-day properties with future
-states \citep[e.g.,][]{bluck2022,davies2019,teimoorinia2016} does not
-cleanly separate these contributions.
+states --- whether via classical statistics or machine-learning feature
+ranking \citep[e.g.,][]{bluck2022,davies2019,teimoorinia2016,lovell2019,matthee2019}
+--- does not cleanly separate these contributions.
 
 A sharper question is: after controlling for what the halo structural and
 assembly history already predicts, does a galaxy's internal baryonic state
@@ -107,10 +112,10 @@ And does the answer depend on stellar mass?
 Several results suggest it might.
 Observations and simulations show that galaxy growth at intermediate stellar
 mass ($\logM \sim 9.5$--$10.5$) is particularly sensitive to gas supply
-and feedback \citep{dave2012,pillepich2018gas}, while at low mass, growth
-tracks the large-scale structure and tidal field, and at high mass, AGN
-feedback and the halo potential increasingly dominate quenching
-\citep{croton2006,weinberger2018}.
+and feedback \citep{dave2012,pillepich2018gas,saintonge2017}, while at low
+mass, growth tracks the large-scale structure and tidal field, and at high
+mass, AGN feedback and the halo potential increasingly dominate quenching
+\citep{croton2006,weinberger2018,peng2010}.
 If the coupling between baryonic state and future growth is genuinely
 mass-regime-specific, then a global comparison of predictor families will
 miss the structure.
@@ -257,10 +262,10 @@ observed bootstrap noise structure in the 27-simulation CV suite: gaps
 below 0.02 are within the regime where small changes in simulation selection
 or minor specification differences routinely flip the ordering sign, making
 them uninformative as science claims.
-The main results of this paper --- the baryonic-autonomy window, the flat
-paired gap, the carrier and ablation decompositions --- are continuous
-statistics evaluated with 95\% bootstrap CIs and do not depend on this
-threshold.
+The main results of this paper --- the intermediate-mass internal window,
+the flat paired gap, the carrier and ablation decompositions --- are
+continuous statistics evaluated with 95\% bootstrap CIs and do not depend
+on this threshold.
 The TIE/WINNER declarations in
 Sections~\ref{sec:whole_sample}--\ref{sec:mass_splits} do depend on it;
 those conclusions are qualitatively stable to reasonable threshold
@@ -360,8 +365,9 @@ CI spanning or approaching zero.
   spatial (right).
   Color encodes class score ($R^2$ or AUC).
   All cells are statistical ties in both simulation families.
-  The whole-sample tie is the surface pattern; the baryonic-autonomy window
-  is the main result (Figure~\ref{fig:phase_diagram}).
+  The whole-sample tie is the surface pattern; the mass-regime structure
+  revealed by sliding-window analysis is the main result
+  (Figure~\ref{fig:phase_diagram}).
 \label{fig:matrix}}
 \end{figure*}
 
@@ -642,7 +648,7 @@ The gap is also remarkably \textit{flat}: across 1.2 dex of stellar mass,
 $\delta$ ranges $\PairedGapLo$ to $\PairedGapHi$ with no strong peaking or
 edge effect.
 Internal's advantage over halo is a stable property of the entire
-baryonic-autonomy window, not an artefact of a single peak mass.
+intermediate-mass window, not an artefact of a single peak mass.
 The simulation jackknife confirms this: the ordering internal $>$ halo
 under L3 is preserved at all 9.55--10.55 dex windows in 27/27
 leave-one-out configurations.
@@ -727,8 +733,8 @@ None (full L3) & \nodata & $0.185$ & $0.135^*\,[0.095, 0.184]$ & \nodata & $\LTh
   Internal class marginal $R^2$ recovery when each gravity-feature family
   is removed from the L3 assembly-history: merger features (recovery
   $+0.000$), late accretion ($+0.014$), peak/halfmass timing ($+0.026$).
-  The dominant absorbing channel is assembly timing; merger counts carry
-  zero internal signal.
+  Assembly timing is the strongest gravitational absorber of the internal
+  signal; merger counts carry zero.
 \label{fig:ablation}}
 \end{figure}
 
@@ -856,9 +862,9 @@ $\TNGQuenchPeakMarg^*$), with halo non-significant at every window under L3.
 Quenching is not where TNG's beyond-gravity baryonic signal concentrates.
 
 The cross-family comparison reveals a contrast in target-channel expression:
-in TNG, the baryonic-autonomy window is expressed through stellar growth
+in TNG, the residual internal signal concentrates in stellar growth
 (\WindowNWindowsL-window L3 band, flat positive gap $\PairedGapLo$--$\PairedGapHi$);
-in SIMBA, the stronger beyond-gravity signal is expressed through quenching
+in SIMBA, the stronger beyond-gravity signal concentrates in quenching
 (10+ window L1 band, peak marginal AUC $\SimbaQuenchPeak$), while the SIMBA
 growth window is fragmented and weaker.
 
@@ -869,9 +875,9 @@ merger-tree matching.
 The SIMBA branch supports a family-level contrast in target-channel
 expression, but not an equivalent geometry-decomposition claim, because
 tree-based matching is unavailable for SIMBA at CAMELS resolution.
-The SIMBA result should be read as evidence that the target-channel of
-baryonic-autonomy expression differs across feedback models, not as a
-matched mechanistic replication of the TNG decomposition.
+The SIMBA result should be read as evidence that the target-channel
+expression of the beyond-gravity signal differs across feedback models,
+not as a matched mechanistic replication of the TNG decomposition.
 
 \begin{figure*}[t!]
 \centering
@@ -891,35 +897,43 @@ matched mechanistic replication of the TNG decomposition.
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{What the Baryonic-Autonomy Window Means}
+\subsection{What the Intermediate-Mass Internal Window Means}
 
-The baryonic-autonomy window ($9.55$--$10.55$ dex, surviving L3) identifies
-the mass range where a galaxy's baryonic state at $z \approx 0.77$ carries
-information about its $z = 0$ stellar growth that cannot be extracted from
-its gravitational trajectory --- even given static position, accretion rate
-over multiple lookback windows, peak mass, half-mass assembly epoch, merger
-counts, and major-merger timing.
+The baryonic-autonomy window ($9.55$--$10.55$ dex under L3 in this suite)
+identifies the mass range where a galaxy's baryonic state at $z \approx
+0.77$ carries \textit{predictive} information about its $z = 0$ stellar
+growth that is not fully captured by its gravitational trajectory ---
+even given static position, accretion rate over multiple lookback windows,
+peak mass, half-mass assembly epoch, merger counts, and major-merger timing.
 
-The window's abrupt onset near 9.55 dex and gradual close near 10.55 dex
-are interpretable in terms of the competing information sources.
+The onset near $\sim 9.5$ dex and decline near $\sim 10.5$ dex are
+consistent with --- though not proven by --- the following reading of
+competing information sources within this simulation setup.
 Below $\sim 9.5$ dex, galaxies are sufficiently susceptible to
 environmental effects (ram pressure, tidal stripping, filamentary gas
-supply) that their gravitational trajectory largely predicts their fate.
-Above $\sim 10.5$ dex, assembly history --- peak mass, formation epoch,
-merger record --- provides enough information to largely prescribe future
-growth, and baryonic state provides little additional prediction.
-In the window between, the current gas supply and feedback state carry
+supply \citep{dekel2009}) that their gravitational trajectory largely
+predicts their fate.
+Above $\sim 10.5$ dex, assembly history --- peak mass, formation epoch
+\citep{lacey1993}, merger record --- encodes enough information to largely
+prescribe future growth, and baryonic state provides little additional
+predictive power.
+In the regime between, the current gas supply and feedback state carry
 predictive information about star formation in ways that the 13 tested
 gravitational descriptors do not fully recover.
+We emphasise that these boundaries are defined within the CAMELS CV setup;
+their exact values may shift with volume and resolution (see \S\ref{sec:caveats}).
 
 The window has a carrier structure within it
 (Section~\ref{sec:mechanism}): gas mass dominates the surviving internal
 signal from the onset through the peak, but shifts to accumulated stellar
 mass near the close.
-This is consistent with a picture where, toward higher mass, the
-gas-to-growth link is increasingly absorbed by gravitational history while
-the galaxy's position in the quenching trajectory --- reflected in
-accumulated stellar mass --- retains an independent predictive contribution.
+This is consistent with observational evidence that cold-gas content is a
+strong predictor of near-future star formation at intermediate mass
+\citep{saintonge2017,davies2019}, and with a picture where, toward higher
+mass, the gas-to-growth link is increasingly absorbed by gravitational
+history while the galaxy's position in the quenching trajectory ---
+reflected in accumulated stellar mass \citep{genel2019} --- retains an
+independent predictive contribution.
 
 \subsection{What the Window Does Not Mean}
 
@@ -942,23 +956,25 @@ The window result should not be read as:
 \subsection{Why Assembly Timing is the Main Gravitational Competitor}
 
 The assembly ablation result (Section~\ref{sec:mechanism}) constrains which
-part of the halo assembly-history baseline most competes with the baryonic
-signal.
-Peak mass ratio and half-mass assembly snapshot carry \AblationTimingPct\%
-of the absorbed internal advantage; merger counts carry 0\%.
+part of the halo assembly-history baseline most overlaps with the internal
+predictive signal.
+Peak mass ratio and half-mass assembly snapshot account for
+\AblationTimingPct\% of the absorbed internal advantage; merger counts
+account for 0\%.
 
-This has a physical reading.
+This has an interpretive reading.
 Peak mass ratio and half-mass assembly epoch together encode the galaxy's
-gravitational \textit{maturity} --- when it assembled most of its mass and
-whether it has been on a declining trajectory since.
-A galaxy that peaked early and has been stripped is in a different phase of
-its history from one still near its peak mass, even if both have the same
+gravitational \textit{maturity} in the sense of \citet{lacey1993} ---
+when it assembled most of its mass and whether it has been on a declining
+trajectory since \citep{wechsler2006,mao2018}.
+A galaxy that peaked early and has been stripped carries different
+predictive content from one still near its peak mass, even at the same
 present-day halo mass.
-This timing information partially overlaps with the baryonic signal (a
-galaxy near its mass peak is more likely to have a well-stocked gas
-reservoir at the relevant epoch).
-The overlap is partial, not complete --- which is why the internal signal
-survives ablating those features.
+This timing information partially \textit{overlaps} with the baryonic signal
+(a galaxy near its mass peak is more likely to have a well-stocked gas
+reservoir at the relevant epoch \citep{saintonge2017}): the overlap is
+partial and predictive, not a causal decomposition --- which is why the
+internal signal survives after ablating those features.
 
 Merger counts do not participate in this overlap.
 The number of mergers experienced, or when the last major merger occurred,
@@ -1006,6 +1022,7 @@ assembly-history control requires SIMBA SubLink-equivalent trees, which are
 not currently available at CAMELS resolution.
 
 \subsection{Caveats}
+\label{sec:caveats}
 
 \begin{enumerate}
   \item \textbf{Modest explained variance and missing information}: even at
@@ -1098,7 +1115,7 @@ The main findings are:
     channel}: removing peak mass ratio and half-mass assembly snap from L3
     recovers \AblationTimingPct\% of the absorbed internal marginal;
     removing merger counts recovers 0\%.
-    The baryonic-autonomy window is merger-count-independent.
+    The mid-mass internal signal is merger-count-independent.
 
   \item \textbf{The internal channel is not mediated by stellar efficiency}:
     adding $\fstar$ to the L3 assembly-history absorbs halo's surviving
@@ -1228,7 +1245,7 @@ quenching signal also survives a 13-feature assembly-history control.
 boxes with $256^3$ particles; the high-mass end ($\log M_* > 10.5$) is
 sparsely sampled.  Running the same ODD battery on larger CAMELS extensions
 (e.g.\ the CAMELS-SAM suite or the forthcoming CAMELS-$300^3$ suite) will
-determine whether the baryonic-autonomy window broadens at higher mass.
+determine whether this predictive window broadens or shifts at higher mass.
 
 \textbf{Redshift evolution.}  All analysis here is performed at $z = 0$.
 Repeating the sliding-window scan at earlier snapshots (e.g.\ $z \approx
