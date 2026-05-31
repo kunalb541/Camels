@@ -168,7 +168,7 @@ def choose_verdict(scan: pd.DataFrame) -> str:
         & (below["gas_mass_marginal_ci_lo"] > 0)
     ]
     if len(weak_positive) and len(strict_positive):
-        return "LOWER_EDGE_RECOVERABILITY_ARTIFACT"
+        return "LOWER_EDGE_FLOOR_ENCODING_ARTIFACT"
     if len(weak_positive) or len(strict_positive) or len(full_positive):
         return "LOWER_EDGE_SENSITIVITY_DEPENDENT"
     return "LOWER_EDGE_PHYSICAL"
@@ -308,7 +308,7 @@ Does the nominal lower edge near `logMstar ~ 9.55` persist after removing gas/SF
 
 **Hypothesis A: physical lower boundary.** Gas remains weak below `9.55` after cleaning.
 
-**Hypothesis B: recoverability / floor boundary.** Gas is weak below `9.55` only while floor/noisy objects contaminate the low-mass windows; removing them restores a positive L3-plus-gas marginal.
+**Hypothesis B: floor-encoding / resolution-limited edge.** Gas appears weak below `9.55` only because a few unresolved objects with floor-pinned gas features destabilise the low-mass fit; repairing that encoding (by deletion or winsorization) restores a positive L3-plus-gas marginal.
 
 ## Method
 
@@ -328,7 +328,7 @@ The first significant gas-only centers are:
 
 Below the nominal `9.55` edge, the earliest positive cleaned window for the `Ngas >= 100` curve is {weak_text}. For the stricter `Ngas >= 300` curve it is {strict_text}.
 
-The cleaned curves are positive in all three windows centered below `9.55`. Relative to the full sample, the `Ngas >= 100` plus non-floor-SFR selection removes only `6`, `4`, and `1` listwise-complete galaxies in those windows. The apparent lower edge is therefore driven by a very small gas/SFR-floor tail rather than by a broad change in the low-mass population.
+The cleaned curves are positive in all three windows centered below `9.55`. The `Ngas >= 100` plus non-floor-SFR selection removes only a handful of listwise-complete galaxies per window, whose gas feature is pinned at the catalog floor (~10 dex below the population). A companion winsorization check (`lower_edge_winsorization_report.md`) shows that clipping those floor-encoded values, without removing any object, recovers the same signal (deletion `+0.061`, winsorization `+0.057`); it also discloses that the floor objects are coupled to low future growth. The apparent lower edge is therefore a floor-encoding / resolution-limited corner, not a broad change in the low-mass population.
 
 ## Below-edge window table
 
@@ -338,15 +338,15 @@ The cleaned curves are positive in all three windows centered below `9.55`. Rela
 
 `{verdict}`
 
-Both cleaned curves acquire positive gas-only marginal signal below `9.55`, so the nominal lower edge is recoverability-sensitive rather than a robust physical threshold. This scan is a catalog-level recoverability test, not a substitute for a higher-resolution convergence run.
+Both cleaned curves acquire positive gas-only marginal signal below `9.55`, so the nominal lower edge is a floor-encoding / resolution-limited measurement edge rather than a robust physical threshold. This scan is a catalog-level test, not a substitute for a higher-resolution convergence run.
 
 ## Suggested manuscript text
 
-We re-ran the TNG L3 gas-only sliding stellar-mass scan after removing gas/SFR-floor objects. In the full sample, the first significant gas-only window is centered at `log Mstar = {first['full_sample']:.2f}`. After requiring `Ngas >= 100` and non-floor SFR, the first significant center shifts to `{first['gas_sfr_clean_ngas_ge_100']:.2f}`; the stricter `Ngas >= 300` selection gives `{first['strict_gas_clean_ngas_ge_300']:.2f}`. We therefore report `{verdict}`: the nominal lower edge should not be interpreted as a sharply localized physical threshold without a dedicated numerical-convergence comparison.
+We re-ran the TNG L3 gas-only sliding stellar-mass scan after removing gas/SFR-floor objects. In the full sample, the first significant gas-only window is centered at `log Mstar = {first['full_sample']:.2f}`. After requiring `Ngas >= 100` and non-floor SFR, the first significant center shifts to `{first['gas_sfr_clean_ngas_ge_100']:.2f}`; the stricter `Ngas >= 300` selection gives `{first['strict_gas_clean_ngas_ge_300']:.2f}`. A companion winsorization check recovers the same below-edge signal without removing any object (deletion `+0.061`, winsorization `+0.057`). We therefore report `{verdict}`: the nominal lower edge is a floor-encoding / resolution-limited measurement edge, not a sharply localized physical threshold, pending a dedicated numerical-convergence comparison.
 
 ## Suggested response to referee Comment 1
 
-We added a cleaned sliding-window test using the original TNG L3 stellar-growth scan and gas mass alone. We compared the full sample with `Ngas >= 100` and `Ngas >= 300` selections, each excluding catalog-floor SFR values. The first significant gas-only center moves from `{first['full_sample']:.2f}` in the full sample to `{first['gas_sfr_clean_ngas_ge_100']:.2f}` and `{first['strict_gas_clean_ngas_ge_300']:.2f}` in the cleaned samples. The result supports `{verdict}`. We therefore avoid treating `9.55` as a uniquely physical lower threshold and retain an explicit numerical-sensitivity caveat.
+We added a cleaned sliding-window test using the original TNG L3 stellar-growth scan and gas mass alone. We compared the full sample with `Ngas >= 100` and `Ngas >= 300` selections, each excluding catalog-floor SFR values. The first significant gas-only center moves from `{first['full_sample']:.2f}` in the full sample to `{first['gas_sfr_clean_ngas_ge_100']:.2f}` and `{first['strict_gas_clean_ngas_ge_300']:.2f}` in the cleaned samples. The result supports `{verdict}`, and a companion winsorization check confirms the below-edge signal is recovered without deleting any object (the removed floor objects are coupled to low future growth, so this is a floor-encoding / resolution-limited corner, not random missingness). We therefore avoid treating `9.55` as a uniquely physical lower threshold and retain an explicit resolution caveat.
 """
     (OUT_DIR / "lower_boundary_cleaned_mass_scan_report.md").write_text(report)
 

@@ -282,12 +282,16 @@ def choose_verdict(region_status: dict[str, str]) -> str:
     n_die = statuses.count("dies")
     if n_survive and n_die:
         return "MIXED_BY_MASS"
+    # The gas signal is measurable (and survives the stringent control) only in the
+    # low/intermediate regime; the high-mass regions are underpowered. We therefore
+    # use a mass-scoped label rather than an unqualified "reservoir independent",
+    # which would overstate a result that is not established above the upper boundary.
     if n_survive == len(statuses):
-        return "GAS_RESERVOIR_INDEPENDENT"
+        return "GAS_SURVIVES_SF_STATE_CONTROL_LOW_INTERMEDIATE"
     if n_die == len(statuses):
         return "GAS_IS_SFR_PROXY"
     if n_survive and not n_die:
-        return "GAS_RESERVOIR_INDEPENDENT"
+        return "GAS_SURVIVES_SF_STATE_CONTROL_LOW_INTERMEDIATE"
     if n_die and not n_survive:
         return "GAS_IS_SFR_PROXY"
     return "INCONCLUSIVE"
@@ -541,7 +545,7 @@ def symmetric_table(results: dict) -> str:
 
 
 def verdict_paragraph(verdict: str, surviving: list[str], dying: list[str], results: dict) -> str:
-    if verdict == "GAS_RESERVOIR_INDEPENDENT":
+    if verdict == "GAS_SURVIVES_SF_STATE_CONTROL_LOW_INTERMEDIATE":
         ambiguous = [
             r for r in results if results[r]["eligible"] and results[r]["status"] == "ambiguous"
         ]
@@ -621,7 +625,7 @@ def manuscript_text(verdict: str, surviving: list[str], dying: list[str], result
         "early-epoch SFR, sSFR, and stellar mass (the last because it is the target's own subtrahend, "
         "so an uncontrolled gas marginal would partly reflect stellar-mass regression to the mean)."
     )
-    if verdict == "GAS_RESERVOIR_INDEPENDENT":
+    if verdict == "GAS_SURVIVES_SF_STATE_CONTROL_LOW_INTERMEDIATE":
         return base + crux + (
             " Conversely, once gas is included the current star-formation rate adds almost no further "
             "information, so the gas reservoir, not the instantaneous star-formation rate, is the carrier "
