@@ -5,6 +5,30 @@ ORCID: [0009-0007-4447-6325](https://orcid.org/0009-0007-4447-6325)
 
 ---
 
+## Referee revision (branch `referee-physical-diagnostics`)
+
+This branch holds the number-backed diagnostics responding to the referee's
+**major-revision** report. `paper.tex` is **not** yet updated — all new analysis,
+figures, and suggested manuscript/response wording live under
+[`outputs/referee/`](outputs/referee/) (see the index there). Headline revisions to the
+claims documented below:
+
+- **The lower edge (log M★ ≈ 9.55) is not a sharp physical boundary** — it is a
+  floor-encoding / resolution-limited measurement edge. The defensible framing is an
+  **upper-bounded gas-channel regime**, not a finite window.
+- **The residual gas signal is carried by gas *amount* (fuel)** — it survives controls
+  for current SFR/sSFR *and* stellar mass (+0.022 in 9.55–10.55, +0.069 at low mass) and
+  is only *partly* encoded by assembly history (R²(gas | L3 + M★) ≈ 0.8, with a
+  still-predictive residual).
+- **Near the upper cutoff (~10.55), black-hole state carries the signal** — BH mass
+  predicts growth where gas no longer does, plus the intermediate-mass quenching signal.
+- **The TNG–SIMBA contrast is scoped to a same-control (L1) comparison** —
+  SIMBA → quenching, TNG → growth; the earlier asymmetric L3-vs-L1 comparison is dropped.
+
+Diagnostic scripts: `referee_*.py`. Reports, figures, and CSVs: `outputs/referee/`.
+
+---
+
 ## What this paper does
 
 We compare three predictor families — **internal galaxy properties**, **halo structural properties**, and **environmental measures** — as independent predictors of stellar growth, quenching, and halo growth in the CAMELS CV suites of IllustrisTNG and SIMBA. We then test how much of each family's signal survives escalating controls for halo structure and assembly history.

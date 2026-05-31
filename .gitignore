@@ -48,3 +48,7 @@ paper.pdf
 .DS_Store
 .AppleDouble
 .LSOverride
+
+# Local agent tooling / scratch (not part of the project)
+.claude/
+notebooks/
