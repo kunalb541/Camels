@@ -26,20 +26,40 @@ delete the population the high-mass test is about.
 
 ## Discriminating contrasts
 
-Each cell is the marginal `R2` of the added predictor(s) with the `95%` paired
-bootstrap interval. The two bold columns are the crux: gas added *after* the
-current star-formation state has already been controlled for.
+Each cell is the marginal `R2` of gas mass added on top of the stated baseline,
+with the `95%` paired bootstrap interval. The bold column is the honest crux: gas
+added *after* both the current star-formation state (SFR, sSFR) and the early
+stellar mass have been controlled for. Stellar mass must be held fixed because it
+is the target's own subtrahend (`delta logM* = logM*(z=0) - logM*(z_pred)`), so an
+uncontrolled gas marginal partly reflects stellar-mass regression to the mean
+rather than reservoir information. `raw corr(gas, growth)` is the Pearson
+correlation of early gas mass with subsequent growth, shown to separate "no
+signal" from "underpowered".
 
-| region | n | gas mass \| L3 | sSFR \| L3 | **gas mass \| L3+SFR** | **gas frac \| L3+sSFR** | gas mass \| L3+all-other-internal | status |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| `low_cleaned` | 3126 | +0.061 [+0.044, +0.077] | +0.014 [+0.007, +0.022] | +0.064 [+0.048, +0.078] | +0.089 [+0.067, +0.103] | +0.070 [+0.057, +0.087] | survives |
-| `original` | 3336 | +0.050 [+0.038, +0.060] | +0.017 [+0.011, +0.025] | +0.053 [+0.041, +0.069] | +0.121 [+0.103, +0.138] | +0.021 [+0.013, +0.031] | survives |
-| `upper_transition` | 418 | +0.016 [+0.003, +0.050] | +0.020 [-0.002, +0.049] | +0.001 [-0.018, +0.024] | +0.009 [-0.014, +0.021] | -0.003 [-0.017, +0.010] | ambiguous |
-| `high` | 357 | +0.004 [-0.023, +0.027] | -0.000 [-0.021, +0.015] | +0.001 [-0.032, +0.033] | +0.004 [-0.017, +0.039] | +0.009 [-0.025, +0.023] | ambiguous |
+| region | n | raw corr(gas, growth) | gas mass \| L3 | gas mass \| L3+SFR | **gas mass \| L3+M⋆+SFR+sSFR** | status |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| `low_cleaned` | 3126 | +0.401 | +0.061 [+0.044, +0.077] | +0.064 [+0.048, +0.078] | +0.069 [+0.053, +0.086] | survives |
+| `original` | 3336 | +0.126 | +0.050 [+0.038, +0.060] | +0.053 [+0.041, +0.069] | +0.022 [+0.015, +0.029] | survives |
+| `upper_transition` | 418 | +0.370 | +0.016 [+0.003, +0.050] | +0.001 [-0.018, +0.024] | +0.011 [-0.011, +0.017] | ambiguous |
+| `high` | 357 | +0.250 | +0.004 [-0.023, +0.027] | +0.001 [-0.032, +0.033] | +0.011 [-0.018, +0.017] | ambiguous |
 
-A region is classified `survives` if the gas marginal after current-SF control
-has a positive lower confidence bound in either matched pairing, `dies` if both
-upper bounds are at or below zero, and `ambiguous` otherwise.
+A region is classified `survives` if the stellar-mass-controlled gas marginal
+(`gas mass | L3+M*+SFR+sSFR`) has a positive lower confidence bound, `dies` if its
+upper bound is at or below zero, and `ambiguous` otherwise.
+
+### Gas fraction inflates the effect unless stellar mass is controlled
+
+Because `gas fraction = log Mgas - log M*` carries the stellar-mass term directly,
+its marginal after sSFR alone is several times larger than the stellar-mass-controlled
+value. We therefore do not headline the gas-fraction number; the controlled
+gas-mass marginal above is the defensible quantity.
+
+| region | gas frac \| L3+sSFR (uncontrolled) | gas frac \| L3+sSFR+M⋆ (controlled) |
+| --- | ---: | ---: |
+| `low_cleaned` | +0.089 [+0.067, +0.103] | +0.069 [+0.055, +0.085] |
+| `original` | +0.121 [+0.103, +0.138] | +0.022 [+0.014, +0.032] |
+| `upper_transition` | +0.009 [-0.014, +0.021] | +0.002 [-0.015, +0.013] |
+| `high` | +0.004 [-0.017, +0.039] | +0.001 [-0.023, +0.043] |
 
 ## Symmetric check: does current SF state add beyond gas?
 
@@ -75,15 +95,15 @@ L3-plus-internal model.
 
 `GAS_RESERVOIR_INDEPENDENT`
 
-In the regions where an internal signal is present (low_cleaned, original), the gas marginal keeps a positive lower confidence bound after the current star-formation state (SFR and sSFR) is added to the L3 control. The contrast is also asymmetric: once gas is included, the current star-formation rate adds almost nothing (SFR beyond L3 + gas mass is `+0.009` in the original window). Present gas content therefore carries predictive information about future stellar growth that the instantaneous star-formation rate does not, consistent with a reservoir / future-fuel interpretation rather than a present-star-forming-state proxy. The higher-mass regions (upper_transition, high) are ambiguous because no internal signal is measurable there at this sample size, consistent with the collapse of the gas channel above the upper boundary near `10.55`; they neither support nor refute the reservoir reading.
+After controlling for both the current star-formation state (SFR and sSFR) and the early stellar mass, gas mass keeps a positive lower confidence bound in low_cleaned, original (low_cleaned `+0.069` [+0.053, +0.086]; original `+0.022` [+0.015, +0.029]). Holding stellar mass fixed is essential because it is the target's own subtrahend; the uncontrolled gas-fraction marginal is several times larger and is not headlined. The contrast is also asymmetric: once gas is included, the current star-formation rate adds almost nothing (SFR beyond L3 + gas mass is `+0.009` in the original window). Present gas content therefore carries predictive information about future stellar growth that the instantaneous star-formation rate does not, consistent with a reservoir / future-fuel interpretation rather than a present-star-forming-state proxy. The result is strongest at low and intermediate mass. The higher-mass regions (upper_transition, high) are classified ambiguous, but this reflects limited statistical power, not an absent signal: the raw gas-growth correlation there is comparable to or larger than at intermediate mass (upper_transition raw corr `+0.37` (n=418); high raw corr `+0.25` (n=357)), and the wide confidence intervals follow from the small samples. We therefore do not claim the gas channel vanishes above the upper boundary; we report those regions as underpowered.
 
 ## What can be said in the manuscript
 
-We tested whether the residual gas signal reflects reservoir information or merely the present star-forming state by adding gas mass and gas fraction to the L3 control both alone and after first conditioning on the early-epoch SFR and sSFR. In the original window, gas mass adds `+0.050` beyond L3 and still adds `+0.053` [+0.041, +0.069] after the instantaneous star-formation rate is controlled for. Conversely, once gas is included the current star-formation rate adds almost no further information, so the gas reservoir, not the instantaneous star-formation rate, is the carrier of the residual signal. The gas marginal survives this control wherever an internal signal is present; above the upper boundary the internal channel is not measurable, so that regime is uninformative rather than contradictory.
+We tested whether the residual gas signal reflects reservoir information or merely the present star-forming state by adding gas mass to the L3 control after conditioning on the early-epoch SFR, sSFR, and stellar mass (the last because it is the target's own subtrahend, so an uncontrolled gas marginal would partly reflect stellar-mass regression to the mean). In the original window, after controlling for early stellar mass and the current star-formation state, gas mass still adds `+0.022` [+0.015, +0.029] beyond the L3 baseline. Conversely, once gas is included the current star-formation rate adds almost no further information, so the gas reservoir, not the instantaneous star-formation rate, is the carrier of the residual signal. The effect is strongest at low and intermediate mass; the higher-mass bins are underpowered (small samples, wide intervals) rather than signal-free, so we frame the result as mass-dependent and do not claim the channel vanishes above the upper boundary.
 
 ## Suggested response to referee
 
-To address whether gas mass is reservoir information or a present-star-formation-state proxy, we added the early-epoch SFR and sSFR to the L3 control and measured the gas marginal before and after that control, in four stellar-mass regions, using the paper's ridge CV machinery. We report the verdict `GAS_RESERVOIR_INDEPENDENT`. In the regions where an internal signal is present (low_cleaned, original), the gas marginal keeps a positive lower confidence bound after the current star-formation state (SFR and sSFR) is added to the L3 control. The contrast is also asymmetric: once gas is included, the current star-formation rate adds almost nothing (SFR beyond L3 + gas mass is `+0.009` in the original window). Present gas content therefore carries predictive information about future stellar growth that the instantaneous star-formation rate does not, consistent with a reservoir / future-fuel interpretation rather than a present-star-forming-state proxy. The higher-mass regions (upper_transition, high) are ambiguous because no internal signal is measurable there at this sample size, consistent with the collapse of the gas channel above the upper boundary near `10.55`; they neither support nor refute the reservoir reading.
+To address whether gas mass is reservoir information or a present-star-formation-state proxy, we added the early-epoch SFR, sSFR, and stellar mass to the L3 control and measured the gas marginal before and after that control, in four stellar-mass regions, using the paper's ridge CV machinery. We report the verdict `GAS_RESERVOIR_INDEPENDENT`. After controlling for both the current star-formation state (SFR and sSFR) and the early stellar mass, gas mass keeps a positive lower confidence bound in low_cleaned, original (low_cleaned `+0.069` [+0.053, +0.086]; original `+0.022` [+0.015, +0.029]). Holding stellar mass fixed is essential because it is the target's own subtrahend; the uncontrolled gas-fraction marginal is several times larger and is not headlined. The contrast is also asymmetric: once gas is included, the current star-formation rate adds almost nothing (SFR beyond L3 + gas mass is `+0.009` in the original window). Present gas content therefore carries predictive information about future stellar growth that the instantaneous star-formation rate does not, consistent with a reservoir / future-fuel interpretation rather than a present-star-forming-state proxy. The result is strongest at low and intermediate mass. The higher-mass regions (upper_transition, high) are classified ambiguous, but this reflects limited statistical power, not an absent signal: the raw gas-growth correlation there is comparable to or larger than at intermediate mass (upper_transition raw corr `+0.37` (n=418); high raw corr `+0.25` (n=357)), and the wide confidence intervals follow from the small samples. We therefore do not claim the gas channel vanishes above the upper boundary; we report those regions as underpowered.
 
 ## What cannot be claimed
 

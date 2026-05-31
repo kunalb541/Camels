@@ -122,14 +122,18 @@ def assemble_blocks(
     gas_j = int_cols.index(COL_GAS)
     sfr_j = int_cols.index(COL_SFR)
     ssfr_j = int_cols.index(COL_SSFR)
+    mstar_j = int_cols.index(COL_MSTAR)
 
     int_arr = int_loc.to_numpy(float)[mask]
+    y_arr = y.to_numpy(float)[mask]
     blocks = {
         "L3": l3_loc.to_numpy(float)[mask],
         "gas_mass": int_arr[:, [gas_j]],
         "gas_fraction": gas_fraction.to_numpy(float)[mask],
         "sfr": int_arr[:, [sfr_j]],
         "ssfr": int_arr[:, [ssfr_j]],
+        "mstar": int_arr[:, [mstar_j]],
+        "raw_corr_gas_growth": float(np.corrcoef(int_arr[:, gas_j], y_arr)[0, 1]),
         "internal_all": int_arr,
         "internal_excl_gas": np.delete(int_arr, gas_j, axis=1),
         "internal_excl_sfrssfr": np.delete(int_arr, [sfr_j, ssfr_j], axis=1),
@@ -199,18 +203,25 @@ def compute_contrasts(blocks: dict, region: str, n_boot: int) -> dict[str, dict]
     gasf = blocks["gas_fraction"]
     sfr = blocks["sfr"]
     ssfr = blocks["ssfr"]
+    mstar = blocks["mstar"]
     excl_gas = blocks["internal_excl_gas"]
     excl_sf = blocks["internal_excl_sfrssfr"]
 
     defs = {
-        # what each predictor adds on top of L3 alone
+        # what each predictor adds on top of L3 alone (NOT controlled for stellar mass)
         "gas_mass|L3": ([L3], [gas]),
         "gas_fraction|L3": ([L3], [gasf]),
         "sfr|L3": ([L3], [sfr]),
         "ssfr|L3": ([L3], [ssfr]),
-        # CRUX: does gas survive after controlling for current star-formation state?
+        # does gas survive after controlling for current star-formation state?
         "gas_mass|L3+sfr": ([L3, sfr], [gas]),
         "gas_fraction|L3+ssfr": ([L3, ssfr], [gasf]),
+        # HEADLINE / honest crux: gas after current SF state AND early stellar mass.
+        # Stellar mass is the target's own subtrahend (delta logM* = logM*(z=0) -
+        # logM*(z_pred)) and gas_fraction = gas - mstar, so mstar must be controlled
+        # before attributing the gas marginal to reservoir information.
+        "gas_mass|L3+mstar+sfr+ssfr": ([L3, mstar, sfr, ssfr], [gas]),
+        "gas_fraction|L3+ssfr+mstar": ([L3, ssfr, mstar], [gasf]),
         # symmetric check: does current SF state add anything beyond gas?
         "sfr|L3+gas_mass": ([L3, gas], [sfr]),
         "ssfr|L3+gas_fraction": ([L3, gasf], [ssfr]),
@@ -244,11 +255,18 @@ def feature_ranking(blocks: dict) -> list[dict]:
 
 
 def classify_region(contrasts: dict[str, dict]) -> str:
-    """Per-region survival of the gas reservoir after current-SF-state control."""
-    g_sfr = contrasts["gas_mass|L3+sfr"]
-    gf_ssfr = contrasts["gas_fraction|L3+ssfr"]
-    survives = (g_sfr["marginal_ci_lo"] > 0) or (gf_ssfr["marginal_ci_lo"] > 0)
-    dies = (g_sfr["marginal_ci_hi"] <= 0) and (gf_ssfr["marginal_ci_hi"] <= 0)
+    """Per-region survival of the gas reservoir under the stringent, honest control.
+
+    The primary criterion is the stellar-mass-controlled gas marginal: gas beyond
+    L3 + early stellar mass + current SFR + current sSFR. Stellar mass is the
+    target's own subtrahend, so it must be held fixed before the gas marginal can
+    be attributed to reservoir information rather than stellar-mass regression to
+    the mean. (The uncontrolled gas|L3+SFR and gas-fraction|L3+sSFR contrasts are
+    still reported, but they overstate the effect and are not used to classify.)
+    """
+    g = contrasts["gas_mass|L3+mstar+sfr+ssfr"]
+    survives = g["marginal_ci_lo"] > 0
+    dies = g["marginal_ci_hi"] <= 0
     if survives and not dies:
         return "survives"
     if dies and not survives:
@@ -282,15 +300,15 @@ def make_figure(results: dict) -> None:
     regions = [r for r in results if results[r]["eligible"]]
     fig, axes = plt.subplots(2, 1, figsize=(9.5, 8.2))
 
-    # Panel 1: gas|L3 vs current-SF|L3 vs gas|L3+SF (the discriminator).
+    # Panel 1: gas|L3 (raw) vs sSFR|L3 (current SF) vs gas after full current-state +
+    # stellar-mass control (the honest discriminator).
     series = [
-        ("gas_mass|L3", "gas mass | L3", "#1b9e77"),
+        ("gas_mass|L3", "gas mass | L3 (raw)", "#1b9e77"),
         ("ssfr|L3", "sSFR | L3", "#d95f02"),
-        ("gas_mass|L3+sfr", "gas mass | L3 + SFR", "#7570b3"),
-        ("gas_mass|L3+internal_excl_gas", "gas mass | L3 + all other internal", "#1f78b4"),
+        ("gas_mass|L3+mstar+sfr+ssfr", r"gas mass | L3 + M$_\star$ + SFR + sSFR", "#542788"),
     ]
     x = np.arange(len(regions))
-    width = 0.2
+    width = 0.25
     for k, (key, label, color) in enumerate(series):
         vals = [results[r]["contrasts"][key]["marginal_r2"] for r in regions]
         lo = [results[r]["contrasts"][key]["marginal_ci_lo"] for r in regions]
@@ -298,15 +316,15 @@ def make_figure(results: dict) -> None:
         yerr = np.clip(
             np.vstack([np.array(vals) - np.array(lo), np.array(hi) - np.array(vals)]), 0, None
         )
-        axes[0].bar(x + (k - 1.5) * width, vals, width, label=label, color=color)
+        axes[0].bar(x + (k - 1) * width, vals, width, label=label, color=color)
         axes[0].errorbar(
-            x + (k - 1.5) * width, vals, yerr=yerr, fmt="none", ecolor="#333333", elinewidth=0.8, capsize=2
+            x + (k - 1) * width, vals, yerr=yerr, fmt="none", ecolor="#333333", elinewidth=0.8, capsize=2
         )
     axes[0].axhline(0, color="#555555", linewidth=0.9)
     axes[0].set_xticks(x, [r.replace("_", " ") for r in regions])
     axes[0].set_ylabel("marginal $R^2$ beyond baseline")
-    axes[0].set_title("Does the gas marginal survive controlling for current star-formation state?")
-    axes[0].legend(frameon=False, fontsize=8, ncol=2)
+    axes[0].set_title("Gas marginal, raw vs after controlling for current SF state and stellar mass")
+    axes[0].legend(frameon=False, fontsize=8)
     axes[0].grid(alpha=0.2, axis="y")
 
     # Panel 2: leave-one-out importance of gas vs SFR vs sSFR within L3 + all internal.
@@ -344,19 +362,36 @@ def fmt_marg(c: dict) -> str:
 
 def region_contrast_table(results: dict) -> str:
     lines = [
-        "| region | n | gas mass \\| L3 | sSFR \\| L3 | **gas mass \\| L3+SFR** | **gas frac \\| L3+sSFR** | gas mass \\| L3+all-other-internal | status |",
-        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
+        "| region | n | raw corr(gas, growth) | gas mass \\| L3 | gas mass \\| L3+SFR | "
+        "**gas mass \\| L3+M⋆+SFR+sSFR** | status |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | --- |",
     ]
     for region, _, _, _ in REGIONS:
         res = results[region]
         if not res["eligible"]:
-            lines.append(f"| `{region}` | {res['n']} | n<{MIN_N} | — | — | — | — | skipped |")
+            lines.append(f"| `{region}` | {res['n']} | — | n<{MIN_N} | — | — | skipped |")
             continue
         c = res["contrasts"]
         lines.append(
-            f"| `{region}` | {res['n']} | {fmt_marg(c['gas_mass|L3'])} | {fmt_marg(c['ssfr|L3'])} | "
-            f"{fmt_marg(c['gas_mass|L3+sfr'])} | {fmt_marg(c['gas_fraction|L3+ssfr'])} | "
-            f"{fmt_marg(c['gas_mass|L3+internal_excl_gas'])} | {res['status']} |"
+            f"| `{region}` | {res['n']} | {res['raw_corr_gas_growth']:+.3f} | "
+            f"{fmt_marg(c['gas_mass|L3'])} | {fmt_marg(c['gas_mass|L3+sfr'])} | "
+            f"{fmt_marg(c['gas_mass|L3+mstar+sfr+ssfr'])} | {res['status']} |"
+        )
+    return "\n".join(lines)
+
+
+def gas_fraction_caveat_table(results: dict) -> str:
+    lines = [
+        "| region | gas frac \\| L3+sSFR (uncontrolled) | gas frac \\| L3+sSFR+M⋆ (controlled) |",
+        "| --- | ---: | ---: |",
+    ]
+    for region, _, _, _ in REGIONS:
+        res = results[region]
+        if not res["eligible"]:
+            continue
+        c = res["contrasts"]
+        lines.append(
+            f"| `{region}` | {fmt_marg(c['gas_fraction|L3+ssfr'])} | {fmt_marg(c['gas_fraction|L3+ssfr+mstar'])} |"
         )
     return "\n".join(lines)
 
@@ -421,15 +456,30 @@ delete the population the high-mass test is about.
 
 ## Discriminating contrasts
 
-Each cell is the marginal `R2` of the added predictor(s) with the `95%` paired
-bootstrap interval. The two bold columns are the crux: gas added *after* the
-current star-formation state has already been controlled for.
+Each cell is the marginal `R2` of gas mass added on top of the stated baseline,
+with the `95%` paired bootstrap interval. The bold column is the honest crux: gas
+added *after* both the current star-formation state (SFR, sSFR) and the early
+stellar mass have been controlled for. Stellar mass must be held fixed because it
+is the target's own subtrahend (`delta logM* = logM*(z=0) - logM*(z_pred)`), so an
+uncontrolled gas marginal partly reflects stellar-mass regression to the mean
+rather than reservoir information. `raw corr(gas, growth)` is the Pearson
+correlation of early gas mass with subsequent growth, shown to separate "no
+signal" from "underpowered".
 
 {region_contrast_table(results)}
 
-A region is classified `survives` if the gas marginal after current-SF control
-has a positive lower confidence bound in either matched pairing, `dies` if both
-upper bounds are at or below zero, and `ambiguous` otherwise.
+A region is classified `survives` if the stellar-mass-controlled gas marginal
+(`gas mass | L3+M*+SFR+sSFR`) has a positive lower confidence bound, `dies` if its
+upper bound is at or below zero, and `ambiguous` otherwise.
+
+### Gas fraction inflates the effect unless stellar mass is controlled
+
+Because `gas fraction = log Mgas - log M*` carries the stellar-mass term directly,
+its marginal after sSFR alone is several times larger than the stellar-mass-controlled
+value. We therefore do not headline the gas-fraction number; the controlled
+gas-mass marginal above is the defensible quantity.
+
+{gas_fraction_caveat_table(results)}
 
 ## Symmetric check: does current SF state add beyond gas?
 
@@ -495,29 +545,42 @@ def verdict_paragraph(verdict: str, surviving: list[str], dying: list[str], resu
         ambiguous = [
             r for r in results if results[r]["eligible"] and results[r]["status"] == "ambiguous"
         ]
+
+        def ctrl(r: str) -> str:
+            c = results[r]["contrasts"]["gas_mass|L3+mstar+sfr+ssfr"]
+            return f"`{c['marginal_r2']:+.3f}` [{c['marginal_ci_lo']:+.3f}, {c['marginal_ci_hi']:+.3f}]"
+
+        surv_txt = "; ".join(f"{r} {ctrl(r)}" for r in surviving)
         orig = results.get("original")
         sym = (
             orig["contrasts"]["sfr|L3+gas_mass"]["marginal_r2"]
             if orig and orig["eligible"]
             else float("nan")
         )
-        amb_note = (
-            f" The higher-mass regions ({', '.join(ambiguous)}) are ambiguous because no internal "
-            "signal is measurable there at this sample size, consistent with the collapse of the "
-            "gas channel above the upper boundary near `10.55`; they neither support nor refute the "
-            "reservoir reading."
-            if ambiguous
-            else ""
-        )
+        amb_note = ""
+        if ambiguous:
+            corrs = "; ".join(
+                f"{r} raw corr `{results[r]['raw_corr_gas_growth']:+.2f}` (n={results[r]['n']})"
+                for r in ambiguous
+            )
+            amb_note = (
+                f" The higher-mass regions ({', '.join(ambiguous)}) are classified ambiguous, but this "
+                "reflects limited statistical power, not an absent signal: the raw gas-growth correlation "
+                f"there is comparable to or larger than at intermediate mass ({corrs}), and the wide "
+                "confidence intervals follow from the small samples. We therefore do not claim the gas "
+                "channel vanishes above the upper boundary; we report those regions as underpowered."
+            )
         return (
-            "In the regions where an internal signal is present "
-            f"({', '.join(surviving)}), the gas marginal keeps a positive lower confidence bound "
-            "after the current star-formation state (SFR and sSFR) is added to the L3 control. The "
-            "contrast is also asymmetric: once gas is included, the current star-formation rate adds "
-            f"almost nothing (SFR beyond L3 + gas mass is `{sym:+.3f}` in the original window). Present "
-            "gas content therefore carries predictive information about future stellar growth that the "
-            "instantaneous star-formation rate does not, consistent with a reservoir / future-fuel "
-            "interpretation rather than a present-star-forming-state proxy." + amb_note
+            "After controlling for both the current star-formation state (SFR and sSFR) and the early "
+            f"stellar mass, gas mass keeps a positive lower confidence bound in {', '.join(surviving)} "
+            f"({surv_txt}). Holding stellar mass fixed is essential because it is the target's own "
+            "subtrahend; the uncontrolled gas-fraction marginal is several times larger and is not "
+            "headlined. The contrast is also asymmetric: once gas is included, the current star-formation "
+            f"rate adds almost nothing (SFR beyond L3 + gas mass is `{sym:+.3f}` in the original window). "
+            "Present gas content therefore carries predictive information about future stellar growth that "
+            "the instantaneous star-formation rate does not, consistent with a reservoir / future-fuel "
+            "interpretation rather than a present-star-forming-state proxy. The result is strongest at low "
+            "and intermediate mass." + amb_note
         )
     if verdict == "GAS_IS_SFR_PROXY":
         return (
@@ -546,25 +609,25 @@ def manuscript_text(verdict: str, surviving: list[str], dying: list[str], result
     orig = results.get("original")
     crux = ""
     if orig and orig["eligible"]:
-        c = orig["contrasts"]
+        cc = orig["contrasts"]["gas_mass|L3+mstar+sfr+ssfr"]
         crux = (
-            f" In the original window, gas mass adds `{c['gas_mass|L3']['marginal_r2']:+.3f}` beyond L3 "
-            f"and still adds `{c['gas_mass|L3+sfr']['marginal_r2']:+.3f}` "
-            f"[{c['gas_mass|L3+sfr']['marginal_ci_lo']:+.3f}, {c['gas_mass|L3+sfr']['marginal_ci_hi']:+.3f}] "
-            f"after the instantaneous star-formation rate is controlled for."
+            f" In the original window, after controlling for early stellar mass and the current "
+            f"star-formation state, gas mass still adds `{cc['marginal_r2']:+.3f}` "
+            f"[{cc['marginal_ci_lo']:+.3f}, {cc['marginal_ci_hi']:+.3f}] beyond the L3 baseline."
         )
     base = (
-        "We tested whether the residual gas signal reflects reservoir information or merely "
-        "the present star-forming state by adding gas mass and gas fraction to the L3 control "
-        "both alone and after first conditioning on the early-epoch SFR and sSFR."
+        "We tested whether the residual gas signal reflects reservoir information or merely the "
+        "present star-forming state by adding gas mass to the L3 control after conditioning on the "
+        "early-epoch SFR, sSFR, and stellar mass (the last because it is the target's own subtrahend, "
+        "so an uncontrolled gas marginal would partly reflect stellar-mass regression to the mean)."
     )
     if verdict == "GAS_RESERVOIR_INDEPENDENT":
         return base + crux + (
-            " Conversely, once gas is included the current star-formation rate adds almost no "
-            "further information, so the gas reservoir, not the instantaneous star-formation rate, "
-            "is the carrier of the residual signal. The gas marginal survives this control wherever "
-            "an internal signal is present; above the upper boundary the internal channel is not "
-            "measurable, so that regime is uninformative rather than contradictory."
+            " Conversely, once gas is included the current star-formation rate adds almost no further "
+            "information, so the gas reservoir, not the instantaneous star-formation rate, is the carrier "
+            "of the residual signal. The effect is strongest at low and intermediate mass; the higher-mass "
+            "bins are underpowered (small samples, wide intervals) rather than signal-free, so we frame the "
+            "result as mass-dependent and do not claim the channel vanishes above the upper boundary."
         )
     if verdict == "MIXED_BY_MASS":
         return base + crux + (
@@ -588,9 +651,9 @@ def manuscript_text(verdict: str, surviving: list[str], dying: list[str], result
 def referee_text(verdict: str, surviving: list[str], dying: list[str], results: dict) -> str:
     return (
         "To address whether gas mass is reservoir information or a present-star-formation-state "
-        "proxy, we added the early-epoch SFR and sSFR to the L3 control and measured the gas "
-        "marginal before and after that control, in four stellar-mass regions, using the paper's "
-        "ridge CV machinery. We report the verdict `" + verdict + "`. "
+        "proxy, we added the early-epoch SFR, sSFR, and stellar mass to the L3 control and measured "
+        "the gas marginal before and after that control, in four stellar-mass regions, using the "
+        "paper's ridge CV machinery. We report the verdict `" + verdict + "`. "
         + verdict_paragraph(verdict, surviving, dying, results)
     )
 
@@ -635,6 +698,19 @@ def main() -> None:
             ranking = feature_ranking(blocks)
             status = classify_region(contrasts)
             res.update({"models": models, "contrasts": contrasts, "ranking": ranking, "status": status})
+            res["raw_corr_gas_growth"] = blocks["raw_corr_gas_growth"]
+            score_rows.append(
+                {
+                    "record_type": "region_summary",
+                    "region": region,
+                    "log_mstar_lo": lo,
+                    "log_mstar_hi": hi,
+                    "cleaning": cleaning,
+                    "n": n,
+                    "raw_corr_gas_growth": blocks["raw_corr_gas_growth"],
+                    "status": status,
+                }
+            )
 
             for model_name, r2 in models.items():
                 score_rows.append(
