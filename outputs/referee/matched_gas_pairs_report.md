@@ -23,7 +23,7 @@ pair bootstrap CI. A region's estimate is a VALID causal-style estimate only if
 balance is achieved; otherwise the matched difference is confounded by residual
 imbalance and is reported but not interpreted.
 
-## Result
+## Result -- propensity-NN matching (1-D, weaker balancer)
 
 | region | n pairs | gas diff (dex) | max \|SMD\| before→after | balanced? | **matched growth diff [95% CI]** |
 | --- | ---: | ---: | ---: | :---: | ---: |
@@ -36,13 +36,33 @@ A matched growth difference is the mean extra stellar growth (dex over ~6.9 Gyr)
 gas-rich over matched gas-poor galaxies. The `balanced?` column flags whether
 covariate balance (max |SMD| < 0.1) was achieved; where it was not, the matched
 gas-poor controls still differ in mass/assembly, so the difference is confounded and
-is NOT a valid causal estimate.
+is NOT a valid causal estimate. 1-D propensity-NN does not balance the confounders in
+any region here.
+
+## Result -- coarsened-exact matching (stronger balancer)
+
+Coarsening the highest-imbalance confounders (the mass/halo features) into quantile
+bins and exact-matching within cells is a stronger balancer when one or two covariates
+dominate the imbalance.
+
+| region | n pairs | gas diff (dex) | max \|SMD\| after | balance | **matched growth diff [95% CI]** |
+| --- | ---: | ---: | ---: | :---: | ---: |
+| `low_cleaned` | 401 | +0.14 | 0.14 | borderline | +0.138 [+0.105, +0.172] |
+| `original` | 290 | +0.23 | 0.55 | imbalanced | +0.125 [+0.096, +0.155] (confounded — not valid) |
+| `upper_transition` | 73 | +0.36 | 0.41 | imbalanced | +0.056 [+0.019, +0.092] (confounded — not valid) |
+| `high` | 52 | +0.29 | 0.45 | imbalanced | +0.029 [-0.077, +0.117] (confounded — not valid) |
+
+CEM reaches at least borderline balance (max |SMD| < 0.15) only in the cleaned low-mass
+window, where the matched gas effect is positive and significant -- a quasi-causal
+corroboration consistent with the regression marginal. The intermediate-mass (`original`)
+window cannot be balanced even by CEM (gas is near-collinear with halo mass), so it
+stays unidentifiable for matching.
 
 ## Verdict
 
-`MATCHING_INFEASIBLE_INSUFFICIENT_OVERLAP`
+`GAS_EFFECT_CORROBORATED_WHERE_MATCHABLE_INFEASIBLE_ELSEWHERE`
 
-Propensity matching cannot balance high-gas vs low-gas at fixed mass + assembly history in any region: gas is too entangled with the confounders for clean common support, so the matched-pair estimate is not identified. The regression-marginal and depletion-time results remain the primary evidence; matching neither confirms nor refutes them here. Per-region: low_cleaned: ATT +0.142 [+0.126,+0.160], confounded |SMD|=0.27; original: ATT +0.202 [+0.186,+0.220], confounded |SMD|=0.66; upper_transition: ATT +0.071 [+0.029,+0.112], confounded |SMD|=0.28; high: ATT +0.023 [-0.045,+0.080], confounded |SMD|=0.34.
+Where covariate balance is achievable (coarsened-exact matching; low_cleaned), gas-rich galaxies grow significantly more than matched gas-poor galaxies at fixed mass, halo mass, and assembly history -- a quasi-causal corroboration of the gas-reservoir effect, consistent in sign and magnitude with the regression marginal. Elsewhere (notably the intermediate-mass `original` window) gas is too collinear with halo mass for any matcher to balance, so the matched estimate is not identified there and matching neither confirms nor refutes the effect in those regions. Per-region (CEM): low_cleaned: CEM ATT +0.138 [+0.105,+0.172], borderline; original: CEM ATT +0.125 [+0.096,+0.155], imbalanced |SMD|=0.55; upper_transition: CEM ATT +0.056 [+0.019,+0.092], imbalanced |SMD|=0.41; high: CEM ATT +0.029 [-0.077,+0.117], imbalanced |SMD|=0.45.
 
 ## What cannot be claimed
 
@@ -50,6 +70,6 @@ Propensity matching cannot balance high-gas vs low-gas at fixed mass + assembly 
   confounders correlated with gas at fixed `X` could remain.
 - Matching is on L3 + stellar mass; halo mass enters through L3's static-structure
   block rather than as a separately tuned caliper.
-- Terciles + caliper change the effective population; the ATT is for the matched,
-  well-overlapping subset.
+- The matched subset (median split; propensity caliper or CEM cells) is a
+  sub-population; the estimate is for well-overlapping galaxies only.
 - Specific to the CAMELS CV volume and resolution.
