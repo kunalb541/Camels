@@ -165,11 +165,11 @@ def choose_verdict(status: dict[str, str]) -> str:
     if all(v in ("fuel_limited", "both") for v in vals if v not in ("neither",)) and any(
         v in ("fuel_limited", "both") for v in vals
     ):
-        return "FUEL_LIMITED_THROUGHOUT"
+        return "FUEL_LIMITED_WHERE_RESOLVED"
     if all(v in ("efficiency_limited", "both") for v in vals if v not in ("neither",)) and any(
         v in ("efficiency_limited", "both") for v in vals
     ):
-        return "EFFICIENCY_LIMITED_THROUGHOUT"
+        return "EFFICIENCY_LIMITED_WHERE_RESOLVED"
     if all(v == "neither" for v in vals):
         return "NO_RESOLVED_SIGNAL"
     return "MIXED_OR_UNDERPOWERED"
@@ -293,9 +293,14 @@ def verdict_text(results: dict, verdict: str) -> str:
             "over near/above the upper cutoff (efficiency-limited). This is a clean physical reading of "
             "the ~10.55 boundary."
         )
-    elif verdict == "FUEL_LIMITED_THROUGHOUT":
-        head = "Gas amount adds beyond depletion time across the probed range; the signal is fuel-limited, not efficiency-limited."
-    elif verdict == "EFFICIENCY_LIMITED_THROUGHOUT":
+    elif verdict == "FUEL_LIMITED_WHERE_RESOLVED":
+        head = (
+            "Where a residual gas signal is resolved (low and intermediate mass), it is carried by gas "
+            "amount, not depletion time: gas amount adds beyond L3+M*+t_dep while t_dep adds nothing "
+            "beyond L3+M*+gas. Above ~10.55 neither amount nor efficiency is resolved (underpowered), so "
+            "the fuel-vs-efficiency split is undetermined there rather than a fuel win."
+        )
+    elif verdict == "EFFICIENCY_LIMITED_WHERE_RESOLVED":
         head = "Depletion time adds beyond gas amount across the probed range; the signal is efficiency-limited."
     elif verdict == "NO_RESOLVED_SIGNAL":
         head = "Neither amount nor efficiency adds beyond the other at this sample size; the split is unresolved."

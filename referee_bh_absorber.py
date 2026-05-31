@@ -186,9 +186,9 @@ def choose_verdict(results):
     qc = results["original"].get("quench") if results["original"]["eligible"] else None
     bh_quench_orig = qc is not None and qc["bhmass|L3+mstar"]["marginal_ci_lo"] > 0
     if bh_takeover_ut and bh_quench_orig:
-        return "BH_TAKES_OVER_AT_CUTOFF_AND_DRIVES_QUENCHING"
+        return "BH_CARRIES_GROWTH_AT_CUTOFF_AND_QUENCHING_AT_INTERMEDIATE"
     if bh_takeover_ut:
-        return "BH_TAKES_OVER_AT_CUTOFF"
+        return "BH_CARRIES_GROWTH_AT_CUTOFF"
     if bh_quench_orig:
         return "BH_QUENCHING_SIGNAL_PRESENT"
     return "BH_GOVERNANCE_UNRESOLVED"
@@ -355,23 +355,25 @@ def verdict_text(results, verdict):
         if res.get("n"):
             qfrac[r] = res["n_quench"] / max(res["n"], 1)
     high_q = qfrac.get("high")
-    takeover = verdict.startswith("BH_TAKES_OVER_AT_CUTOFF")
-    if takeover:
+    carries = verdict.startswith("BH_CARRIES_GROWTH_AT_CUTOFF")
+    if carries:
         head = (
-            "At the upper transition (10.55-10.75) BH mass takes over from gas in the growth channel: "
-            "BH mass adds a significant growth marginal and survives controlling for gas, while gas "
-            "does NOT survive controlling for BH mass (it is absorbed). So gas does not fail at the "
-            "cutoff because gas is absent -- its predictive role is taken over by BH state. "
+            "At the upper transition (10.55-10.75) BH mass carries a growth signal that gas does not: "
+            "within the L3-controlled baseline, BH mass adds a significant growth marginal (robust to a "
+            "1000-resample bootstrap, bin-edge shifts, and a permutation null) and survives controlling "
+            "for gas, whereas gas is not independently significant there. This is one small, nearly fully "
+            "quenched bin where BH mass outpredicts gas -- NOT a demonstrated transfer of a previously "
+            "significant gas signal. "
         )
-        if verdict.endswith("DRIVES_QUENCHING"):
+        if verdict.endswith("QUENCHING_AT_INTERMEDIATE"):
             head += (
-                "BH mass also carries the quenching signal at intermediate mass (where star-forming "
-                "and quenched galaxies coexist), whereas gas does not. "
+                "More robustly, BH mass carries the quenching signal at intermediate mass (n=1380/1953, "
+                "tight CI), where star-forming and quenched galaxies coexist, whereas gas does not. "
             )
     elif verdict == "BH_QUENCHING_SIGNAL_PRESENT":
         head = (
-            "BH mass carries a quenching signal at intermediate mass, but the growth-channel takeover "
-            "at the cutoff is not clean enough to assert at this sample size. "
+            "BH mass carries a quenching signal at intermediate mass, but the growth-channel result at "
+            "the cutoff is not clean enough to assert at this sample size. "
         )
     else:
         head = (

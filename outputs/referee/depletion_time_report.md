@@ -43,9 +43,9 @@ where `t_dep` is physically well defined.
 
 ## Verdict
 
-`FUEL_LIMITED_THROUGHOUT`
+`FUEL_LIMITED_WHERE_RESOLVED`
 
-Gas amount adds beyond depletion time across the probed range; the signal is fuel-limited, not efficiency-limited. Per-region reading (primary): low_cleaned=fuel_limited, original=fuel_limited, upper_transition=neither, high=neither.
+Where a residual gas signal is resolved (low and intermediate mass), it is carried by gas amount, not depletion time: gas amount adds beyond L3+M*+t_dep while t_dep adds nothing beyond L3+M*+gas. Above ~10.55 neither amount nor efficiency is resolved (underpowered), so the fuel-vs-efficiency split is undetermined there rather than a fuel win. Per-region reading (primary): low_cleaned=fuel_limited, original=fuel_limited, upper_transition=neither, high=neither.
 
 ## What cannot be claimed
 

@@ -39,9 +39,9 @@ where the minority class has >= 30 galaxies.
 
 ## Verdict
 
-`BH_TAKES_OVER_AT_CUTOFF_AND_DRIVES_QUENCHING`
+`BH_CARRIES_GROWTH_AT_CUTOFF_AND_QUENCHING_AT_INTERMEDIATE`
 
-At the upper transition (10.55-10.75) BH mass takes over from gas in the growth channel: BH mass adds a significant growth marginal and survives controlling for gas, while gas does NOT survive controlling for BH mass (it is absorbed). So gas does not fail at the cutoff because gas is absent -- its predictive role is taken over by BH state. BH mass also carries the quenching signal at intermediate mass (where star-forming and quenched galaxies coexist), whereas gas does not. Note the high-mass population is already ~97% quenched by z=0 (9 star-forming of 355), so above the transition there is little growth left to predict and no quenched/star-forming contrast to exploit -- the cutoff coincides with the population having largely finished growing. Per-region: low_cleaned: gas->growth +0.078, BHmass->quench AUC -0.000; original: gas->growth +0.039, BHmass->quench AUC +0.032; upper_transition: gas->growth +0.028, quench n/a; high: gas->growth +0.004, quench n/a.
+At the upper transition (10.55-10.75) BH mass carries a growth signal that gas does not: within the L3-controlled baseline, BH mass adds a significant growth marginal (robust to a 1000-resample bootstrap, bin-edge shifts, and a permutation null) and survives controlling for gas, whereas gas is not independently significant there. This is one small, nearly fully quenched bin where BH mass outpredicts gas -- NOT a demonstrated transfer of a previously significant gas signal. More robustly, BH mass carries the quenching signal at intermediate mass (n=1380/1953, tight CI), where star-forming and quenched galaxies coexist, whereas gas does not. Note the high-mass population is already ~97% quenched by z=0 (9 star-forming of 355), so above the transition there is little growth left to predict and no quenched/star-forming contrast to exploit -- the cutoff coincides with the population having largely finished growing. Per-region: low_cleaned: gas->growth +0.078, BHmass->quench AUC -0.000; original: gas->growth +0.039, BHmass->quench AUC +0.032; upper_transition: gas->growth +0.028, quench n/a; high: gas->growth +0.004, quench n/a.
 
 ## What cannot be claimed
 
