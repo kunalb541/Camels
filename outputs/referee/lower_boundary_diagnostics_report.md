@@ -1,5 +1,14 @@
 # Lower-boundary diagnostic package
 
+> **Update / later diagnostic.** This report is an early diagnostic stage. It is
+> superseded and refined by the focused cleaned mass scan
+> (`lower_boundary_cleaned_mass_scan_report.md`), the exhaustive lower-edge scan
+> (`window_exhaustive/window_exhaustive_report.md`), and the winsorization
+> robustness check (`lower_edge_winsorization_report.md`). Later diagnostics refine
+> this initial verdict: the lower edge is not a physical threshold, but a
+> floor-encoding / resolution-limited measurement edge. Deletion and winsorization
+> both recover the low-mass gas signal. The numerical results below are unchanged.
+
 ## Question
 
 Can the turn-on of the TNG internal-gas marginal near `logMstar ~ 9.55` be identified as a physical gas-regulation onset, or is it better explained by resolution, sample composition, or sliding-window sensitivity?
