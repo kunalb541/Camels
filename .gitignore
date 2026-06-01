@@ -42,7 +42,6 @@ outputs/baseline_B/
 outputs/simba_CV/
 outputs/data/results.json
 outputs/data/*.pkl
-paper.pdf
 
 # macOS
 .DS_Store
