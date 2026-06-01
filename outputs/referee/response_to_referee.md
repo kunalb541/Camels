@@ -87,7 +87,7 @@ growth (R²) and quenching (AUC) channels:
 
 At a matched L1 control, SIMBA carries its beyond-gravity internal signal in the
 quenching channel and TNG in the growth channel — a genuine, but strictly L1-scoped,
-cross-model contrast. We have removed the TNG-L3-vs-SIMBA-L1 (~3×) comparison, report
+cross-model contrast (see Fig. 7). We have removed the TNG-L3-vs-SIMBA-L1 (~3×) comparison, report
 only the appropriate L1-vs-L1 quenching ratio (~2.4×), make no claim of a SIMBA
 L3-controlled residual (SubLink-equivalent trees are unavailable at CAMELS-SIMBA
 resolution), and retain the TNG growth/L3 result as the paper's primary finding.
@@ -99,7 +99,7 @@ small number of unresolved objects whose gas feature is pinned at the catalog fl
 (the full-sample estimate is +0.005 with a meaningless interval, [−0.279, +0.010]).
 Removing that tail gives +0.061, and — crucially — **winsorizing the floor-encoded gas
 feature without removing any object recovers +0.057**, matching both the cut and the
-onset band. The lower edge is therefore a floor-encoding / resolution-limited
+onset band (see Appendix Fig. 13). The lower edge is therefore a floor-encoding / resolution-limited
 measurement edge, not a sharp physical threshold; we disclose that the affected objects
 are also low-growth (mean Δlog M★ −0.11 vs +0.40). The robust result is an
 upper-bounded regime with an explicit low-mass resolution caveat; a dedicated
@@ -129,13 +129,14 @@ mass still adds +0.022 [+0.015, +0.029] (intermediate) and +0.069 [+0.053, +0.08
 (low); adding the depletion time t_dep = M_gas/SFR (stellar-mass-free) contributes
 nothing once gas amount is included, while gas amount adds beyond it. A coarsened-exact
 matched-pair test corroborates a positive gas→growth effect at low mass (+0.14 dex at
-fixed mass + halo + assembly history).
+fixed mass + halo + assembly history). These mechanism results are shown in Fig. 6 and
+Appendix Figs. 8–12.
 
 ### Comment 7 — the halo L3 marginal triangles
 
 These are drawn as discrete triangles at the three individually-significant windows
 (9.85, 10.15, 10.35 dex) precisely because the L3 halo signal is non-contiguous. We add
-to the caption:
+to the Fig. 2 caption:
 
 > The halo L3 marginal is shown as discrete triangles, with no connecting line, because
 > the L3-controlled halo signal is non-contiguous (only the three marked windows are
@@ -144,7 +145,8 @@ to the caption:
 
 ### Comment 8 — near-unpredictability of halo growth
 
-We confirm and now interpret this result. Predicting halo growth (Δlog M_sub) from any
+We confirm and now interpret this result (see the revised halo-growth paragraph, §3.1).
+Predicting halo growth (Δlog M_sub) from any
 family gives R² of order 0.01–0.03 — internal +0.009, halo +0.016, environment +0.000
 in the intermediate window — an order of magnitude below stellar growth (internal-family
 R² ~ 0.2–0.3). We add:
