@@ -824,30 +824,39 @@ decomposition.
 \section{\textbf{Discussion}}
 \label{sec:discussion}
 
-\subsection{What the Intermediate-Mass Internal Window Means}
+\subsection{Interpretation: From Fuel-Limited to Quenching-Limited Growth}
 
-The \textit{marginal window} ($9.55$--$10.55$ dex under L3 in this suite)
-identifies the mass range where a galaxy's baryonic state at $z \approx
-0.77$ carries \textit{predictive} information about its $z = 0$ stellar
-growth that is not fully captured by its gravitational trajectory ---
+Across an upper-bounded intermediate-mass regime (significant under L3 up to
+$\logM/M_\odot \simeq 10.55$ in this suite), a galaxy's baryonic state at
+$z \approx 0.77$ carries \textit{predictive} information about its $z = 0$
+stellar growth that is not fully captured by its gravitational trajectory ---
 even given static position, accretion rate over multiple lookback windows,
 peak mass, half-mass assembly epoch, merger counts, and major-merger timing.
+The overall picture is a transition from a \textit{fuel-limited} regime at
+low-to-intermediate mass, where the residual gas reservoir predicts future
+growth, to a \textit{quenching-limited} regime near and above the upper
+boundary, where black-hole/quenching state becomes the informative channel.
 
-The onset near $\sim 9.5$ dex is consistent with --- though not proven by
---- a picture in which galaxies below this mass are sufficiently susceptible
-to environmental effects (ram pressure, tidal stripping, filamentary gas
-supply \citep{dekel2009}) that their gravitational trajectory largely
-predicts their fate, leaving little room for an independent baryonic
-contribution.
+We do not interpret the lower edge as a physical onset.
+Below $\sim 9.55$ dex the recovery of the gas signal is limited by
+catalog-floor and resolution effects (\S\ref{sec:window}): a small tail of
+unresolved, floor-encoded objects destabilizes the fit, and winsorizing that
+feature --- without removing any object --- restores a positive marginal below
+the nominal edge. The apparent low-mass onset is therefore a recovery edge, not
+a physical transition; whether a genuine low-mass change exists (e.g.\ a greater
+role for environment via ram pressure, tidal stripping, or filamentary gas
+supply \citep{dekel2009}) cannot be settled at this resolution.
 
-Above $\sim 10.5$ dex, the logic reverses: assembly history --- peak mass,
-formation epoch \citep{lacey1993}, merger record --- encodes enough
-information to largely prescribe future growth.
-In the intermediate regime, the current gas supply and feedback state carry
+The upper boundary near $\sim 10.55$ dex is physically meaningful: there the
+predictive structure shifts to black-hole/quenching state (traced by
+catalog-level black-hole proxies, \S\ref{sec:gasnature}) and the population is
+largely quenched by $z = 0$, so the regime is bounded above by the onset of
+quenching rather than by assembly history alone.
+In the intermediate regime below it, the current gas \emph{amount} carries
 predictive information that the 13 tested gravitational descriptors do not
 fully recover.
-These boundaries are defined within the CAMELS CV setup and may shift with
-volume and resolution (see \S\ref{sec:caveats}).
+The upper boundary is defined within the CAMELS CV setup and may shift modestly
+with volume and resolution (see \S\ref{sec:caveats}).
 
 The window has a carrier structure within it
 (Section~\ref{sec:mechanism}): gas mass dominates the surviving internal
@@ -862,8 +871,8 @@ reflected in accumulated stellar mass \citep{genel2019} --- retains an
 independent predictive contribution.
 
 \textbf{Observational prediction.}
-The marginal window is not merely a simulation result --- it is a quantitative
-prediction testable on real galaxy surveys.
+This residual gas-reservoir signal is not merely a simulation result --- it is
+a quantitative prediction testable on real galaxy surveys.
 The prediction is: in observed galaxies at $9.55 \lesssim \logM \lesssim 10.55$
 (roughly $z \lesssim 0.1$), cold-gas mass should retain marginal predictive
 power for stellar growth $\sim 1$--$2$ Gyr later, above and beyond what
@@ -880,18 +889,19 @@ If the window survives in observed galaxies, it would establish that the
 predictive contribution of gas content relative to halo assembly is not an
 artifact of the CAMELS feedback prescriptions.
 
-\subsection{What the Window Does Not Mean}
+\subsection{What the Result Does Not Mean}
 
-Three misreadings of the window result should be avoided.
+Three misreadings of the result should be avoided.
 It is not anti-gravitational: the assembly-history baseline accounts for
-roughly half the internal family's signal within the window (L3 retention
+roughly half the internal family's signal in this regime (L3 retention
 $\approx 43\%$ from an L1 baseline near 100\%), so halo assembly history
-remains the dominant information source and the window is a residual beyond
-it.
-It does not mean that only baryonic information matters in this regime: halo
-structure also survives L3 in the window, albeit in fewer mass bins and with
-a smaller marginal.
-Nor is it universal: the window is absent at low and high mass, and the
+remains the dominant information source and the internal signal is a residual
+beyond it.
+It does not mean that only baryonic information matters here: halo structure
+also survives L3 in the regime, albeit in fewer mass bins and with a smaller
+marginal.
+Nor is it universal: the residual is confined to the intermediate regime ---
+recovery-limited at low mass and underpowered at high mass --- and the
 whole-sample tie of Section~\ref{sec:whole_sample} is real.
 
 \subsection{Why Assembly Timing is the Main Gravitational Competitor}
@@ -951,10 +961,10 @@ The SIMBA result is not a robustness check for the TNG growth result; it is
 a different measurement.
 SIMBA shows that a beyond-gravity baryonic signal exists in SIMBA too, but
 it is concentrated in quenching rather than stellar growth.
-The simplest physical reading is feedback-model-specific: TNG's feedback
-prescription leaves more independent information in the fuel-to-growth
-channel; SIMBA's stronger wind quenching leaves more independent information
-in the gas-depletion/quenching channel.
+At this matched L1 control, the simplest reading is a feedback-model difference
+in target-channel expression (scoped to L1, not a mechanistic claim): TNG's
+prescription leaves more independent information in the fuel-to-growth channel,
+while SIMBA's stronger wind quenching leaves more in the quenching channel.
 
 In TNG, the mechanistic decomposition is clean: we have merger-tree
 assembly-history control escalating from static position through full
@@ -980,14 +990,24 @@ the compression of internal state into six scalar features, and genuine
 physical stochasticity.
 
 The CAMELS CV suite uses $25\, h^{-1}\,\mathrm{Mpc}$ boxes with $256^3$
-particles, and at the low-mass end ($\logM \lesssim 9.5$) resolution limits
-suppress signal recovery.
-The exact mass boundaries ($9.55$--$10.55$ dex) may shift with larger volume
-or higher resolution; the claim is the existence and approximate location of
-the regime structure within this suite, not universal thresholds.
-The CV suite also holds astrophysical parameters fixed, so results are
-valid for the specific TNG and SIMBA prescriptions at CAMELS resolution; the
-effect of varying feedback strength is not explored here.
+particles. At the low-mass end the lower edge of the regime is a
+floor-encoding / resolution-limited recovery boundary (\S\ref{sec:window}), not
+a physical onset: a small tail of unresolved objects whose gas feature sits at
+the catalog floor destabilizes the low-mass fit. We do not have a
+higher-resolution CAMELS run with which to test convergence, so we report the
+9.55-dex onset as a recovery edge and the upper boundary near 10.55 dex as the
+physically meaningful edge.
+The small box also coarsely samples large-scale modes, so the environmental
+null --- environment carries no marginal beyond L1 in any window --- is
+specific to this CV volume and the environment features used here, and we do
+not claim it as a general result.
+The CV suite holds astrophysical parameters fixed, so results are valid for the
+specific TNG and SIMBA prescriptions at CAMELS resolution; the effect of varying
+feedback strength is not explored.
+Finally, direct AGN feedback-energy fields are not present in the CAMELS group
+catalogs used here, so the high-mass transition is characterized through
+black-hole state proxies (black-hole mass and accretion rate), not a
+feedback-energy measurement.
 
 On the SIMBA side, SubLink-equivalent merger trees are not available, so L3
 assembly-history control cannot be applied. The SIMBA quenching result
@@ -1010,7 +1030,7 @@ Excluded galaxies --- those undergoing mergers or disruption --- likely have
 disturbed gas reservoirs and atypically elevated star-formation rates relative
 to the retained sample; including them would tend to suppress rather than
 amplify the internal marginal signal near the 9.55 dex window onset.
-The lower boundary of the marginal window is therefore a conservative
+The lower edge of the regime is therefore, if anything, a conservative
 estimate.
 
 % ---------------------------------------------------------------------------
