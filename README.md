@@ -35,7 +35,7 @@ The main result, in TNG:
   accretion rate — not direct feedback-energy measurements), and the high-mass
   population is largely quenched.
 
-The picture is **fuel-limited → quenching-limited** growth. The lower edge
+The picture is **consistent with a gas-reservoir-dominated to BH/quenching-state-dominated predictive transition** (predictive, not causal). The lower edge
 (log M⋆ ≈ 9.55) is a **floor-encoding / resolution-limited measurement edge**, not
 a sharp physical threshold; the defensible result is an **upper-bounded
 gas-reservoir regime**.
@@ -49,8 +49,8 @@ statistical tie in both TNG and SIMBA — no family leads globally. The tie conc
 a structured mass-regime pattern.
 
 **Internal beyond gravity (TNG, mid-mass growth).** The internal-family marginal
-beyond L3 is positive and significant; the paired internal − halo gap is flat and
-positive across the regime (+0.052 to +0.089). Gas mass is the only internal
+beyond L3 is positive and significant; the paired internal − halo gap is broadly stable (no systematic
+trend) and positive across the regime (+0.052 to +0.089). Gas mass is the only internal
 feature that survives L3 residualization.
 
 **Mechanism (TNG).**
@@ -73,9 +73,11 @@ SIMBA L3 claim. At L1, TNG carries its beyond-gravity signal in **growth**
 (+0.245 vs. SIMBA +0.080 n.s.) and SIMBA in **quenching** (+0.141 vs. TNG +0.060).
 
 **Observational prediction.** At fixed stellar mass and halo proxies, gas-rich
-galaxies should grow preferentially (testable with cold-gas surveys such as
-xGASS / xCOLD GASS). Note the simulation analysis uses **total** gas mass; the
-catalogs do not provide a phase-separated cold/star-forming gas reservoir.
+galaxies should grow preferentially. The simulation predictor is **total** subhalo
+gas over a ~6–7 Gyr horizon (*z* ≈ 0.77 → 0); cold-gas surveys such as xGASS / xCOLD
+GASS provide an **observational proxy test** of whether the accessible cold gas
+traces the same residual gas-reservoir channel — not a one-to-one replication of the
+exact simulation variable or timescale (the catalogs are not phase-separated).
 
 ---
 
@@ -162,7 +164,7 @@ Main text:
 | --- | --- |
 | Fig. 1 | 3×3 family × target score matrices (TNG and SIMBA) |
 | Fig. 2 | Phase diagram: internal marginal vs. stellar mass under L1 and L3 controls |
-| Fig. 3 | Flat, positive internal − halo paired gap under L3 |
+| Fig. 3 | Broadly flat, positive internal − halo paired gap under L3 |
 | Fig. 4 | Feature-winner map (L3-residualized permutation importance) |
 | Fig. 5 | Assembly ablation map |
 | Fig. 6 | Mechanism: gas survives SF control / amount-not-efficiency / assembly-shaped residual / BH at the cutoff |
