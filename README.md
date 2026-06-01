@@ -1,4 +1,4 @@
-## Gas Reservoirs Predict Future Galaxy Growth Beyond Halo Assembly History in CAMELS
+### Gas Reservoirs Predict Future Galaxy Growth Beyond Halo Assembly History in CAMELS
 
 **Kunal Bhatia** — Independent Researcher, Heidelberg, Germany
 ORCID: [0009-0007-4447-6325](https://orcid.org/0009-0007-4447-6325)
