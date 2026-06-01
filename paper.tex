@@ -730,7 +730,7 @@ $1.3\times$ under $M_\mathrm{sub}$.
 The lead is robust to the choice of halo structural variable.
 
 
-\subsection{Cross-Simulation Comparison: Family-Specific Target-Channel Expression}
+\subsection{Cross-Simulation Comparison at a Matched (L1) Control}
 \label{sec:cross_family}
 
 The mechanistic results of Sections~\ref{sec:window}--\ref{sec:mechanism}
@@ -739,24 +739,19 @@ To test family robustness, we run the L1 sliding-window mass scan on SIMBA
 spatial (Figure~\ref{fig:cross_family}), restricting to the growth and
 quenching targets.
 
-In the SIMBA growth scan, internal is significant only in two isolated
-ranges --- 9.25 dex (one window) and 10.05--10.45 dex (five consecutive
-windows) --- with peak marginal $R^2 = +0.069$ at 10.25 dex.
-This is fragmented and \SimbaGrowthRatio$\times$ weaker than TNG's growth
-signal at the same mass ($+0.245$).
-The paired L1 gap (internal $-$ halo) is significant at only two mass
-centres in SIMBA ($+0.028^*$ at 10.25 dex and $+0.035^*$ at 10.35 dex),
-compared to TNG where the L3 gap is significant across 1.2 dex.
+At a matched L1 control, the two simulations differ sharply in the growth
+channel: SIMBA's L1 growth-channel internal-family marginal does not reach
+robust significance (scan peak $+0.080$, 95\% CI spanning zero), and any SIMBA
+growth signal is weak and fragmented, whereas TNG's is a clean $+0.245$ over
+the same control. The SIMBA L1 internal--halo paired gap for growth is
+correspondingly significant at only two isolated mass centres.
 
-The SIMBA quenching scan tells a different story.
-Internal is significant from 9.65 to 10.75 dex (Table~\ref{tab:simba_quench}),
-with peak marginal AUC $= +\SimbaQuenchPeak^*$ at 10.15 dex; halo is also
-significant across most of this range (peak $+0.127^*$).
-At the same L1 control level, the SIMBA quenching signal is $\sim$2.4$\times$
-larger in amplitude than TNG's (SIMBA: $\SimbaQuenchPeak^*$; TNG L1:
-$\TNGQuenchLonePeak^*$, \TNGQuenchLoneNWindows{} windows, 9.85--10.35 dex);
-at the more conservative TNG L3 control the ratio rises to $\sim$3$\times$
-(TNG L3 peak: $\TNGQuenchPeakMarg^*$, \TNGQuenchNWindows{} windows).
+The quenching channel is the opposite. At the same L1 control SIMBA's
+internal-family quenching marginal is large and broadly significant (peak
+marginal AUC $+0.141^*$ at 10.15 dex, significant from 9.65 to 10.75 dex;
+Table~\ref{tab:simba_quench}; halo also significant, peak $+0.127^*$), whereas
+TNG's quenching marginal is small ($+0.060^*$ at L1). The same-control L1
+contrast in the quenching channel is thus $\sim$2.4$\times$ in SIMBA's favour.
 
 \begin{deluxetable}{lcccccc}
 \tablecaption{SIMBA L1 quenching marginal AUC, selected
@@ -777,54 +772,50 @@ $\geq10.85$ & \nodata & ns & & ns & \\
 \enddata
 \end{deluxetable}
 
-Running the same window scan for the quenching target in TNG at L1 yields a
-peak internal marginal AUC of $\TNGQuenchLonePeak^*$ at 9.85 dex
-(\TNGQuenchLoneNWindows{} significant windows, 9.85--10.35 dex); at L3 this
-tightens to \TNGQuenchNWindows{} windows (10.05--10.35 dex, peak
-$\TNGQuenchPeakMarg^*$), confirming that TNG quenching is weak at both
-control levels.
-Placing both simulation families at L1 for quenching gives a
-$\SimbaQuenchPeak / \TNGQuenchLonePeak \approx 2.4\times$ amplitude difference;
-the ratio narrows from $\sim3\times$ when TNG is evaluated at the more
-conservative L3 control but the contrast remains substantial and confirms
-the cross-simulation signal is not a control-level artifact
-(Figure~\ref{fig:cross_family}, lower-left, shows both TNG L1 and L3 lines).
+The TNG quenching marginal is weak at every control level: peak L1 AUC
+$+0.060^*$ at 9.85 dex, tightening further under L3, confirming that TNG's
+beyond-gravity signal does not lie in the quenching channel
+(Figure~\ref{fig:cross_family}, lower-left).
+We compare the two simulations only at the shared L1 control; we deliberately
+do \emph{not} set SIMBA's L1 quenching marginal against TNG's more conservative
+L3 marginal, as that would confound the target-channel question with the depth
+of the gravitational control.
 
-The cross-family comparison reveals a contrast in target-channel expression:
-in TNG, the residual internal signal concentrates in stellar growth (marginal
-window: \WindowNWindowsL{} windows, flat positive gap window
-$\PairedGapLo$--$\PairedGapHi$); in SIMBA, the stronger beyond-gravity
-signal concentrates in quenching (10+ window L1 band, peak marginal AUC
-$\SimbaQuenchPeak$, $\sim 2.4\times$ TNG L1 amplitude), while the SIMBA
-growth window is fragmented and weaker.
+At a matched L1 control, then, the two feedback models express their residual
+beyond-gravity internal information through different target channels: in TNG
+it concentrates in stellar growth (the upper-bounded intermediate-mass regime
+of Section~\ref{sec:window}), whereas in SIMBA it concentrates in quenching
+(broadly significant L1 band, peak marginal AUC $+0.141$), with SIMBA's growth
+signal weak and fragmented.
 
-It is important to qualify the scope of this comparison.
+We stress the scope of this contrast.
 The TNG branch supports the full mechanistic decomposition --- static
 position versus accretion history versus full assembly history --- via
 merger-tree matching.
-The SIMBA branch supports a family-level contrast in target-channel
-expression, but not an equivalent geometry-decomposition claim, because
-tree-based matching is unavailable for SIMBA at CAMELS resolution.
-The SIMBA result should be read as evidence that the target-channel
-expression of the beyond-gravity signal differs across feedback models,
-not as a matched mechanistic replication of the TNG decomposition.
+The SIMBA branch supports only a same-control L1 target-channel contrast:
+SubLink-equivalent merger trees are unavailable for SIMBA at CAMELS resolution,
+so we make \emph{no} claim of an L3-controlled residual in SIMBA.
+The SIMBA result should be read as evidence that the target channel of the
+beyond-gravity signal differs across feedback models at a matched static
+control, not as a matched mechanistic replication of the TNG assembly-history
+decomposition.
 
 \begin{figure*}[t!]
 \centering
 \includegraphics[width=\textwidth]{outputs/figures/fig06_cross_family.pdf}
 \caption{Target-channel contrast: TNG vs.\ SIMBA.
   \textit{Upper panels}: L1 growth marginal $R^2$ for TNG (left) and SIMBA
-  (right). TNG window is clean and contiguous (peak $+0.245$); SIMBA is
-  fragmented and \SimbaGrowthRatio$\times$ weaker (peak $+0.069$).
+  (right). TNG window is clean and contiguous (peak $+0.245$); SIMBA growth is
+  weak and fragmented (local peak $+0.069$, not robustly significant).
   \textit{Lower panels}: quenching marginal AUC for TNG (left, both L1 solid
   and L3 dashed) and SIMBA L1 (right). TNG L1 quenching: \TNGQuenchLoneNWindows{}
   windows, peak $\TNGQuenchLonePeak^*$; TNG L3: \TNGQuenchNWindows{} windows,
   peak $\TNGQuenchPeakMarg^*$. TNG quenching is weak at both control levels.
   SIMBA quenching at L1: 10+ windows, peak $+\SimbaQuenchPeak^*$.
-  Evaluated at the same L1 control, the SIMBA--TNG amplitude ratio is
-  $\sim$2.4$\times$ (L1 vs.\ L1), shrinking from $\sim$3$\times$ when TNG
-  is at the more conservative L3 (tree-based assembly control unavailable
-  for SIMBA at CAMELS resolution).
+  Evaluated at the same L1 control, the SIMBA--TNG quenching amplitude ratio is
+  $\sim$2.4$\times$ in SIMBA's favour (L1 vs.\ L1). Tree-based assembly controls
+  are unavailable for SIMBA at CAMELS resolution, so no SIMBA L3 comparison is
+  made.
   Green and orange shading mark the significant windows.
 \label{fig:cross_family}}
 \end{figure*}
