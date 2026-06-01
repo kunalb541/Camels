@@ -28,6 +28,10 @@ Re-uses the paper pipeline exactly (build_l3_context, _ridge_cv_r2_fast,
 _parallel_boot_r2). Writes only under outputs/referee/. Does not touch paper.tex.
 """
 from __future__ import annotations
+# --- path bootstrap: scripts live in referee_scripts/; make repo root importable ---
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ----------------------------------------------------------------------------------
 
 import argparse
 import hashlib

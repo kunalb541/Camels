@@ -16,6 +16,10 @@ cites the freshly-confirmed values.
 Does not modify paper.tex. Writes only under outputs/referee/.
 """
 from __future__ import annotations
+# --- path bootstrap: scripts live in referee_scripts/; make repo root importable ---
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ----------------------------------------------------------------------------------
 
 from pathlib import Path
 

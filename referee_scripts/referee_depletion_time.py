@@ -32,6 +32,10 @@ Re-uses the paper pipeline and the discriminator's CV/contrast machinery.
 Writes only under outputs/referee/. Does not modify paper.tex.
 """
 from __future__ import annotations
+# --- path bootstrap: scripts live in referee_scripts/; make repo root importable ---
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ----------------------------------------------------------------------------------
 
 import argparse
 from pathlib import Path

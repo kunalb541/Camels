@@ -19,6 +19,10 @@ alone and after first controlling for the current star-formation state, and ask
 whether the gas marginal survives that control.
 """
 from __future__ import annotations
+# --- path bootstrap: scripts live in referee_scripts/; make repo root importable ---
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ----------------------------------------------------------------------------------
 
 import argparse
 import hashlib

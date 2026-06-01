@@ -64,10 +64,13 @@ pairs, with a greedy cumulative path, a non-linear (random-forest / gradient-boo
 L3 comparison, and a redundancy/PCA characterisation. The reproduction matches the
 published L1→L3 absorption exactly (weak-L1 internal marginal 0.308; full-L3 internal
 marginal 0.135; absorbed 0.173). The strongest single separated group is the half-mass
-epoch (+0.022); the 13 L3 features require 8 principal components for 90% of their
-variance; and flexible non-linear baselines absorb no more than ridge. We therefore
-report the verdict as a **distributed, correlated assembly-history manifold** rather
-than a single missing absorber. We state explicitly:
+epoch (+0.022, ≈16% of the full-L3 internal marginal); individually ablating the
+early-accretion features (Δlog M over 1–2 Gyr, the sl4/sl8 lookbacks) recovers ≤7% each,
+and because the assembly features are collinear these recoveries overlap rather than add;
+the 13 L3 features require 8 principal components for 90% of their variance; and flexible
+non-linear baselines absorb no more than ridge. We therefore report the verdict as a
+**distributed, correlated assembly-history manifold** rather than a single missing
+absorber. We state explicitly in the manuscript (§3.7):
 
 > We interpret the unresolved component as distributed, correlated assembly-history
 > structure rather than a single missing absorber; because a richer feature set could
@@ -114,7 +117,9 @@ result as specific to this volume and feature set rather than as a general findi
 We re-ran the mid-mass internal-gas test with non-linear models. The internal-family
 marginal survives: ridge +0.139 [+0.119, +0.153], random forest +0.120 [+0.102,
 +0.132], gradient boosting +0.119 [+0.100, +0.135]; gas mass remains the top internal
-feature in all three. The result is not an artifact of linearity.
+feature in all three. The result is not an artifact of linearity; these values
+(ridge +0.139, random forest +0.120, histogram gradient boosting +0.119; gas mass top
+in all three) are now reported explicitly in the manuscript robustness subsection (§3.9).
 
 ### Comment 6 — f★ (integrated) vs gas (instantaneous), and §3.7.3
 
@@ -130,7 +135,11 @@ mass still adds +0.022 [+0.015, +0.029] (intermediate) and +0.069 [+0.053, +0.08
 nothing once gas amount is included, while gas amount adds beyond it. A coarsened-exact
 matched-pair test corroborates a positive gas→growth effect at low mass (+0.14 dex at
 fixed mass + halo + assembly history). These mechanism results are shown in Fig. 6 and
-Appendix Figs. 8–12.
+Appendix Figs. 8–12. We note that the loaded CAMELS group-catalog products provide total
+subhalo gas mass only — no phase-separated cold or star-forming gas-mass field is present
+— so we frame the prediction in terms of total gas-reservoir content and flag cold/
+star-forming phase separation as requiring particle-level or value-added data (now stated
+as a caveat in §4.6).
 
 ### Comment 7 — the halo L3 marginal triangles
 

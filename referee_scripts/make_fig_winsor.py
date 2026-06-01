@@ -3,6 +3,10 @@
 Shows that deleting OR winsorizing the floor-pinned gas feature -- without any
 physical change -- recovers the same marginal as the onset band, i.e. the lower
 edge is a floor-encoding / resolution-limited measurement edge, not a threshold."""
+# --- path bootstrap: scripts live in referee_scripts/; make repo root importable ---
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ----------------------------------------------------------------------------------
 from pathlib import Path
 
 import matplotlib

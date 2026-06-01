@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 """Scan the TNG L3 gas marginal after removing low-mass gas/SFR-floor objects."""
 from __future__ import annotations
+# --- path bootstrap: scripts live in referee_scripts/; make repo root importable ---
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ----------------------------------------------------------------------------------
 
 import argparse
 import hashlib

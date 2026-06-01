@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 """Build the compact 2x2 mechanism figure (manuscript Fig., sec 3.8) from the
 referee diagnostic CSVs. One panel per finding; no re-running of the analyses."""
+# --- path bootstrap: scripts live in referee_scripts/; make repo root importable ---
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ----------------------------------------------------------------------------------
 from pathlib import Path
 
 import matplotlib
