@@ -31,7 +31,7 @@ predictive residual remains: *shaped by halo history, not exhausted by it.* Near
 proxies, not feedback-energy measurements). The overall picture is
 **fuel-limited → quenching-limited**.
 
-## Manuscript changes (`paper.tex`, 8 section-by-section commits)
+## Manuscript changes (`paper.tex`, section-by-section commits)
 
 - Title + abstract rewritten (physical-question-first; "finite window" retired).
 - Introduction reframed; the L1/L2/L3 controls presented as method, not story.
@@ -48,6 +48,27 @@ proxies, not feedback-energy measurements). The overall picture is
 - Final sweep: all "finite / marginal / gap window" framing retired across body,
   captions, conclusions, and appendices; numbers cross-checked vs `outputs/referee/`.
 - Polish read-through pass (clarity/consistency; one duplicated caveat trimmed).
+
+## Figures
+
+The new results are now *shown*, not only cited, while the main text stays readable:
+
+- **Fig. 6** (§3.8) — a compact mechanism figure: gas survives SFR/sSFR/M⋆ control,
+  gas **amount** beats depletion time, the reservoir is assembly-shaped (R²≈0.8) yet
+  the orthogonal residual still predicts growth, and black-hole state takes over the
+  growth signal at the upper transition (state proxy, not feedback energy).
+- **Fig. 7** (§3.10) — the SIMBA **same-control (L1-vs-L1)** figure, directly
+  answering Comment 3 (replaces the old asymmetric cross-family figure; also fixes a
+  stale number, SIMBA growth +0.069 → +0.080 to match the text).
+- **Appendix "Additional Mechanism and Robustness Diagnostics" (Figs 8–13)** — the
+  full audit trail kept out of the Results: gas-vs-SFR discriminator, depletion time,
+  assembly encoding, BH absorber, matched pairs (CEM; placed here because the result
+  is nuanced — positive at low mass, matching-infeasible elsewhere), and lower-edge
+  winsorization.
+
+All 13 figures are referenced in prose (no orphans), all manuscript figures are now
+version-controlled (`fig01–05` force-added past the `outputs/figures/` ignore; the new
+figures under the tracked `outputs/referee/`), and `latexmk` compiles cleanly.
 
 ## New under `outputs/referee/`
 
@@ -80,5 +101,6 @@ manuscript numbers match `outputs/referee/`; stale-framing grep is clean.
 
 - History is intentionally **not squashed**: the section-by-section commits
   (title/abstract → intro → results 3a/3b/3c → discussion → captions → sweep →
-  polish) document the careful referee-response path.
+  polish → main figures → diagnostics appendix) document the careful
+  referee-response path.
 - `main` is the untouched pre-revision trunk; this PR brings the full revision.
