@@ -7,6 +7,7 @@
 
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{float}
 \usepackage{microtype}
 \usepackage{enumitem}
 
@@ -1213,137 +1214,6 @@ available at \url{https://github.com/kunalb541/Camels}.
 % ---------------------------------------------------------------------------
 \appendix
 
-\section{\textbf{Supporting Tables}}
-\label{app:tables}
-
-This appendix collects the supporting numerical tables referenced in the Results,
-in order of first citation.
-
-Table~\ref{tab:mass_splits} reports the three predictor families' scores in the
-low, intermediate, and high stellar-mass bins for TNG SubLink, underlying the
-mass-regime split.
-
-\begin{deluxetable*}{llccccc}
-\tablecaption{Predictive scores by stellar mass regime, TNG SubLink.
-  Bold = WINNER at raw (uncontrolled) level; the assembly-history-controlled
-  gap for mid-mass growth is $\PairedGapLo$--$\PairedGapHi$ across
-  \PairedGapNWindows{} consecutive windows (Table~\ref{tab:gap}).
-  \label{tab:mass_splits}}
-\tablehead{
-  \colhead{Target} & \colhead{Mass bin} & \colhead{$n$} &
-  \colhead{env} & \colhead{halo} & \colhead{internal} & \colhead{Verdict}
-}
-\startdata
-\multirow{3}{*}{Growth $R^2$}
-  & Low ($<9.5$)    & \LowMassN  & 0.166 & 0.160 & 0.040 & TIE \\
-  & Mid (9.5--10.5) & \MidMassN  & 0.083 & \MidMassHaloR & \textbf{\MidMassInternalR} & \textbf{WINNER: internal} \\
-  & High ($\geq10.5$) & \HighMassN & 0.068 & 0.107 & 0.118 & TIE \\
-\hline
-\multirow{3}{*}{Quenching AUC}
-  & Low ($<9.5$)    & \LowMassN  & 0.645 & 0.704 & 0.681 & TIE \\
-  & Mid (9.5--10.5) & \MidMassN  & 0.791 & 0.807 & 0.818 & TIE \\
-  & High ($\geq10.5$) & \HighMassN & 0.791 & 0.792 & 0.735 & TIE \\
-\enddata
-\end{deluxetable*}
-
-Table~\ref{tab:whole_sample} gives the whole-sample scores for each family in both
-TNG and SIMBA, underlying the absence of a consistent single winner.
-
-\begin{deluxetable*}{llcccc}
-\tablecaption{Whole-sample predictive scores by feature family and
-  simulation.\label{tab:whole_sample}}
-\tablehead{
-  \colhead{Target} & \colhead{Family} &
-  \colhead{TNG SubLink} & \colhead{SIMBA Spatial} & \colhead{Verdict}
-}
-\startdata
-\multirow{3}{*}{Growth $R^2$}   & env      & 0.133 & 0.274 & TIE \\
-                                  & halo     & \textbf{0.257} & 0.342 & TIE \\
-                                  & internal & 0.247 & \textbf{0.354} & TIE \\
-\hline
-\multirow{3}{*}{Quenching AUC}  & env      & 0.846 & 0.717 & TIE \\
-                                  & halo     & 0.862 & 0.737 & TIE \\
-                                  & internal & \textbf{0.865} & \textbf{0.743} & TIE \\
-\hline
-\multirow{3}{*}{Halo growth $R^2$} & env   & 0.008 & 0.151 & TIE \\
-                                  & halo     & \textbf{0.015} & \textbf{0.158} & TIE \\
-                                  & internal & 0.006 & 0.144 & TIE \\
-\enddata
-\tablecomments{TNG SubLink: $n = \TNGSubLinkN$. SIMBA spatial:
-  $n = \SIMBASpatialN$.  Bold = highest score in column.}
-\end{deluxetable*}
-
-Table~\ref{tab:confound} compares the assembly-history baseline under spatial
-versus SubLink matching, quantifying the matching-method confound.
-
-\begin{deluxetable}{lcc}
-\tablecaption{Assembly-history baseline by matching method.\label{tab:confound}}
-\tablehead{
-  \colhead{Matching} & \colhead{Family} &
-  \colhead{Baseline $R^2$}
-}
-\startdata
-SubLink & TNG    & $\SubLinkBaseline\, [0.051, 0.072]$ \\
-Spatial & TNG    & $\SpatialBaselineTNG$ \\
-Spatial & SIMBA  & $\SpatialBaselineSIMBA$ \\
-\enddata
-\end{deluxetable}
-
-Table~\ref{tab:l1scan} lists the L1 internal-family marginal $R^2$ at selected
-sliding-window centres.
-
-\begin{deluxetable*}{lccccc}
-\tablecaption{L1 marginal $R^2$ by window centre, selected positions
-  (full scan in Figure~\ref{fig:phase_diagram}).
-  The L1 control removes only static halo position (3 features); a positive
-  marginal means that family adds predictive power \textit{beyond} structural
-  position alone.  Internal is significant from 9.55--10.65 dex (13 windows);
-  halo enters three windows earlier.  The L3 assembly-history-controlled
-  equivalent is in Table~\ref{tab:l3scan}.
-  \label{tab:l1scan}}
-\tablehead{
-  \colhead{Centre (dex)} & \colhead{$n$} &
-  \colhead{Int marg} & \colhead{Sig} &
-  \colhead{Halo marg} & \colhead{Sig}
-}
-\startdata
-9.25--9.45 & \nodata & $<0$, wide CI & ns & $+0.053$--$+0.072$ & * \\
-\textbf{9.55} & 2,393 & $\mathbf{+0.149}$ & * & $+0.078$ & * \\
-9.65--10.45 & \nodata & $+0.153$--$+0.244$ & * & $+0.082$--$+0.171$ & * \\
-\textbf{10.25} & 1,407 & $\mathbf{+0.245}$ & * & $+0.171$ & * \\
-10.55--10.65 & \nodata & $+0.182$--$+0.111$ & * & $+0.107$--$+0.060$ & * \\
-\textbf{10.75} & 836 & $+0.083$ & ns & $+0.031$ & ns \\
-$\geq10.85$ & \nodata & ns & & ns & \\
-\enddata
-\tablecomments{$*$ denotes 95\% CI lower bound $> 0$.}
-\end{deluxetable*}
-
-Table~\ref{tab:l3scan} lists the L3-controlled internal marginal $R^2$ at selected
-window centres, the basis for the regime boundaries.
-
-\begin{deluxetable*}{lccccc}
-\tablecaption{L3 internal marginal $R^2$ by window centre
-  (selected).\label{tab:l3scan}}
-\tablehead{
-  \colhead{Centre (dex)} &
-  \colhead{L1 int marg} & \colhead{L3 int marg} & \colhead{L3 Sig} &
-  \colhead{L3 halo marg} & \colhead{L3 halo Sig}
-}
-\startdata
-9.25--9.45 & $<0$ & $<0$ & ns & ns & ns \\
-\textbf{9.55} & $+0.149$ & $\mathbf{+0.110}$ & * & $+0.039$ & ns \\
-9.65--9.75 & $+0.153$--$+0.164$ & $+0.110$--$+0.117$ & * & ns & \\
-9.85 & $+0.180$ & $+0.132$ & * & $+0.061$ & * \\
-10.05--10.45 & $+0.175$--$+0.225$ & $+0.135$--$+0.161$ & * & $+0.063$--$+0.072$ & ns--* \\
-\textbf{10.35} & $+0.244$ & $\mathbf{\WindowPeakMarg}$ & * & $+0.072$ & * \\
-\textbf{10.55} & $+0.182$ & $\mathbf{+0.106}$ & * & $+0.054$ & ns \\
-10.65 & $+0.111$ & $+0.056$ & ns & ns & \\
-$\geq10.75$ & ns & ns & & ns & \\
-\enddata
-\tablecomments{$*$ denotes 95\% CI lower bound $> 0$.}
-\end{deluxetable*}
-
-\clearpage
 % ---------------------------------------------------------------------------
 \section{\textbf{Additional Mechanism and Robustness Diagnostics}}
 \label{app:diagnostics}
@@ -1466,8 +1336,6 @@ a floor-encoding / resolution-limited measurement edge.
 \label{fig:app_winsor}}
 \end{figure}
 
-\clearpage
-
 % ---------------------------------------------------------------------------
 \section{\textbf{Scope of Claims}}
 \label{app:earned}
@@ -1587,5 +1455,123 @@ Section~\ref{sec:discussion}.
 % ---------------------------------------------------------------------------
 \bibliographystyle{aasjournalv7}
 \bibliography{refs}
+
+% ---------------------------------------------------------------------------
+\section{\textbf{Supporting Tables}}
+\label{app:tables}
+
+\begin{table}[H]
+\centering
+\caption{Predictive scores by stellar mass regime, TNG SubLink.
+  Bold = WINNER at raw (uncontrolled) level; the assembly-history-controlled
+  gap for mid-mass growth is $\PairedGapLo$--$\PairedGapHi$ across
+  \PairedGapNWindows{} consecutive windows (Table~\ref{tab:gap}).
+  \label{tab:mass_splits}}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llccccc}
+\toprule
+Target & Mass bin & $n$ & env & halo & internal & Verdict \\
+\midrule
+\multirow{3}{*}{Growth $R^2$}
+  & Low ($<9.5$)    & \LowMassN  & 0.166 & 0.160 & 0.040 & TIE \\
+  & Mid (9.5--10.5) & \MidMassN  & 0.083 & \MidMassHaloR & \textbf{\MidMassInternalR} & \textbf{WINNER: internal} \\
+  & High ($\geq10.5$) & \HighMassN & 0.068 & 0.107 & 0.118 & TIE \\
+\midrule
+\multirow{3}{*}{Quenching AUC}
+  & Low ($<9.5$)    & \LowMassN  & 0.645 & 0.704 & 0.681 & TIE \\
+  & Mid (9.5--10.5) & \MidMassN  & 0.791 & 0.807 & 0.818 & TIE \\
+  & High ($\geq10.5$) & \HighMassN & 0.791 & 0.792 & 0.735 & TIE \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Whole-sample predictive scores by feature family and
+  simulation.  TNG SubLink: $n = \TNGSubLinkN$; SIMBA spatial:
+  $n = \SIMBASpatialN$.  Bold = highest score in column.\label{tab:whole_sample}}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llccc}
+\toprule
+Target & Family & TNG SubLink & SIMBA Spatial & Verdict \\
+\midrule
+\multirow{3}{*}{Growth $R^2$}   & env      & 0.133 & 0.274 & TIE \\
+                                  & halo     & \textbf{0.257} & 0.342 & TIE \\
+                                  & internal & 0.247 & \textbf{0.354} & TIE \\
+\midrule
+\multirow{3}{*}{Quenching AUC}  & env      & 0.846 & 0.717 & TIE \\
+                                  & halo     & 0.862 & 0.737 & TIE \\
+                                  & internal & \textbf{0.865} & \textbf{0.743} & TIE \\
+\midrule
+\multirow{3}{*}{Halo growth $R^2$} & env   & 0.008 & 0.151 & TIE \\
+                                  & halo     & \textbf{0.015} & \textbf{0.158} & TIE \\
+                                  & internal & 0.006 & 0.144 & TIE \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Assembly-history baseline by matching method.\label{tab:confound}}
+\begin{tabular}{llc}
+\toprule
+Matching & Family & Baseline $R^2$ \\
+\midrule
+SubLink & TNG    & $\SubLinkBaseline\, [0.051, 0.072]$ \\
+Spatial & TNG    & $\SpatialBaselineTNG$ \\
+Spatial & SIMBA  & $\SpatialBaselineSIMBA$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{L1 marginal $R^2$ by window centre, selected positions
+  (full scan in Figure~\ref{fig:phase_diagram}).
+  The L1 control removes only static halo position (3 features); a positive
+  marginal means that family adds predictive power \textit{beyond} structural
+  position alone.  Internal is significant from 9.55--10.65 dex (13 windows);
+  halo enters three windows earlier.  The L3 assembly-history-controlled
+  equivalent is in Table~\ref{tab:l3scan}.  $*$ denotes 95\% CI lower bound
+  $> 0$.\label{tab:l1scan}}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+Centre (dex) & $n$ & Int marg & Sig & Halo marg & Sig \\
+\midrule
+9.25--9.45 & \nodata & $<0$, wide CI & ns & $+0.053$--$+0.072$ & * \\
+\textbf{9.55} & 2,393 & $\mathbf{+0.149}$ & * & $+0.078$ & * \\
+9.65--10.45 & \nodata & $+0.153$--$+0.244$ & * & $+0.082$--$+0.171$ & * \\
+\textbf{10.25} & 1,407 & $\mathbf{+0.245}$ & * & $+0.171$ & * \\
+10.55--10.65 & \nodata & $+0.182$--$+0.111$ & * & $+0.107$--$+0.060$ & * \\
+\textbf{10.75} & 836 & $+0.083$ & ns & $+0.031$ & ns \\
+$\geq10.85$ & \nodata & ns & & ns & \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{L3 internal marginal $R^2$ by window centre (selected).
+  $*$ denotes 95\% CI lower bound $> 0$.\label{tab:l3scan}}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+Centre (dex) & L1 int marg & L3 int marg & L3 Sig & L3 halo marg & L3 halo Sig \\
+\midrule
+9.25--9.45 & $<0$ & $<0$ & ns & ns & ns \\
+\textbf{9.55} & $+0.149$ & $\mathbf{+0.110}$ & * & $+0.039$ & ns \\
+9.65--9.75 & $+0.153$--$+0.164$ & $+0.110$--$+0.117$ & * & ns & \\
+9.85 & $+0.180$ & $+0.132$ & * & $+0.061$ & * \\
+10.05--10.45 & $+0.175$--$+0.225$ & $+0.135$--$+0.161$ & * & $+0.063$--$+0.072$ & ns--* \\
+\textbf{10.35} & $+0.244$ & $\mathbf{\WindowPeakMarg}$ & * & $+0.072$ & * \\
+\textbf{10.55} & $+0.182$ & $\mathbf{+0.106}$ & * & $+0.054$ & ns \\
+10.65 & $+0.111$ & $+0.056$ & ns & ns & \\
+$\geq10.75$ & ns & ns & & ns & \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\clearpage
 
 \end{document}
