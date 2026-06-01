@@ -1200,6 +1200,13 @@ available at \url{https://github.com/kunalb541/Camels}.
 \section{\textbf{Supporting Tables}}
 \label{app:tables}
 
+This appendix collects the supporting numerical tables referenced in the Results,
+in order of first citation.
+
+Table~\ref{tab:mass_splits} reports the three predictor families' scores in the
+low, intermediate, and high stellar-mass bins for TNG SubLink, underlying the
+mass-regime split.
+
 \begin{deluxetable*}{llccccc}
 \tablecaption{Predictive scores by stellar mass regime, TNG SubLink.
   Bold = WINNER at raw (uncontrolled) level; the assembly-history-controlled
@@ -1222,6 +1229,9 @@ available at \url{https://github.com/kunalb541/Camels}.
   & High ($\geq10.5$) & \HighMassN & 0.791 & 0.792 & 0.735 & TIE \\
 \enddata
 \end{deluxetable*}
+
+Table~\ref{tab:whole_sample} gives the whole-sample scores for each family in both
+TNG and SIMBA, underlying the absence of a consistent single winner.
 
 \begin{deluxetable*}{llcccc}
 \tablecaption{Whole-sample predictive scores by feature family and
@@ -1247,6 +1257,9 @@ available at \url{https://github.com/kunalb541/Camels}.
   $n = \SIMBASpatialN$.  Bold = highest score in column.}
 \end{deluxetable*}
 
+Table~\ref{tab:confound} compares the assembly-history baseline under spatial
+versus SubLink matching, quantifying the matching-method confound.
+
 \begin{deluxetable}{lcc}
 \tablecaption{Assembly-history baseline by matching method.\label{tab:confound}}
 \tablehead{
@@ -1259,6 +1272,9 @@ Spatial & TNG    & $\SpatialBaselineTNG$ \\
 Spatial & SIMBA  & $\SpatialBaselineSIMBA$ \\
 \enddata
 \end{deluxetable}
+
+Table~\ref{tab:l1scan} lists the L1 internal-family marginal $R^2$ at selected
+sliding-window centres.
 
 \begin{deluxetable*}{lccccc}
 \tablecaption{L1 marginal $R^2$ by window centre, selected positions
@@ -1286,6 +1302,9 @@ $\geq10.85$ & \nodata & ns & & ns & \\
 \tablecomments{$*$ denotes 95\% CI lower bound $> 0$.}
 \end{deluxetable*}
 
+Table~\ref{tab:l3scan} lists the L3-controlled internal marginal $R^2$ at selected
+window centres, the basis for the regime boundaries.
+
 \begin{deluxetable*}{lccccc}
 \tablecaption{L3 internal marginal $R^2$ by window centre
   (selected).\label{tab:l3scan}}
@@ -1308,6 +1327,7 @@ $\geq10.75$ & ns & ns & & ns & \\
 \tablecomments{$*$ denotes 95\% CI lower bound $> 0$.}
 \end{deluxetable*}
 
+\clearpage
 % ---------------------------------------------------------------------------
 \section{\textbf{Additional Mechanism and Robustness Diagnostics}}
 \label{app:diagnostics}
@@ -1429,6 +1449,8 @@ a floor-encoding / resolution-limited measurement edge.
   not a physical threshold.
 \label{fig:app_winsor}}
 \end{figure}
+
+\clearpage
 
 % ---------------------------------------------------------------------------
 \section{\textbf{Scope of Claims}}
