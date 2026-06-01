@@ -674,6 +674,47 @@ $\FstarHaloMarg$), compared to 1.6-to-1 under L3 alone --- adding one
 baryonic efficiency feature exposes a qualitative difference in what the
 two classes are tracking.
 
+\subsection{The Nature of the Residual Internal Signal}
+\label{sec:gasnature}
+
+What kind of information does the surviving gas signal carry? Four targeted
+tests on the TNG SubLink sample, using the same five-fold ridge cross-validation
+and shared bootstrap, characterize it.
+
+First, the signal is not merely the present star-forming state. Adding the
+early-epoch star-formation rate, specific star-formation rate, and stellar mass
+to the L3 control, the gas-mass marginal for stellar growth remains positive:
+$+0.022\,[+0.015, +0.029]$ over 9.55--10.55 dex and $+0.069\,[+0.053, +0.086]$
+at lower mass. Once gas is included the current star-formation rate adds
+essentially nothing, so the carrier is the gas reservoir rather than the
+instantaneous conversion rate.
+
+Second, the signal is gas \emph{amount}, not gas-use efficiency. Replacing gas
+amount with the depletion time $t_\mathrm{dep} = M_\mathrm{gas}/\mathrm{SFR}$
+(which is independent of stellar mass), gas amount adds beyond $t_\mathrm{dep}$
+($+0.077$ at low mass, $+0.027$ over the interval) while $t_\mathrm{dep}$ adds
+nothing once gas amount is controlled. The predictive content is the amount of
+available fuel, not how efficiently it is currently being consumed.
+
+Third, the reservoir is strongly shaped by halo assembly history but not
+exhausted by it. The L3 baseline plus stellar mass predicts
+$\log M_\mathrm{gas}$ at $R^2 \simeq 0.8$ over this mass range --- dominated by
+halo mass and assembly timing --- yet the gas component orthogonal to that
+prediction still predicts future growth (residual-gas marginal $+0.077$ at low
+mass, $+0.039$ over the interval). Assembly history substantially determines the
+gas reservoir, but a predictive baryonic residual remains.
+
+Fourth, near the upper boundary the informative predictor changes. Using
+catalog-level black-hole proxies --- black-hole mass and accretion rate, taken
+as state indicators rather than direct feedback-energy measurements ---
+black-hole/quenching state carries the growth signal at the upper transition
+(10.55--10.75 dex; BH-mass marginal $+0.070\,[+0.016, +0.115]$), where the gas
+marginal is not individually significant, and it carries the quenching signal at
+intermediate mass (BH-mass AUC marginal $+0.032\,[+0.025, +0.040]$), where gas
+does not. The high-mass bins are underpowered and the population there is largely
+quenched by $z = 0$ ($\gtrsim 95\%$ above 10.75 dex); this is a change in which
+proxy is informative, not a disappearance of the gas channel.
+
 \subsection{Robustness}
 \label{sec:robustness}
 
