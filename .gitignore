@@ -52,3 +52,7 @@ paper.pdf
 # Local agent tooling / scratch (not part of the project)
 .claude/
 notebooks/
+
+# Large regenerable referee dumps (regenerate via referee_catalog_inventory.py)
+outputs/referee/catalog_field_inventory.csv
+outputs/referee/catalog_field_inventory.md
