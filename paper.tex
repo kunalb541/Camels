@@ -384,7 +384,7 @@ Sections~\ref{sec:window}--\ref{sec:mechanism} concern mid-mass growth,
 where the internal family retains signal under progressively stronger
 assembly-history controls.
 
-\subsection{A Finite Intermediate-Mass Internal Window}
+\subsection{An Upper-Bounded Intermediate-Mass Internal Signal}
 \label{sec:window}
 
 To characterize where internal state's advantage begins and ends, we apply
@@ -393,22 +393,28 @@ the full mass range and compute L1 marginal $R^2$ at each centre
 (Figure~\ref{fig:phase_diagram}; selected window positions in
 Table~\ref{tab:l1scan}, Appendix~\ref{app:tables}).
 
-The window opens near 9.55 dex: internal marginal is negative or noisy
-below this mass and enters significance at $+0.149^*$ in that first window.
-Halo enters three windows earlier (9.25 dex), indicating structural accretion
-carries growth information at lower mass before internal state does.
+In the unfiltered catalog the internal marginal is negative or noisy below
+$\sim$9.55 dex and first enters significance at $+0.149^*$; halo enters three
+windows earlier (9.25 dex), so structural accretion carries growth information
+at lower mass before internal state does.
+This lower boundary is \emph{not} a physical threshold.
+It is a floor-encoding / resolution-limited recovery edge: below $\sim$9.55 dex
+a small tail of unresolved objects whose gas feature sits at the catalog floor
+destabilizes the fit, and repairing that encoding --- either by removing the
+tail or by winsorizing the floor-encoded feature \emph{without removing any
+object} --- restores a positive gas marginal below the nominal edge ($+0.061$
+after removal and $+0.057$ after winsorization, versus $\sim 0$ unfiltered).
+We therefore treat 9.55 dex as the onset of \emph{recoverable} internal signal
+in the unfiltered catalog, not as a sharp physical onset.
 The signal rises to a peak of $+0.245^*$ at 10.25 dex --- the highest value
 in the scan --- with both families significant and internal leading by a
 growing margin toward the centre.
-
-The close is gradual rather than sharp: internal remains significant through
-10.65 dex, drops to ns at 10.75 dex, and both families collapse together
-above that mass with neither carrying growth information beyond structural
-position.
-The full L1 extent is thus 9.55--10.65 dex (13 consecutive significant
-windows), which we term the \textit{L1 marginal window}.
-Under the full 13-feature L3 baseline it tightens to 9.55--10.55 dex
-(the \textit{marginal window}; Section~\ref{sec:l3window}).
+The upper close, by contrast, is physically meaningful: internal remains
+significant through 10.65 dex, drops to ns at 10.75 dex, and both families
+collapse together above that mass.
+The unfiltered interval over which the internal L1 marginal is individually
+significant is thus 9.55--10.65 dex (13 consecutive windows); under the full
+13-feature L3 baseline it is 9.55--10.55 dex (Section~\ref{sec:l3window}).
 
 \subsection{The Window Survives Full Gravity Control}
 \label{sec:l3window}
@@ -426,9 +432,10 @@ Nonetheless, the internal window survives under L3
 (Figure~\ref{fig:phase_diagram}, lower panel;
 selected positions in Table~\ref{tab:l3scan}, Appendix~\ref{app:tables}).
 
-Under L3, the \textit{marginal window} --- where internal $\Rmarg$ is
-individually significant --- spans \textbf{9.55--10.55 dex}
-(\WindowNWindowsL{} consecutive significant windows).
+Under L3, the interval over which internal $\Rmarg$ is individually
+significant spans \textbf{9.55--10.55 dex} (\WindowNWindowsL{} consecutive
+windows); as above, its 9.55-dex lower bound is recovery-limited, while the
+10.55-dex upper bound is the physical edge of the regime.
 The onset is unchanged.
 The close moves one window inward (10.55 vs.\ 10.65 at L1).
 The amplitude at the peak window is $\approx 65\%$ of the L1 peak: full
@@ -518,6 +525,9 @@ The geometry cancellation extends the gap window two windows beyond the
 marginal window: internal $\Rmarg$ becomes ns at 10.65 dex, but the paired
 gap persists to 10.75 dex because the baseline cancels algebraically in the
 shared-bootstrap paired test.
+As for the marginal interval, the 9.55-dex lower bound of this gap interval
+reflects catalog recoverability rather than a physical threshold; only the
+upper bound marks a physical transition.
 
 The gap is also remarkably \textit{flat}: across 1.2 dex of stellar mass,
 $\delta$ ranges $\PairedGapLo$ to $\PairedGapHi$ with no strong peaking or
