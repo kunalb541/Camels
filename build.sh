@@ -21,7 +21,8 @@ shopt -u nullglob
 
 # ---- Step 1: Generate all numerical outputs --------------------------------
 echo "=== Step 1: paper.py ==="
-/Users/kunalbhatia/dev/envs/ml-base/bin/python paper.py "$@"
+# Use $PYTHON if set (e.g. a venv interpreter), else fall back to python3.
+"${PYTHON:-python3}" paper.py "$@"
 
 # ---- Step 2: Compile paper -------------------------------------------------
 echo ""

@@ -1,78 +1,81 @@
-### A Finite Intermediate-Mass Window where Internal Galaxy State Outpredicts Halo Assembly History
+# Gas Reservoirs Predict Future Galaxy Growth Beyond Halo Assembly History in CAMELS
 
-**Kunal Bhatia** — Independent Researcher, Heidelberg, Germany  
+**Kunal Bhatia** — Independent Researcher, Heidelberg, Germany
 ORCID: [0009-0007-4447-6325](https://orcid.org/0009-0007-4447-6325)
 
----
-
-## Referee revision (branch `referee-physical-diagnostics`)
-
-This branch holds the number-backed diagnostics responding to the referee's
-**major-revision** report. `paper.tex` is **not** yet updated — all new analysis,
-figures, and suggested manuscript/response wording live under
-[`outputs/referee/`](outputs/referee/) (see the index there). Headline revisions to the
-claims documented below:
-
-- **The lower edge (log M★ ≈ 9.55) is not a sharp physical boundary** — it is a
-  floor-encoding / resolution-limited measurement edge. The defensible framing is an
-  **upper-bounded gas-channel regime**, not a finite window.
-- **The residual gas signal is carried by gas *amount* (fuel)** — it survives controls
-  for current SFR/sSFR *and* stellar mass (+0.022 in 9.55–10.55, +0.069 at low mass) and
-  is only *partly* encoded by assembly history (R²(gas | L3 + M★) ≈ 0.8, with a
-  still-predictive residual).
-- **Near the upper cutoff (~10.55), black-hole state carries the signal** — BH mass
-  predicts growth where gas no longer does, plus the intermediate-mass quenching signal.
-- **The TNG–SIMBA contrast is scoped to a same-control (L1) comparison** —
-  SIMBA → quenching, TNG → growth; the earlier asymmetric L3-vs-L1 comparison is dropped.
-
-Diagnostic scripts: `referee_*.py`. Reports, figures, and CSVs: `outputs/referee/`.
+Code and manuscript for a CAMELS study of *what kind* of early-time galaxy
+information predicts future growth, and how much of it survives strict
+halo-assembly-history controls.
 
 ---
 
-## What this paper does
+## Summary
 
-We compare three predictor families — **internal galaxy properties**, **halo structural properties**, and **environmental measures** — as independent predictors of stellar growth, quenching, and halo growth in the CAMELS CV suites of IllustrisTNG and SIMBA. We then test how much of each family's signal survives escalating controls for halo structure and assembly history.
+Using the CAMELS CV suites of IllustrisTNG and SIMBA (27 fixed-parameter
+realizations each), we compare three predictor families — **internal galaxy
+properties**, **halo/assembly-history properties**, and **environment** — as
+predictors of future stellar growth, quenching, and halo growth from
+*z* ≈ 0.77 to *z* = 0, measuring how much each family adds beyond increasingly
+strict halo controls (up to a 13-feature assembly-history baseline, **L3**).
 
-The central finding is a finite **marginal window** (9.55 ≲ log M★ ≲ 10.55, 11 consecutive windows) where internal galaxy state retains significant marginal predictive power for stellar growth beyond a full 13-feature halo assembly-history baseline. A broader **gap window** (9.55–10.75 dex, 13 windows) is where the paired internal–halo gap is flat and positive.
+The main result, in TNG:
+
+- **Gas-reservoir information predicts future stellar growth beyond the full L3
+  assembly-history control** at low-to-intermediate stellar mass, up to
+  log M⋆ ≈ 10.55.
+- **It is gas _amount_, not star-formation state or efficiency** — the signal
+  survives joint control for stellar mass, SFR, and sSFR, and gas amount adds
+  beyond the depletion time *t*_dep = M_gas/SFR (which adds ≈ 0 once amount is
+  included).
+- **The reservoir is strongly shaped by assembly history but not exhausted by
+  it** — the L3 + M⋆ baseline predicts log M_gas at *R*² ≈ 0.8, yet the orthogonal
+  residual gas still predicts growth.
+- **Near log M⋆ ≈ 10.55 the informative predictor changes** to black-hole /
+  quenching state (traced by catalog-level black-hole *state* proxies — mass and
+  accretion rate — not direct feedback-energy measurements), and the high-mass
+  population is largely quenched.
+
+The picture is **fuel-limited → quenching-limited** growth. The lower edge
+(log M⋆ ≈ 9.55) is a **floor-encoding / resolution-limited measurement edge**, not
+a sharp physical threshold; the defensible result is an **upper-bounded
+gas-reservoir regime**.
 
 ---
 
 ## Key results
 
-### Whole-sample matrix
+**Whole-sample matrix.** Every cell of the 3×3 (family × target) score matrix is a
+statistical tie in both TNG and SIMBA — no family leads globally. The tie conceals
+a structured mass-regime pattern.
 
-Every cell in the 3×3 (family × target) performance matrix is a statistical tie in both TNG and SIMBA. No feature family leads globally. The whole-sample tie conceals a structured mass-regime pattern.
+**Internal beyond gravity (TNG, mid-mass growth).** The internal-family marginal
+beyond L3 is positive and significant; the paired internal − halo gap is flat and
+positive across the regime (+0.052 to +0.089). Gas mass is the only internal
+feature that survives L3 residualization.
 
-### The intermediate-mass windows
+**Mechanism (TNG).**
 
-| Window | Extent | N windows | Key quantity |
-|--------|--------|-----------|--------------|
-| **Marginal window** (L3 internal $R^2$ significant) | 9.55–10.55 dex | 11 | Peak internal marginal $R^2$ = +0.161* |
-| **Gap window** (paired internal−halo gap positive) | 9.55–10.75 dex | 13 | Gap range +0.052 to +0.089, all CIs positive |
-| L1 marginal window | 9.55–10.65 dex | 13 | Peak internal L1 $R^2$ = +0.245* |
+| Question | Result |
+| --- | --- |
+| Current SF state? | No — gas survives SFR + sSFR + M⋆ control (+0.022 at 9.55–10.55, +0.069 at low mass) |
+| Amount vs. efficiency? | Amount — gas adds beyond *t*_dep; *t*_dep adds ≈ 0 beyond gas |
+| Assembly-encoded? | Largely — *R*²(gas \| L3+M⋆) ≈ 0.8 — but the residual still predicts growth (+0.039 / +0.077) |
+| Upper transition (~10.55)? | Black-hole mass carries growth (+0.070) and intermediate-mass quenching (AUC +0.032) |
+| Unresolved L3 absorption | Distributed across the correlated assembly manifold (no single feature recovers it; early-accretion sl4/sl8 ≤ 7% each) |
 
-### Mechanistic decomposition
+**Robustness.** The internal-gas result is not a linearity artifact: internal
+marginal *R*² = +0.139 (ridge), +0.120 (random forest), +0.119 (hist. gradient
+boosting), with gas mass the top internal feature in all three.
 
-| Component | Result |
-|-----------|--------|
-| Dominant internal carrier | Gas mass (only surviving feature after L3 residualization) |
-| Main absorbing gravity channel | Peak-mass ratio + half-mass epoch (19% recovery when ablated) |
-| Ablation coverage | Three components account for ~29% of absorbed signal; ~71% unresolved |
-| Merger counts | 0% recovery — window is merger-count-independent |
-| f★ test | Internal survives (0.086* [+0.043, +0.133]); halo absorbed (0.017 ns) |
+**Cross-simulation (matched L1 control).** The L3 control exists only for TNG
+(SubLink trees); SIMBA is compared at a matched static-halo **L1** control, with no
+SIMBA L3 claim. At L1, TNG carries its beyond-gravity signal in **growth**
+(+0.245 vs. SIMBA +0.080 n.s.) and SIMBA in **quenching** (+0.141 vs. TNG +0.060).
 
-### Cross-family contrast (TNG vs. SIMBA)
-
-| Family | Stronger signal in | Peak marginal | At same L1 control |
-|--------|--------------------|---------------|-------------------|
-| TNG | Stellar growth (L3 marginal window) | $R^2$ = 0.161* (11 windows) | TNG L1 quench peak = +0.060* (6 windows) |
-| SIMBA | Quenching (L1) | AUC = 0.141* (10+ windows) | SIMBA–TNG amplitude ratio ≈ 2.4× at L1 |
-
-TNG growth marginal window 3.5× larger in amplitude than SIMBA growth window. SIMBA quenching signal ~2.4× larger than TNG quenching at the same L1 control (the ratio narrows from ~3× when TNG is evaluated at the more conservative L3 level).
-
-### Observational prediction
-
-In real galaxies (9.55–10.55 dex, z ≲ 0.1), cold-gas mass should retain marginal predictive power for stellar growth above and beyond what halo-mass proxies already predict. The xGASS/xCOLD GASS surveys cover exactly this stellar-mass range with companion halo-mass proxies — a marginal-predictive battery on those catalogs would constitute a direct test.
+**Observational prediction.** At fixed stellar mass and halo proxies, gas-rich
+galaxies should grow preferentially (testable with cold-gas surveys such as
+xGASS / xCOLD GASS). Note the simulation analysis uses **total** gas mass; the
+catalogs do not provide a phase-separated cold/star-forming gas reservoir.
 
 ---
 
@@ -80,67 +83,114 @@ In real galaxies (9.55–10.55 dex, z ≲ 0.1), cold-gas mass should retain marg
 
 ```
 camels/
-├── paper.py              # Full analysis pipeline (data loading → analysis → macros)
-├── make_figures.py       # Generate all 6 paper figures (standalone, no data download)
-├── paper.tex             # LaTeX source (AASTeX 7.0.1)
-├── build.sh              # Run paper.py then latexmk → paper.pdf
-├── refs.bib              # BibTeX references
-├── battery.py            # Predictor-family battery (Ridge/logistic, 5-fold CV)
-├── features.py           # Feature extraction from CAMELS catalogs
-├── targets.py            # Target construction (stellar growth, quenching, halo growth)
-├── sublink.py            # SubLink tree matching utilities
-├── camels_data.py        # CAMELS data loading and caching
-├── config.py             # Paths and hyperparameters
+├── paper.tex                 # Manuscript source (AASTeX 7.0.1)
+├── build.sh                  # paper.py → latexmk → paper.pdf
+├── refs.bib                  # BibTeX references
+├── requirements.txt          # Python dependencies
+├── paper.py                  # Analysis pipeline → outputs/data/paper_macros.tex
+├── battery.py                # Predictor-family battery (ridge / logistic, 5-fold CV, paired bootstrap)
+├── features.py               # Feature extraction from CAMELS catalogs
+├── targets.py                # Targets: stellar growth, quenching, halo growth
+├── sublink.py                # SubLink merger-tree matching
+├── camels_catalog.py         # CAMELS catalog loading
+├── camels_data.py            # CAMELS data loading + caching
+├── config.py                 # Paths and hyperparameters
+├── make_figures.py           # Main-text figure generation
+├── referee_scripts/          # Referee-revision diagnostics + figure generators (see referee_scripts/README.md)
 ├── outputs/
-│   ├── data/             # paper_macros.tex + cached results (JSON, pkl)
-│   ├── figures/          # PDF figures (fig01–fig06)
-│   ├── tables/           # LaTeX table fragments
-│   └── logs/             # LaTeX aux files + paper.pdf
-└── paper.pdf             # Compiled paper (generated by build.sh)
+│   ├── data/paper_macros.tex # Pipeline-generated LaTeX macros (tracked, so the paper compiles without rerunning)
+│   ├── figures/              # Main-text figure PDFs (fig01–fig05)
+│   └── referee/              # Diagnostic reports, CSVs, figures, and response_to_referee.md (see outputs/referee/README.md)
+├── cover_letter.txt          # AAS submission materials
+├── declaration_of_interest.txt
+├── highlights.txt
+├── README.md
+└── LICENSE                   # MIT
 ```
+
+Large/regenerable artifacts are **not** tracked (see `.gitignore`): the raw CAMELS
+catalogs (`outputs/cache/`, HDF5), run pickles (`outputs/baseline_*`,
+`outputs/simba_CV`), LaTeX aux (`outputs/logs/`), and `paper.pdf`. Everything
+needed to **compile the manuscript** and to **read the analysis** is tracked.
 
 ---
 
-## Reproducing the paper
+## Reproducing
 
-### Requirements
+### 1. Compile the manuscript (no data download needed)
 
-```bash
-# Python environment
-/Users/kunalbhatia/dev/envs/ml-base/bin/pip install -r requirements.txt
-
-# LaTeX
-brew install basictex
-tlmgr install latexmk aastex booktabs microtype
-```
-
-### Run
+The figures and pipeline macros are tracked, so a clean clone compiles directly:
 
 ```bash
-./build.sh                # full pipeline + LaTeX compile
-python make_figures.py  # regenerate all 6 figures from paper data (no CAMELS download needed)
+latexmk -pdf -outdir=outputs/logs paper.tex && cp outputs/logs/paper.pdf .
 ```
 
-### Data
+Requires a TeX distribution with `latexmk` and the AASTeX 7 class
+(`aastex701.cls`, on CTAN / TeX Live).
 
-CAMELS CV suite (IllustrisTNG and SIMBA): download via the [CAMELS public release](https://camels.readthedocs.io/).
-Set paths in `config.py`.
+### 2. Regenerate the full analysis (requires CAMELS data)
+
+```bash
+python -m venv .venv && source .venv/bin/activate     # or your env of choice
+pip install -r requirements.txt
+# Download the CAMELS CV suites (IllustrisTNG + SIMBA) and set their paths in config.py
+./build.sh                                            # pipeline + LaTeX → paper.pdf
+```
+
+The CAMELS simulation data are publicly available from the
+[CAMELS data release](https://camels.readthedocs.io/).
+
+### 3. Referee-revision diagnostics
+
+Run from the repository root (a path bootstrap handles imports):
+
+```bash
+python referee_scripts/referee_gas_vs_sfr_discriminator.py
+python referee_scripts/make_fig_mechanism.py
+```
+
+See [`referee_scripts/README.md`](referee_scripts/README.md) and the script → report
+index in [`outputs/referee/README.md`](outputs/referee/README.md).
 
 ---
 
-## Paper figures
+## Figures
+
+Main text:
 
 | Figure | Description |
-|--------|-------------|
-| Fig. 1 | Full 3×3 score matrix for TNG and SIMBA |
-| Fig. 2 | Phase diagram: L1 marginal window (9.55–10.65 dex) and L3 marginal window (9.55–10.55 dex, green shading) vs. mass |
-| Fig. 3 | Flat paired gap across the gap window (9.55–10.75 dex, 13 windows) |
+| --- | --- |
+| Fig. 1 | 3×3 family × target score matrices (TNG and SIMBA) |
+| Fig. 2 | Phase diagram: internal marginal vs. stellar mass under L1 and L3 controls |
+| Fig. 3 | Flat, positive internal − halo paired gap under L3 |
 | Fig. 4 | Feature-winner map (L3-residualized permutation importance) |
 | Fig. 5 | Assembly ablation map |
-| Fig. 6 | Target-channel contrast: TNG (growth marginal window upper-left; quenching at L1 solid + L3 dashed lower-left) vs. SIMBA (growth fragmented upper-right; quenching L1 lower-right). Same-control-level quenching comparison: TNG L1 peak +0.060, SIMBA L1 peak +0.141 (~2.4×). |
+| Fig. 6 | Mechanism: gas survives SF control / amount-not-efficiency / assembly-shaped residual / BH at the cutoff |
+| Fig. 7 | Cross-simulation comparison at a matched L1 control (TNG vs. SIMBA, growth and quenching) |
+
+Appendix Figs. 8–13 reproduce the full diagnostics (gas-vs-SFR, depletion time,
+assembly encoding, BH absorber, matched pairs, lower-edge winsorization).
 
 ---
+
+## Referee revision
+
+This version responds to a referee **major-revision** report. The reframing — from
+a "finite intermediate-mass window" to a physically interpreted, upper-bounded
+gas-reservoir regime — and all mechanism analyses, robustness checks, and the
+point-by-point response letter are reproducible under
+[`outputs/referee/`](outputs/referee/). Every number was independently
+re-derived from the raw data through the paper pipeline.
+
+---
+
+## Data and code availability
+
+The CAMELS simulation data used here are public
+([camels.readthedocs.io](https://camels.readthedocs.io/)). All analysis code,
+figure-generation scripts, and the manuscript source are in this repository
+([github.com/kunalb541/Camels](https://github.com/kunalb541/Camels)).
 
 ## License
 
-MIT — see `LICENSE`.
+MIT — see [`LICENSE`](LICENSE).
