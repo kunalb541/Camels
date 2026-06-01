@@ -22,8 +22,8 @@
 
 \begin{document}
 
-\title{A Finite Intermediate-Mass Window where Internal Galaxy State
-       Outpredicts Halo Assembly History}
+\title{Gas Reservoirs Predict Future Galaxy Growth Beyond Halo Assembly
+       History in CAMELS}
 
 % Double-blind placeholder
 \author{Anonymous}
@@ -32,42 +32,39 @@
 
 % ---------------------------------------------------------------------------
 \begin{abstract}
-We compare three predictor families --- internal galaxy properties, halo
-structural properties, and environmental measures --- as independent
-predictors of stellar growth, quenching, and halo growth in the CAMELS CV
-suites of IllustrisTNG and SIMBA, then test how much of each family's signal
-survives escalating controls for halo structure and assembly history.
-No family systematically leads across all targets: the $3 \times 3$
-performance matrix shows statistical ties in both families, with the leading
-predictor depending on both target and mass regime.
-This whole-sample tie conceals a finite intermediate-mass \textit{marginal
-window} ($9.55 \lesssim \logM \lesssim 10.55$; \WindowNWindowsL{} consecutive
-windows) where the assembly-history-controlled internal $\Rmarg$ is
-individually significant beyond a 13-feature halo assembly-history baseline
-comprising static structural position, four accretion-rate windows, peak halo
-mass, half-mass assembly epoch, merger counts, and major-merger timing.
-Across the broader \textit{gap window} ($9.55 \lesssim \logM \lesssim 10.75$;
-\PairedGapNWindows{} consecutive windows), the shared-bootstrap
-internal--halo paired gap is flat and positive ($\PairedGapLo$ to
-$\PairedGapHi$, all 95\% CIs positive); because the assembly-history baseline
-cancels algebraically in the paired test, this is the most statistically
-robust of the paper's main results.
-Gas mass is the dominant surviving internal carrier; peak assembly timing ---
-not merger history --- is the dominant gravitational absorber of the
-internal predictive signal (removing peak-mass ratio and half-mass epoch
-recovers \AblationTimingPct\% of the absorbed internal marginal; removing
-merger counts recovers 0\%).
-Adding stellar-to-halo fraction ($\fstar$) to the assembly-history baseline
-absorbs halo's surviving signal entirely ($\LThreeHaloMarg^* \to
-\FstarHaloMarg$ ns) but leaves internal's intact ($\LThreeInternalMarg^* \to
-\FstarInternalMarg^*$), showing the two surviving signals track structurally
-different baryonic information.
-The cross-family comparison reveals different target-channel expression:
-in TNG the signal concentrates in stellar growth (\WindowNWindowsL-window
-L3 band, peak $\Rmarg = \WindowPeakMarg$); in SIMBA the stronger signal
-is in quenching (peak marginal AUC $= \SimbaQuenchPeak$, $10+$ windows at
-L1) while the growth window is fragmented and \SimbaGrowthRatio$\times$
-weaker.
+Does a galaxy's gas content tell us anything about its future growth once its
+dark-matter halo history is already known? We test this question in the CAMELS
+CV suite using 27 fixed-parameter realizations of the IllustrisTNG and SIMBA
+galaxy-formation models. For each galaxy, we compare three predictor families
+--- internal galaxy properties, halo/assembly-history properties, and
+environment --- as predictors of future stellar growth, quenching, and halo
+growth from $z \simeq 0.77$ to $z = 0$. We measure how much predictive power
+each family adds beyond increasingly strict halo controls, ending with a
+13-feature assembly-history baseline.
+
+In TNG, gas reservoir information predicts future stellar growth beyond the
+full assembly-history control at low-to-intermediate stellar mass, up to
+$\logM/M_\odot \simeq 10.55$. This is not simply a current-star-formation
+effect: the gas signal survives controls for stellar mass, SFR, and sSFR. It
+is also not a gas-use-efficiency effect: gas amount remains informative, while
+depletion time adds no comparable information once gas amount is included.
+Halo assembly history strongly predicts the gas reservoir itself
+($R^2 \simeq 0.8$), but the residual gas component still predicts future
+growth. Thus the gas reservoir is shaped by halo history but not exhausted by
+it.
+
+Near $\logM/M_\odot \simeq 10.55$, the predictive structure changes.
+Black-hole/quenching state, traced by catalog-level black-hole proxies rather
+than direct feedback-energy measurements, becomes more informative, and the
+high-mass population is largely quenched. At matched L1 control, TNG and SIMBA
+express residual baryonic information in different channels: stellar growth in
+TNG and quenching in SIMBA. We caution that the low-mass edge is
+resolution/floor-sensitive rather than a sharp physical threshold, and that the
+environment result is limited to the CAMELS CV volume and features. Overall,
+the results support a fuel-limited to quenching-limited picture of future
+galaxy growth and motivate an observational test: gas-rich galaxies should
+grow preferentially at fixed stellar mass and assembly proxies in surveys such
+as xGASS\,/\,xCOLD\,GASS.
 \end{abstract}
 
 \keywords{galaxies: evolution --- galaxies: statistics ---
