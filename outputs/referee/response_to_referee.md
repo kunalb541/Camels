@@ -114,10 +114,13 @@ result as specific to this volume and feature set rather than as a general findi
 
 ### Comment 5 — linearity of the ridge model
 
-We re-ran the mid-mass internal-gas test with non-linear models. The internal-family
-marginal survives: ridge +0.139 [+0.119, +0.153], random forest +0.120 [+0.102,
-+0.132], gradient boosting +0.119 [+0.100, +0.135]; gas mass remains the top internal
-feature in all three. The result is not an artifact of linearity; these values
+We re-ran the mid-mass internal-gas test with non-linear models, fitting the 13-feature
+assembly-history baseline *itself* with the same random-forest / gradient-boosting model
+so the baseline is free to capture non-linear assembly-history structure (not only the
+internal model). The internal-family marginal survives: ridge +0.139 [+0.119, +0.153],
+random forest +0.120 [+0.102, +0.132], gradient boosting +0.119 [+0.100, +0.135]; gas
+mass remains the top internal feature in all three. A more flexible, non-linear
+assembly-history baseline therefore does not absorb the gas signal. The result is not an artifact of linearity; these values
 (ridge +0.139, random forest +0.120, histogram gradient boosting +0.119; gas mass top
 in all three) are now reported explicitly in the manuscript robustness subsection (§3.9).
 
