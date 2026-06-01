@@ -139,7 +139,9 @@ Appendix Figs. 8–12. We note that the loaded CAMELS group-catalog products pro
 subhalo gas mass only — no phase-separated cold or star-forming gas-mass field is present
 — so we frame the prediction in terms of total gas-reservoir content and flag cold/
 star-forming phase separation as requiring particle-level or value-added data (now stated
-as a caveat in §4.6).
+as a caveat in §4.6). The xGASS/xCOLD GASS test should accordingly be read as probing
+whether the observable cold-gas reservoir traces the same residual fuel channel, not as a
+one-to-one measurement of the total-gas simulation predictor.
 
 ### Comment 7 — the halo L3 marginal triangles
 

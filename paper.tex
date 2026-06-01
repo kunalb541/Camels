@@ -558,9 +558,9 @@ increases by $1.51$ dex --- the 10.55-dex boundary coincides with the onset of
 black-hole--associated quenching, which is why it, unlike the lower edge, is a
 physical transition.
 
-The gap is also remarkably \textit{flat}: across 1.2 dex of stellar mass,
-$\delta$ ranges $\PairedGapLo$ to $\PairedGapHi$ with no strong peaking or
-edge effect.
+The gap is also broadly flat, with no systematic trend across mass: over
+1.2 dex of stellar mass, $\delta$ ranges $\PairedGapLo$ to $\PairedGapHi$ without
+strong peaking or an edge effect.
 Internal's advantage over halo is a stable property of the entire
 intermediate-mass regime, not an artefact of a single peak mass.
 The simulation jackknife confirms this: the ordering internal $>$ halo
@@ -662,10 +662,12 @@ Late-lookback accretion (4--8 Gyr) accounts for a further
 \AblationLongAccretionPct\%.
 Merger counts recover zero internal signal: the residual internal signal in
 the mid-mass regime is entirely merger-count-independent.
-Together, the three tested components account for approximately 29\% of the
-absorbed internal signal at mid-mass (timing: \AblationTimingPct\%, long
-accretion: \AblationLongAccretionPct\%, mergers: 0\%); the remaining
-$\approx 71\%$ is not resolved to specific assembly-history features in this
+Individually, the tested components each recover only a minority of the absorbed
+internal signal at mid-mass (timing \AblationTimingPct\%, long accretion
+\AblationLongAccretionPct\%, mergers 0\%); these recoveries are overlapping and
+non-additive because the assembly features are collinear, and the bulk of the
+absorbed signal ($\approx 71\%$) is not resolved to any specific assembly-history
+feature in this
 decomposition.
 Extending the ablation to the early-accretion band (1--2 Gyr lookback,
 $\Delta\log M_\mathrm{halo}$ over 4 and 8 SubLink steps) does not localize the
@@ -958,7 +960,10 @@ range, with group-membership and halo-mass proxies available from companion
 catalogs.
 A marginal-predictive battery run on xGASS/xCOLD\,GASS --- with halo-mass
 proxies as the assembly-history control and cold-gas mass as the test predictor
---- would constitute a direct observational test of the regime.
+--- would constitute a direct observational test of the regime. Because the
+simulation-side predictor is \emph{total} subhalo gas mass, this should be read as
+a test of whether the accessible cold-gas reservoir traces the same residual fuel
+channel, rather than a one-to-one measurement of the exact CAMELS predictor.
 If the signal survives in observed galaxies, it would establish that the
 predictive contribution of gas content relative to halo assembly is not an
 artifact of the CAMELS feedback prescriptions.
@@ -983,14 +988,13 @@ whole-sample tie of Section~\ref{sec:whole_sample} is real.
 The assembly ablation result (Section~\ref{sec:mechanism}) constrains which
 part of the halo assembly-history baseline most overlaps with the internal
 predictive signal.
-Peak mass ratio and half-mass assembly snapshot account for
-\AblationTimingPct\% of the absorbed internal advantage; late-lookback
-accretion accounts for a further \AblationLongAccretionPct\%; merger counts
-account for 0\%.
-Together these three decomposed components account for $\sim 29\%$ of the
-absorbed signal at mid-mass --- a meaningful but minority fraction, indicating
-that the dominant absorbing channels within L3 are not yet individually
-identified.
+Individually, peak mass ratio and half-mass assembly snapshot recover
+\AblationTimingPct\% of the absorbed internal advantage, late-lookback accretion
+\AblationLongAccretionPct\%, and merger counts 0\%.
+Because the assembly features are collinear, these per-component recoveries are
+overlapping and non-additive: no single decomposed channel accounts for the bulk of
+the absorbed signal. This is a collinearity/decomposition limitation of the L3
+control rather than evidence that the absorbed signal is individually irreducible.
 
 Peak mass ratio and half-mass assembly epoch together encode the galaxy's
 gravitational \textit{maturity} in the sense of \citet{lacey1993} ---
@@ -1073,7 +1077,7 @@ higher-resolution CAMELS run with which to test convergence, so we report the
 physically meaningful edge.
 The small box also coarsely samples large-scale modes, so the environmental
 null --- environment carries no marginal beyond L1 in any window --- is
-specific to this CV volume and the environment features used here, and we do
+specific to the CAMELS CV volume and the environment features used here, and we do
 not claim it as a general result.
 The CV suite holds astrophysical parameters fixed, so results are valid for the
 specific TNG and SIMBA prescriptions at CAMELS resolution; the effect of varying
@@ -1088,7 +1092,11 @@ molecular-gas mass field is present), so our gas predictor is total gas. The
 observational prediction is correspondingly framed in terms of total
 gas-reservoir content and should be tested with cold-gas surveys; isolating the
 cold or star-forming phase on the simulation side would require particle-level or
-value-added data beyond the loaded catalogs.
+value-added data beyond the loaded catalogs. At the relevant stellar masses the
+predictive signal is therefore interpreted as a gas-\emph{reservoir} signal, but the
+present catalog-level analysis cannot decompose it into cold, star-forming, and hot
+phases; the proposed cold-gas test accordingly probes whether the observable cold-gas
+reservoir traces the same residual channel rather than the exact simulation variable.
 
 On the SIMBA side, SubLink-equivalent merger trees are not available, so L3
 assembly-history control cannot be applied. The SIMBA quenching result
@@ -1104,15 +1112,12 @@ a larger share of the internal signal, though the robustness of the surviving
 signal in the permutation-importance test (gas mass) and the $\fstar$ boundary
 check suggests this result is not dominated by L3 feature-set
 sensitivity.
-Finally, SubLink matching excludes galaxies that merge or are disrupted
-between $z = 0.77$ and $z = 0$, leaving the mid-mass sample modestly biased
-toward galaxies with surviving central descendants.
-Excluded galaxies --- those undergoing mergers or disruption --- likely have
-disturbed gas reservoirs and atypically elevated star-formation rates relative
-to the retained sample; including them would tend to suppress rather than
-amplify the internal marginal signal near the 9.55 dex recovery onset.
-The lower edge of the regime is therefore, if anything, a conservative
-estimate.
+Finally, because SubLink matching requires a matched central descendant, the
+analysis excludes galaxies that merge or are disrupted between $z = 0.77$ and
+$z = 0$. These objects may have different gas reservoirs and growth histories from
+the retained population, so all results are conditional on the matched
+central-galaxy sample; we do not claim a specific direction for how their inclusion
+would change the internal marginal.
 
 % ---------------------------------------------------------------------------
 \section{\textbf{Conclusions}}
@@ -1301,7 +1306,9 @@ A coarsened-exact-matching test of the gas$\rightarrow$growth effect at fixed st
 mass, halo mass and assembly history is shown in Figure~\ref{fig:app_matched}. A
 positive effect is recovered where matching is feasible --- low mass,
 $\mathrm{ATT}=+0.138\,[+0.105, +0.172]$ dex at borderline covariate balance
-($|\mathrm{SMD}|=0.14$) --- while the intermediate and upper regimes are
+($|\mathrm{SMD}|=0.14$; the quoted interval reflects bootstrap scatter only and does
+not include matching/balance uncertainty) --- while the intermediate and upper
+regimes are
 matching-infeasible (insufficient high-gas/low-gas overlap at fixed covariates). We
 treat this as supportive robustness at low mass rather than a global causal estimate,
 which is why it appears here rather than in the main text.
