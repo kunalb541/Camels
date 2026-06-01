@@ -689,7 +689,34 @@ two classes are tracking.
 
 What kind of information does the surviving gas signal carry? Four targeted
 tests on the TNG SubLink sample, using the same five-fold ridge cross-validation
-and shared bootstrap, characterize it.
+and shared bootstrap, characterize it (Figure~\ref{fig:mechanism}).
+
+\begin{figure*}[t!]
+\centering
+\includegraphics[width=\textwidth]{outputs/referee/fig_mechanism_compact.pdf}
+\caption{Mechanism of the residual gas signal in TNG (SubLink trees), by
+  stellar-mass regime: low ($9.0$--$9.55$), \textit{orig} ($9.55$--$10.55$), upper
+  transition ($10.55$--$10.75$), and high ($>10.75$ dex). Error bars are shared
+  paired-bootstrap 95\% confidence intervals throughout.
+  \textbf{(a)}~The gas-mass marginal for future stellar growth survives joint
+  control for the early star-formation rate, specific star-formation rate,
+  \emph{and} stellar mass on top of the L3 assembly-history baseline --- significant
+  at low and intermediate mass (green), not individually significant above the
+  cutoff (grey).
+  \textbf{(b)}~The carrier is gas \emph{amount}, not efficiency: gas mass adds
+  growth information beyond the depletion time
+  $t_\mathrm{dep}=M_\mathrm{gas}/\mathrm{SFR}$, whereas $t_\mathrm{dep}$ adds
+  essentially nothing once gas amount is included.
+  \textbf{(c)}~The reservoir is strongly shaped by assembly history --- the
+  L3$+M_\star$ baseline predicts $\log M_\mathrm{gas}$ at $R^2\simeq0.8$ (light
+  bars, left axis) --- yet the orthogonal residual gas still predicts growth
+  (green, right axis): assembly-shaped, but not exhausted.
+  \textbf{(d)}~Near the upper boundary the informative predictor changes hands from
+  gas to black-hole mass --- used as a black-hole/quenching \emph{state} proxy, not
+  a direct feedback-energy measurement: the gas$\rightarrow$growth marginal fades
+  while the BH-mass$\rightarrow$growth marginal peaks at the upper transition.
+\label{fig:mechanism}}
+\end{figure*}
 
 First, the signal is not merely the present star-forming state. Adding the
 early-epoch star-formation rate, specific star-formation rate, and stellar mass
@@ -812,21 +839,21 @@ decomposition.
 
 \begin{figure*}[t!]
 \centering
-\includegraphics[width=\textwidth]{outputs/figures/fig06_cross_family.pdf}
-\caption{Target-channel contrast: TNG vs.\ SIMBA.
-  \textit{Upper panels}: L1 growth marginal $R^2$ for TNG (left) and SIMBA
-  (right). The TNG growth interval is clean and contiguous (peak $+0.245$); SIMBA growth is
-  weak and fragmented (local peak $+0.069$, not robustly significant).
-  \textit{Lower panels}: quenching marginal AUC for TNG (left, both L1 solid
-  and L3 dashed) and SIMBA L1 (right). TNG L1 quenching: \TNGQuenchLoneNWindows{}
-  windows, peak $\TNGQuenchLonePeak^*$; TNG L3: \TNGQuenchNWindows{} windows,
-  peak $\TNGQuenchPeakMarg^*$. TNG quenching is weak at both control levels.
-  SIMBA quenching at L1: 10+ windows, peak $+\SimbaQuenchPeak^*$.
-  Evaluated at the same L1 control, the SIMBA--TNG quenching amplitude ratio is
-  $\sim$2.4$\times$ in SIMBA's favour (L1 vs.\ L1). Tree-based assembly controls
-  are unavailable for SIMBA at CAMELS resolution, so no SIMBA L3 comparison is
-  made.
-  Green and orange shading mark the significant windows.
+\includegraphics[width=\textwidth]{outputs/referee/fig_simba_same_control.pdf}
+\caption{Cross-simulation comparison at a matched L1 (static-halo) control:
+  internal-family marginal for TNG (blue) and SIMBA (red), by target channel.
+  \textit{Left}: future stellar growth (marginal $R^2$ beyond L1). TNG carries a
+  clean internal signal ($+0.245\,[+0.205, +0.293]$), whereas SIMBA's is weak and
+  not robustly significant (peak $+0.080$, 95\% CI spanning zero).
+  \textit{Right}: quenching (marginal AUC beyond L1). The ordering reverses ---
+  SIMBA's internal quenching marginal is large
+  ($+\SimbaQuenchPeak^*\,[+0.096, +0.188]$) while TNG's is small
+  ($+0.060^*\,[+0.032, +0.081]$), an L1-vs-L1 amplitude ratio of
+  $\sim$2.4$\times$ in SIMBA's favour. Error bars are shared paired-bootstrap
+  95\% confidence intervals; the peak mass band and sample size are annotated on
+  each bar. Tree-based assembly (L3) controls are unavailable for SIMBA at CAMELS
+  resolution, so the comparison is made only at the shared L1 control and no SIMBA
+  L3 residual is claimed.
 \label{fig:cross_family}}
 \end{figure*}
 
