@@ -1279,6 +1279,128 @@ $\geq10.75$ & ns & ns & & ns & \\
 \end{deluxetable*}
 
 % ---------------------------------------------------------------------------
+\section{\textbf{Additional Mechanism and Robustness Diagnostics}}
+\label{app:diagnostics}
+
+The compact mechanism summary in the main text (Figure~\ref{fig:mechanism}) and the
+cross-simulation comparison (Figure~\ref{fig:cross_family}) are distilled from a
+broader set of diagnostics, reproduced here in full so that the supporting evidence
+is visible rather than asserted. Unless noted, all reuse the paper pipeline
+(five-fold ridge cross-validated $R^2$ for growth, logistic cross-validated AUC for
+quenching, shared paired-bootstrap 95\% confidence intervals) on the TNG SubLink
+sample.
+
+The gas reservoir is separated from the present star-forming state in
+Figure~\ref{fig:app_gasvssfr}: controlling jointly for the early star-formation
+rate, specific star-formation rate, and stellar mass on top of L3, the gas-mass
+marginal for future growth remains $+0.022\,[+0.015, +0.029]$ over 9.55--10.55 dex
+and $+0.069\,[+0.053, +0.086]$ at lower mass. The raw gas-\emph{fraction} marginal
+is inflated by its stellar-mass denominator ($+0.121$); the leakage-free gas-mass
+quantity is the $+0.022$ value quoted throughout.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{outputs/referee/fig_gas_vs_sfr_discriminator.pdf}
+\caption{Gas-reservoir versus current-star-formation discriminator. After
+  controlling for the early SFR, sSFR, and stellar mass, the gas-mass marginal for
+  future growth stays positive ($+0.022$ over the interval, $+0.069$ at low mass);
+  the raw gas-fraction marginal ($+0.121$) is inflated by its stellar-mass
+  denominator and is shown only to disclose that inflation.
+\label{fig:app_gasvssfr}}
+\end{figure*}
+
+Figure~\ref{fig:app_depletion} contrasts gas amount with the depletion time
+$t_\mathrm{dep}=M_\mathrm{gas}/\mathrm{SFR}$ (constructed to be independent of
+stellar mass). Gas amount adds beyond $t_\mathrm{dep}$ ($+0.077$ at low mass,
+$+0.027$ over the interval), whereas $t_\mathrm{dep}$ adds essentially nothing once
+gas amount is included ($\simeq\!-0.000$): the predictive content is the amount of
+available fuel, not the instantaneous conversion efficiency.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{outputs/referee/fig_depletion_time.pdf}
+\caption{Gas amount versus depletion time. Gas amount carries growth information
+  beyond $t_\mathrm{dep}=M_\mathrm{gas}/\mathrm{SFR}$, while $t_\mathrm{dep}$ adds
+  essentially nothing once gas amount is controlled --- the signal is fuel amount,
+  not conversion efficiency.
+\label{fig:app_depletion}}
+\end{figure*}
+
+The reservoir's encoding by assembly history is quantified in
+Figure~\ref{fig:app_gaspred}: the L3$+M_\star$ baseline predicts
+$\log M_\mathrm{gas}$ at $R^2 = 0.793$ (low) and $0.818$ (interval) --- it is largely
+set by halo mass and assembly timing --- yet the gas component orthogonal to that
+prediction still predicts future growth ($+0.077$ low, $+0.039$ interval). The
+reservoir is assembly-shaped but not exhausted.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{outputs/referee/fig_gas_predictability_by_assembly.pdf}
+\caption{Assembly encoding of the gas reservoir. The L3$+M_\star$ baseline predicts
+  the reservoir at $R^2\simeq0.8$, but the orthogonal residual gas retains a positive
+  growth marginal ($+0.077$ low, $+0.039$ interval): the reservoir is shaped by halo
+  assembly history without being fully determined by it.
+\label{fig:app_gaspred}}
+\end{figure*}
+
+Figure~\ref{fig:app_bh} follows the black-hole proxies (mass and accretion rate,
+used as state indicators rather than feedback-energy measurements). The BH-mass
+growth marginal peaks at the upper transition ($+0.070\,[+0.016, +0.115]$, where the
+gas marginal is not individually significant), and the BH-mass quenching marginal is
+significant at intermediate mass ($\mathrm{AUC}\ +0.032\,[+0.025, +0.040]$); above
+10.75 dex the population is $\gtrsim 95\%$ quenched by $z = 0$.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{outputs/referee/fig_bh_absorber.pdf}
+\caption{Black-hole state at the upper transition. Black-hole mass (a state proxy,
+  not a feedback-energy measurement) carries the growth signal at the upper
+  transition and the quenching signal at intermediate mass --- precisely where the
+  gas marginal is not individually significant.
+\label{fig:app_bh}}
+\end{figure*}
+
+A coarsened-exact-matching test of the gas$\rightarrow$growth effect at fixed stellar
+mass, halo mass and assembly history is shown in Figure~\ref{fig:app_matched}. A
+positive effect is recovered where matching is feasible --- low mass,
+$\mathrm{ATT}=+0.138\,[+0.105, +0.172]$ dex at borderline covariate balance
+($|\mathrm{SMD}|=0.14$) --- while the intermediate and upper regimes are
+matching-infeasible (insufficient high-gas/low-gas overlap at fixed covariates). We
+treat this as supportive robustness at low mass rather than a global causal estimate,
+which is why it appears here rather than in the main text.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{outputs/referee/fig_matched_gas_pairs.pdf}
+\caption{Coarsened-exact-matched gas$\rightarrow$growth test. At low mass, where
+  high-gas and low-gas galaxies can be matched on stellar mass, halo mass and
+  assembly history, the matched effect is $\mathrm{ATT}=+0.138$ dex (borderline
+  balance, $|\mathrm{SMD}|=0.14$); the higher-mass regimes lack sufficient overlap to
+  match. Supportive robustness, not a global causal estimate.
+\label{fig:app_matched}}
+\end{figure*}
+
+Finally, Figure~\ref{fig:app_winsor} establishes that the lower edge is not a
+physical threshold. Below 9.55 dex the full-sample gas marginal is destabilised by a
+few objects whose gas feature is pinned at the catalog floor (estimate $+0.005$ with
+a meaningless interval $[-0.279, +0.010]$); deleting that tail gives $+0.061$, and,
+crucially, \emph{winsorizing} the floor-encoded feature without removing any object
+recovers $+0.057$ --- matching the onset band ($+0.061$). The lower edge is therefore
+a floor-encoding / resolution-limited measurement edge.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\columnwidth]{outputs/referee/fig_lower_edge_winsorization.pdf}
+\caption{Lower-edge floor encoding. Deleting ($-6$ objects) or winsorizing
+  ($32$ objects, none removed) the floor-pinned gas feature recovers the same gas
+  marginal ($+0.061$ / $+0.057$) as the onset reference band ($+0.061$), whereas the
+  raw full-sample estimate ($+0.005$) carries a meaningless interval reaching
+  $-0.28$. The lower edge is a floor-encoding / resolution-limited measurement edge,
+  not a physical threshold.
+\label{fig:app_winsor}}
+\end{figure}
+
+% ---------------------------------------------------------------------------
 \section{\textbf{Scope of Claims}}
 \label{app:earned}
 
