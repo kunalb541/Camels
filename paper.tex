@@ -383,7 +383,7 @@ Mid mass ($9.5 \leq \logM < 10.5$) is the only regime with a clear growth
 winner: internal $R^2 = \MidMassInternalR$ versus halo $= \MidMassHaloR$,
 gap $= \MidMassGap$ (bootstrap 95\% CI lower bound $> 0.02$; see
 Table~\ref{tab:gap} for the assembly-history-controlled lower bound,
-$\PairedGapLo$--$\PairedGapHi$ across \PairedGapNWindows{} consecutive
+$\PairedGapLo$--$\PairedGapHi$ across \PairedGapNWindows{} overlapping
 windows).
 At low mass, internal growth is near noise while environmental and halo
 features lead; at high mass, the quenching ordering partially inverts.
@@ -409,6 +409,9 @@ a sliding 0.5-dex window (step 0.1 dex, $n_\mathrm{boot} = 500$) across
 the full mass range and compute L1 marginal $R^2$ at each centre
 (Figure~\ref{fig:phase_diagram}; selected window positions in
 Table~\ref{tab:l1scan}, Appendix~\ref{app:tables}).
+Because the windows are 0.5 dex wide and stepped by only 0.1 dex, adjacent windows
+overlap heavily and are strongly correlated; the window counts below describe the
+contiguous \emph{extent} of significance in the scan, not independent tests.
 
 In the unfiltered catalog the internal marginal is negative or noisy below
 $\sim$9.55 dex and first enters significance at $+0.149^*$; halo enters three
@@ -430,7 +433,7 @@ The upper close, by contrast, is physically meaningful: internal remains
 significant through 10.65 dex, drops to ns at 10.75 dex, and both families
 collapse together above that mass.
 The unfiltered interval over which the internal L1 marginal is individually
-significant is thus 9.55--10.65 dex (13 consecutive windows); under the full
+significant is thus 9.55--10.65 dex (13 overlapping windows); under the full
 13-feature L3 baseline it is 9.55--10.55 dex (Section~\ref{sec:l3window}).
 
 \subsection{The Signal Survives Full Gravity Control}
@@ -450,7 +453,7 @@ Nonetheless, the internal signal survives under L3
 selected positions in Table~\ref{tab:l3scan}, Appendix~\ref{app:tables}).
 
 Under L3, the interval over which internal $\Rmarg$ is individually
-significant spans \textbf{9.55--10.55 dex} (\WindowNWindowsL{} consecutive
+significant spans \textbf{9.55--10.55 dex} (\WindowNWindowsL{} overlapping
 windows); as above, its 9.55-dex lower bound is recovery-limited, while the
 10.55-dex upper bound is the physical edge of the regime.
 The onset is unchanged.
@@ -478,7 +481,7 @@ information is entirely gravity-proxied.
   (lower) versus sliding-window centre (0.5-dex windows, step 0.1 dex).
   L1 significant interval: 9.55--10.65 dex (13 windows).
   L3 significant interval (green shading): 9.55--10.55 dex (\WindowNWindowsL{}
-  consecutive significant windows), where internal $\Rmarg$ is individually
+  overlapping significant windows), where internal $\Rmarg$ is individually
   significant.
   L3 halo collapses to 3 non-contiguous windows (triangles); the halo L3
   markers are shown as disconnected triangles, with no connecting line, because
@@ -533,7 +536,7 @@ $\geq10.85$ & \nodata & ns & \nodata & \\
   L3 shared-bootstrap paired gap $\delta = R^2(\mathrm{L3+internal}) -
   R^2(\mathrm{L3+halo})$ versus window centre with 95\% CI shading.
   The paired gap is significant over 9.55--10.75 dex (\PairedGapNWindows{}
-  consecutive windows), extending two windows beyond the 9.55--10.55 dex
+  overlapping windows), extending two windows beyond the 9.55--10.55 dex
   internal interval, because the geometry cancellation in the paired test
   removes baseline noise.
   Gap ranges $\PairedGapLo$--$\PairedGapHi$ with no strong mass dependence.
@@ -541,7 +544,7 @@ $\geq10.85$ & \nodata & ns & \nodata & \\
 \end{figure}
 
 The gap is significant at every window from 9.55 to 10.75 dex ---
-\PairedGapNWindows{} consecutive windows.
+\PairedGapNWindows{} overlapping windows.
 The geometry cancellation extends this significant range two windows beyond
 the 9.55--10.55 dex internal interval: internal $\Rmarg$ becomes ns at 10.65
 dex, but the paired
@@ -679,7 +682,9 @@ add, so the absorbed signal does not concentrate in any one feature. We therefor
 interpret the unresolved $\approx 71\%$ as distributed, correlated
 assembly-history structure spread across the manifold --- a decomposition limit
 of the present 13-feature L3 control, not a single missing absorber and not a
-claim of fundamental irreducibility.
+claim of fundamental irreducibility (and, as a stronger check, a flexible
+non-linear assembly-history baseline does not absorb the residual gas signal
+either; \S\ref{sec:robustness}).
 
 The gravitational clock most correlated with baryonic growth information is
 \textit{when} the halo assembled most of its mass and whether it has been
@@ -768,7 +773,9 @@ available fuel, not how efficiently it is currently being consumed.
 Third, the reservoir is strongly shaped by halo assembly history but not
 exhausted by it. The L3 baseline plus stellar mass predicts
 $\log M_\mathrm{gas}$ at $R^2 \simeq 0.8$ over this mass range --- dominated by
-halo mass and assembly timing --- yet the gas component orthogonal to that
+halo mass and assembly timing, with stellar mass adding essentially nothing beyond
+L3, so this is assembly/halo-shaped gas rather than a stellar-mass artifact --- yet
+the gas component orthogonal to that
 prediction still predicts future growth (residual-gas marginal $+0.077$ at low
 mass, $+0.039$ over the interval). Assembly history substantially determines the
 gas reservoir, but a predictive baryonic residual remains.
@@ -964,10 +971,13 @@ range, with group-membership and halo-mass proxies available from companion
 catalogs.
 A marginal-predictive battery run on xGASS/xCOLD\,GASS --- with halo-mass
 proxies as the assembly-history control and cold-gas mass as the test predictor
---- would constitute a direct observational test of the regime. Because the
-simulation-side predictor is \emph{total} subhalo gas mass, this should be read as
-a test of whether the accessible cold-gas reservoir traces the same residual fuel
-channel, rather than a one-to-one measurement of the exact CAMELS predictor.
+--- would constitute an observational \emph{proxy} test of the regime. Because the
+simulation-side predictor is \emph{total} subhalo gas mass and the CAMELS target is
+the $\sim 6$--$7$ Gyr growth from $z \approx 0.77$ to $z = 0$, whereas the surveys
+measure cold (HI\,+\,H$_2$) gas and nearer-term growth at low redshift, this should
+be read as a test of whether the accessible cold-gas reservoir traces the
+\emph{same residual gas-reservoir channel} --- not a one-to-one replication of the
+exact CAMELS total-gas, $\sim 6$--$7$ Gyr prediction.
 If the signal survives in observed galaxies, it would establish that the
 predictive contribution of gas content relative to halo assembly is not an
 artifact of the CAMELS feedback prescriptions.
@@ -1143,7 +1153,7 @@ The main findings are:
   \item \textbf{An upper-bounded intermediate-mass gas-reservoir regime}:
     under the full 13-feature assembly-history control, internal galaxy state
     retains significant marginal predictive power for stellar growth up to
-    $\logM/M_\odot \simeq 10.55$ (\WindowNWindowsL{} consecutive significant
+    $\logM/M_\odot \simeq 10.55$ (\WindowNWindowsL{} overlapping significant
     windows over the catalog-recovered interval $9.55$--$10.55$ dex, peak
     internal marginal $R^2 = \WindowPeakMarg^*$, 43\% retention at the fixed
     mid-mass window). The lower edge is a floor-encoding/resolution-limited
@@ -1152,7 +1162,7 @@ The main findings are:
 
   \item \textbf{Internal leads halo across $9.55$--$10.75$ dex}: the
     shared-bootstrap paired gap (internal $-$ halo) under L3 is positive and
-    significant at every window in this range (\PairedGapNWindows{} consecutive
+    significant at every window in this range (\PairedGapNWindows{} overlapping
     windows, $\PairedGapLo$--$\PairedGapHi$, all CIs positive), extending two
     windows beyond the $9.55$--$10.55$ dex internal interval.
     The gap is flat --- it does not peak at a single mass.
@@ -1274,8 +1284,9 @@ available fuel, not the instantaneous conversion efficiency.
 
 The reservoir's encoding by assembly history is quantified in
 Figure~\ref{fig:app_gaspred}: the L3$+M_\star$ baseline predicts
-$\log M_\mathrm{gas}$ at $R^2 = 0.793$ (low) and $0.818$ (interval) --- it is largely
-set by halo mass and assembly timing --- yet the gas component orthogonal to that
+$\log M_\mathrm{gas}$ at $R^2 = 0.793$ (low) and $0.818$ (interval) --- largely set by
+halo mass and assembly timing, with stellar mass adding essentially nothing beyond
+L3 --- yet the gas component orthogonal to that
 prediction still predicts future growth ($+0.077$ low, $+0.039$ interval). The
 reservoir is assembly-shaped but not exhausted.
 
@@ -1314,8 +1325,10 @@ $\mathrm{ATT}=+0.138\,[+0.105, +0.172]$ dex at borderline covariate balance
 not include matching/balance uncertainty) --- while the intermediate and upper
 regimes are
 matching-infeasible (insufficient high-gas/low-gas overlap at fixed covariates). We
-treat this as supportive robustness at low mass rather than a global causal estimate,
-which is why it appears here rather than in the main text.
+treat this as supportive robustness only in the low-mass region where matching is
+feasible --- not a global causal estimate, and not the basis for the main
+intermediate-mass claim, where matching is infeasible --- which is why it appears
+here rather than in the main text.
 
 \begin{figure*}[htbp]
 \centering
@@ -1475,7 +1488,7 @@ Section~\ref{sec:discussion}.
 \caption{Predictive scores by stellar mass regime, TNG SubLink.
   Bold = WINNER at raw (uncontrolled) level; the assembly-history-controlled
   gap for mid-mass growth is $\PairedGapLo$--$\PairedGapHi$ across
-  \PairedGapNWindows{} consecutive windows (Table~\ref{tab:gap}).
+  \PairedGapNWindows{} overlapping windows (Table~\ref{tab:gap}).
   \label{tab:mass_splits}}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{llccccc}
