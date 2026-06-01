@@ -338,9 +338,15 @@ Cross-family quantitative differences are partly a matching artifact
 (Section~\ref{sec:confound}) and are not interpreted as clean physics signals.
 Halo growth ($\Delta\log M_\mathrm{sub}$) is near-unpredictable by any family
 at $z \approx 0.77$ ($R^2 \leq 0.015$ across all three families in TNG;
-Table~\ref{tab:whole_sample}), suggesting that dark matter accretion between
-$z = 0.77$ and $z = 0$ is driven by large-scale density fluctuations not
-encoded in the snapshot properties of individual galaxies.
+Table~\ref{tab:whole_sample}). This bound is for the whole-sample structural
+families; even the richer 13-feature L3 assembly-history context predicts
+whole-sample halo growth at only $R^2 \approx 0.029$, and in the intermediate
+window every family remains $\lesssim 0.016$ (internal $+0.009$, halo $+0.016$,
+environment $+0.000$) --- an order of magnitude below stellar growth, where the
+internal family alone reaches $R^2 \sim 0.2$--$0.3$ in the same window. This
+indicates that dark matter accretion between $z = 0.77$ and $z = 0$ is driven by
+large-scale density fluctuations not encoded in the snapshot properties of
+individual galaxies.
 This contrast is itself informative: late dark-matter accretion is not well
 encoded in individual $z \simeq 0.77$ subhalo, galaxy, or environment
 properties in CAMELS CV, whereas baryonic stellar growth retains stronger
@@ -543,6 +549,13 @@ shared-bootstrap paired test.
 As for the marginal interval, the 9.55-dex lower bound of this gap interval
 reflects catalog recoverability rather than a physical threshold; only the
 upper bound marks a physical transition.
+Across that upper edge the population changes character: between the
+9.55--10.55 dex interval and the 10.55--10.75 dex band the median specific
+star-formation rate drops from $\log\mathrm{sSFR} = -9.63$ to $-10.96$, the
+quenched fraction rises from $0.035$ to $0.498$, and the median black-hole mass
+increases by $1.51$ dex --- the 10.55-dex boundary coincides with the onset of
+black-hole--associated quenching, which is why it, unlike the lower edge, is a
+physical transition.
 
 The gap is also remarkably \textit{flat}: across 1.2 dex of stellar mass,
 $\delta$ ranges $\PairedGapLo$ to $\PairedGapHi$ with no strong peaking or
@@ -639,6 +652,9 @@ None (full L3) & \nodata & $0.185$ & $0.135^*\,[0.095, 0.184]$ & \nodata & $\LTh
 \label{fig:ablation}}
 \end{figure}
 
+From the weak-L1 control (static halo position only) to the full 13-feature L3
+baseline, the internal-family marginal for mid-mass growth falls from $0.308$ to
+$0.135$, so $0.173$ in $R^2$ is absorbed by assembly history.
 Peak mass ratio and half-mass assembly snapshot together account for
 \AblationTimingPct\% of the absorbed internal marginal.
 Late-lookback accretion (4--8 Gyr) accounts for a further
