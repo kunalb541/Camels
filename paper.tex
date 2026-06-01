@@ -247,7 +247,7 @@ observed bootstrap noise structure in the 27-simulation CV suite: gaps
 below 0.02 are within the regime where small changes in simulation selection
 or minor specification differences routinely flip the ordering sign, making
 them uninformative as science claims.
-The main results of this paper --- the intermediate-mass internal window,
+The main results of this paper --- the upper-bounded intermediate-mass regime,
 the flat paired gap, the carrier and ablation decompositions --- are
 continuous statistics evaluated with 95\% bootstrap CIs and do not depend
 on this threshold.
@@ -543,7 +543,7 @@ The gap is also remarkably \textit{flat}: across 1.2 dex of stellar mass,
 $\delta$ ranges $\PairedGapLo$ to $\PairedGapHi$ with no strong peaking or
 edge effect.
 Internal's advantage over halo is a stable property of the entire
-intermediate-mass window, not an artefact of a single peak mass.
+intermediate-mass regime, not an artefact of a single peak mass.
 The simulation jackknife confirms this: the ordering internal $>$ halo
 under L3 is preserved at all 9.55--10.55 dex windows in 27/27
 leave-one-out configurations.
@@ -555,7 +555,7 @@ leave-one-out configurations.
 
 To identify which features within the internal family carry the residual
 signal, we apply permutation importance to L3-residualized columns at the
-mid-mass window, with each feature regressed against the 13 assembly-history
+mid-mass regime, with each feature regressed against the 13 assembly-history
 variables and replaced by its OLS residual before shuffling
 (Table~\ref{tab:importance}).
 
@@ -592,7 +592,7 @@ L3 residualization.
 \begin{figure}[t!]
 \centering
 \includegraphics[width=\columnwidth]{outputs/figures/fig04_feature_winner.pdf}
-\caption{Feature-winner map across the intermediate-mass growth window.
+\caption{Feature-winner map across the intermediate-mass growth regime.
   L3-residualized permutation importance at four window positions.
   Gas mass (dark green) dominates the internal class at onset through peak;
   stellar mass (hatched) is the sole surviving internal feature at the close.
@@ -639,7 +639,7 @@ Peak mass ratio and half-mass assembly snapshot together account for
 Late-lookback accretion (4--8 Gyr) accounts for a further
 \AblationLongAccretionPct\%.
 Merger counts recover zero internal signal: the residual internal signal in
-the mid-mass window is entirely merger-count-independent.
+the mid-mass regime is entirely merger-count-independent.
 Together, the three tested components account for approximately 29\% of the
 absorbed internal signal at mid-mass (timing: \AblationTimingPct\%, long
 accretion: \AblationLongAccretionPct\%, mergers: 0\%); the remaining
@@ -815,7 +815,7 @@ decomposition.
 \includegraphics[width=\textwidth]{outputs/figures/fig06_cross_family.pdf}
 \caption{Target-channel contrast: TNG vs.\ SIMBA.
   \textit{Upper panels}: L1 growth marginal $R^2$ for TNG (left) and SIMBA
-  (right). TNG window is clean and contiguous (peak $+0.245$); SIMBA growth is
+  (right). The TNG growth interval is clean and contiguous (peak $+0.245$); SIMBA growth is
   weak and fragmented (local peak $+0.069$, not robustly significant).
   \textit{Lower panels}: quenching marginal AUC for TNG (left, both L1 solid
   and L3 dashed) and SIMBA L1 (right). TNG L1 quenching: \TNGQuenchLoneNWindows{}
@@ -847,15 +847,12 @@ low-to-intermediate mass, where the residual gas reservoir predicts future
 growth, to a \textit{quenching-limited} regime near and above the upper
 boundary, where black-hole/quenching state becomes the informative channel.
 
-We do not interpret the lower edge as a physical onset.
-Below $\sim 9.55$ dex the recovery of the gas signal is limited by
-catalog-floor and resolution effects (\S\ref{sec:window}): a small tail of
-unresolved, floor-encoded objects destabilizes the fit, and winsorizing that
-feature --- without removing any object --- restores a positive marginal below
-the nominal edge. The apparent low-mass onset is therefore a recovery edge, not
-a physical transition; whether a genuine low-mass change exists (e.g.\ a greater
-role for environment via ram pressure, tidal stripping, or filamentary gas
-supply \citep{dekel2009}) cannot be settled at this resolution.
+We do not interpret the lower edge as a physical onset: below $\sim 9.55$ dex
+the recovery of the gas signal is limited by catalog-floor and resolution
+effects (\S\ref{sec:window}), so the apparent low-mass onset is a recovery edge
+rather than a physical transition. Whether a genuine low-mass change exists
+(e.g.\ a greater role for environment via ram pressure, tidal stripping, or
+filamentary gas supply \citep{dekel2009}) cannot be settled at this resolution.
 
 The upper boundary near $\sim 10.55$ dex is physically meaningful: there the
 predictive structure shifts to black-hole/quenching state (traced by
@@ -868,7 +865,7 @@ fully recover.
 The upper boundary is defined within the CAMELS CV setup and may shift modestly
 with volume and resolution (see \S\ref{sec:caveats}).
 
-The window has a carrier structure within it
+The regime has a carrier structure within it
 (Section~\ref{sec:mechanism}): gas mass dominates the surviving internal
 signal from the onset through the peak, but shifts to accumulated stellar
 mass near the close.
@@ -894,8 +891,8 @@ range, with group-membership and halo-mass proxies available from companion
 catalogs.
 A marginal-predictive battery run on xGASS/xCOLD\,GASS --- with halo-mass
 proxies as the assembly-history control and cold-gas mass as the test predictor
---- would constitute a direct observational test of the window.
-If the window survives in observed galaxies, it would establish that the
+--- would constitute a direct observational test of the regime.
+If the signal survives in observed galaxies, it would establish that the
 predictive contribution of gas content relative to halo assembly is not an
 artifact of the CAMELS feedback prescriptions.
 
@@ -946,7 +943,7 @@ Merger counts do not participate in this overlap.
 The number of mergers experienced, or when the last major merger occurred,
 does not substantially predict the current gas mass or the future growth
 rate, net of the other assembly descriptors.
-The residual internal signal in the mid-mass window is
+The residual internal signal in the mid-mass regime is
 merger-count-independent.
 
 \subsection{The $\fstar$ Boundary}
@@ -991,7 +988,7 @@ not currently available at CAMELS resolution.
 \label{sec:caveats}
 
 Several limitations apply to these results.
-Even at the best mass window, the internal predictor family explains only
+Even at its best, the internal predictor family explains only
 $R^2 \approx 0.31$ of mid-mass growth variance, leaving $\approx 69\%$
 unexplained.
 This residual likely reflects stochastic processes not recoverable from
@@ -1029,9 +1026,9 @@ covering static position, multiple accretion-rate lookbacks, peak-mass epoch,
 half-mass assembly, and merger history --- rather than optimized for
 predictive importance against the internal target.
 A feature-selected or higher-dimensional assembly-history control could absorb
-a larger share of the internal window, though the robustness of the surviving
+a larger share of the internal signal, though the robustness of the surviving
 signal in the permutation-importance test (gas mass) and the $\fstar$ boundary
-check suggests the window result is not dominated by L3 feature-set
+check suggests this result is not dominated by L3 feature-set
 sensitivity.
 Finally, SubLink matching excludes galaxies that merge or are disrupted
 between $z = 0.77$ and $z = 0$, leaving the mid-mass sample modestly biased
@@ -1039,7 +1036,7 @@ toward galaxies with surviving central descendants.
 Excluded galaxies --- those undergoing mergers or disruption --- likely have
 disturbed gas reservoirs and atypically elevated star-formation rates relative
 to the retained sample; including them would tend to suppress rather than
-amplify the internal marginal signal near the 9.55 dex window onset.
+amplify the internal marginal signal near the 9.55 dex recovery onset.
 The lower edge of the regime is therefore, if anything, a conservative
 estimate.
 
@@ -1117,7 +1114,7 @@ including explicit statements on the absence of causal claims, universal
 mass thresholds, observational inference, and cross-simulation replication
 --- is given in Appendix~\ref{app:earned}.
 Directions for follow-up (SIMBA merger-tree control, volume and resolution
-tests, and redshift evolution of the window) are collected in
+tests, and redshift evolution of the regime) are collected in
 Appendix~\ref{app:future}.
 
 % ---------------------------------------------------------------------------
@@ -1265,19 +1262,19 @@ $\geq10.75$ & ns & ns & & ns & \\
     and halo families are all competitive; the ranking changes with both
     target and mass regime.
 
-  \item \textit{A finite mid-mass growth window exists in TNG in which
+  \item \textit{An upper-bounded mid-mass growth regime exists in TNG in which
     internal galaxy state adds predictive information beyond the tested
     gravitational prescription.}  In the TNG SubLink branch, internal features
     retain positive marginal $R^2$ for future stellar growth after conditioning
     on the full 13-feature assembly-history control.
 
   \item \textit{That internal advantage is regime-specific, not global.}
-    The beyond-gravity signal is concentrated in a finite stellar-mass interval
-    rather than extending across the full sample.
+    The beyond-gravity signal is concentrated in a bounded intermediate-mass
+    interval rather than extending across the full sample.
 
-  \item \textit{The internal-minus-halo gap is positive across that window
+  \item \textit{The internal-minus-halo gap is positive across that interval
     under the full TNG gravity control.}  Internal state is not merely
-    surviving control; it remains ahead of halo structure across the window.
+    surviving control; it remains ahead of halo structure across the interval.
 
   \item \textit{Gas mass is the dominant surviving internal carrier.}
     Within the internal family, gas mass is the main load-bearing predictor
@@ -1308,13 +1305,13 @@ $\geq10.75$ & ns & ns & & ns & \\
 \medskip\noindent\textbf{Not earned in this paper.}
 \begin{itemize}[leftmargin=*,itemsep=2pt]
   \item \textit{A universal internal-state superiority claim.}
-    The paper shows a finite, regime-specific TNG window, not a general
+    The paper shows a bounded, regime-specific TNG result, not a general
     dominance of internal state across galaxy evolution targets.
 
   \item \textit{Universal mass boundaries.}
-    The quoted window edges are earned within the CAMELS setup and should not
+    The quoted interval edges are earned within the CAMELS setup and should not
     be read as universal physical thresholds independent of volume, resolution,
-    or feedback model.
+    or feedback model; the lower edge in particular is resolution-limited.
 
   \item \textit{A causal claim.}
     These are predictive and decomposition results.  The paper shows information
@@ -1331,7 +1328,7 @@ $\geq10.75$ & ns & ns & & ns & \\
     support, not a matched mechanistic replication.
 
   \item \textit{A resolution- or volume-independent result.}
-    The paper does not establish that the window location or width is
+    The paper does not establish that the interval location or width is
     unchanged under larger boxes or higher resolution.
 
   \item \textit{A direct observational claim.}
@@ -1358,12 +1355,12 @@ survives a 13-feature assembly-history control.
 
 \textbf{Volume and resolution.}  Results come from $25\,h^{-1}$\,Mpc boxes
 with $256^3$ particles.  Running the same analysis on larger CAMELS
-extensions will determine whether the predictive window shifts or broadens
+extensions will determine whether the predictive interval shifts or broadens
 at higher mass.
 
 Two further simulation directions are worth pursuing: (\textit{i})~repeating
 the sliding-window scan at $z \approx 0.5$ and $1.0$ to track whether the
-window evolves as assembly history accumulates; (\textit{ii})~tracking net
+regime evolves as assembly history accumulates; (\textit{ii})~tracking net
 gas inflows and outflows along individual TNG trajectories to identify
 whether the gas-mass signal reflects accretion or feedback-driven depletion.
 The direct observational test of the upper-bounded gas-reservoir regime via xGASS/xCOLD\,GASS
