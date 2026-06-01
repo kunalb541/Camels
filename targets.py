@@ -1,13 +1,14 @@
 """
-targets.py — target variable construction for the ODD analysis (CAMELS / TNG).
+targets.py — target variable construction for the CAMELS / TNG analysis.
 
-Targets are measured at snap 99 (z=0) for galaxies whose descriptors
-are measured at snap 67 (z≈0.5).
+Targets are measured at snap 090 (z=0) for galaxies whose descriptors
+are measured at snap 066 (z=0.774, confirmed from the catalog Header/Redshift;
+see config.SNAP_EARLY / Z_EARLY). The growth interval is ~6.9 Gyr.
 
 Primary target
 --------------
-  delta_logmstar : Δlog M* = log10(M*_z0 / M*_z0.5)
-    Fractional stellar mass growth over ~5 Gyr.
+  delta_logmstar : Δlog M* = log10(M*_z0 / M*_z0.77)
+    Fractional stellar mass growth over ~6.9 Gyr.
     Positive = galaxy grew; negative = galaxy lost stellar mass (rare,
     typically mergers or winds).
 
@@ -17,16 +18,16 @@ Secondary targets
     Standard quenching flag; separates the red sequence from star-forming
     blue cloud at z=0.
 
-  delta_logmstar_resid : Δlog M* residual after controlling for log M*_z0.5
-    and log sSFR_z0.5.  Tests whether description classes add information
+  delta_logmstar_resid : Δlog M* residual after controlling for log M*_z0.77
+    and log sSFR_z0.77.  Tests whether description classes add information
     beyond the trivially expected mass growth from current SFR.
 
 Public interface
 ----------------
 build_targets(df_matched) → pd.DataFrame
 
-df_matched must have columns from both snap 67 (e.g. log_mstar) and
-snap 99 (e.g. late_log_mstar, late_SubhaloSFR, late_SubhaloMassType_4).
+df_matched must have columns from both snap 066 (e.g. log_mstar) and
+snap 090 (e.g. late_log_mstar, late_SubhaloSFR, late_SubhaloMassType_4).
 It is the output of tng_catalog.match_epochs() after add_log_columns().
 """
 from __future__ import annotations
@@ -146,7 +147,7 @@ def compute_delta_logmstar_resid(
 ) -> pd.Series:
     """
     Residual Δlog M* after a linear Ridge regression on control_cols.
-    Default controls: [log_mstar, log_ssfr] (both at snap 67).
+    Default controls: [log_mstar, log_ssfr] (both at snap 066, z=0.774).
 
     This removes the variance trivially explained by 'bigger galaxies grow
     in absolute terms' and 'star-forming galaxies grow faster', isolating

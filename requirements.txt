@@ -1,0 +1,9 @@
+# Analysis + figure pipeline (Python 3.11+).
+# Versions are the ones used for the published results; older/newer minors should work.
+numpy>=2.3.5
+pandas>=2.3.3
+scipy>=1.16.3
+scikit-learn>=1.8.0
+matplotlib>=3.10.8
+h5py>=3.16.0
+tqdm>=4.67.3

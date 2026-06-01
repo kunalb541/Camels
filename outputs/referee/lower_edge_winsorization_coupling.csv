@@ -1,0 +1,2 @@
+n_below,n_floor_removed,n_zero_gas_feature,winsor_percentile,winsor_threshold_int_log_mgas,gas_var_full,gas_var_deletion,gas_var_winsorize,growth_floor_mean,growth_kept_mean,growth_floor_median,growth_kept_median
+3132,6,5,1.0,10.003687810897826,0.209351235094622,0.03484398557498423,0.03400418335309859,-0.11234203974405925,0.4015617675683625,-0.10486173629760742,0.34635162353515625
