@@ -40,7 +40,9 @@ as a function of stellar mass with the window edges marked, for both TNG and SIM
 **Upper boundary (~10.55) is physically supported.** Across the upper edge the median
 log sSFR drops from −9.63 (inside) to −10.96, the quenched fraction rises from 0.035 to
 0.498, and median BH mass rises by +1.51 dex — i.e. the edge coincides with the onset
-of AGN-associated quenching.
+of AGN-associated quenching. These population profiles (gas fraction, sSFR, quenched
+fraction, and BH mass versus stellar mass, with the upper transition marked) are now
+shown as an appendix figure (population diagnostics, not predictive-model inputs).
 
 **Lower boundary (~9.55) is not a physical threshold** (see Comment 4): it is a
 floor-encoding / resolution-limited measurement edge. We therefore reframe the result

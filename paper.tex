@@ -559,7 +559,8 @@ star-formation rate drops from $\log\mathrm{sSFR} = -9.63$ to $-10.96$, the
 quenched fraction rises from $0.035$ to $0.498$, and the median black-hole mass
 increases by $1.51$ dex --- the 10.55-dex boundary coincides with the onset of
 black-hole--associated quenching, which is why it, unlike the lower edge, is a
-physical transition.
+physical transition. Appendix Figure~\ref{fig:app_profiles} shows these population
+profiles as a function of stellar mass.
 
 The gap is also broadly flat, with no systematic trend across mass: over
 1.2 dex of stellar mass, $\delta$ ranges $\PairedGapLo$ to $\PairedGapHi$ without
@@ -1360,6 +1361,29 @@ a floor-encoding / resolution-limited measurement edge.
   not a physical threshold.
 \label{fig:app_winsor}}
 \end{figure}
+
+Finally, Figure~\ref{fig:app_profiles} shows the population profiles requested for the
+boundary characterization: across the upper transition ($\log M_\star \sim 10.55$) the
+median specific star-formation rate drops, the quenched fraction rises, and the median
+black-hole mass increases, supporting the upper bound as a quenching-state transition.
+These are population diagnostics, not inputs to the predictive model.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{outputs/referee/fig_boundary_population_profiles.pdf}
+\caption{Boundary population profiles in TNG as a function of stellar mass (0.15-dex
+  bins): \textbf{(a)} median gas fraction $\log_{10}(M_{\rm gas}/M_\star)$,
+  \textbf{(b)} median specific star-formation rate, \textbf{(c)} quenched fraction
+  ($\log\mathrm{sSFR} < -11$), and \textbf{(d)} median black-hole mass (a state proxy,
+  not a feedback-energy measurement). The red line marks the upper transition near
+  $\log M_\star \simeq 10.55$; the dotted line marks the $9.55$ recovery edge (a
+  floor/resolution-limited measurement edge, not a physical threshold). Across the
+  upper transition the specific star-formation rate drops, the quenched fraction rises,
+  and the black-hole mass increases together, consistent with the onset of
+  black-hole/quenching-associated suppression of star formation. \emph{These profiles
+  are population diagnostics, not part of the predictive model.}
+\label{fig:app_profiles}}
+\end{figure*}
 
 \clearpage  % flush all Appendix A diagnostic figures before Scope of Claims so the list reads uninterrupted
 
