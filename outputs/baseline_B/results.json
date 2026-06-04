@@ -1,0 +1,325 @@
+{
+  "delta_logmstar": {
+    "env": {
+      "class_key": "env",
+      "target": "delta_logmstar",
+      "metric": "R2",
+      "score": 0.132636496451869,
+      "ci_lo": 0.11890374911328411,
+      "ci_hi": 0.1497655336808253,
+      "n_listwise": 7362,
+      "n_features": 4,
+      "feature_names": [
+        "env_log_mhalo",
+        "env_log_nsubs",
+        "env_log_n5mpc",
+        "env_log_rho_local"
+      ]
+    },
+    "internal": {
+      "class_key": "internal",
+      "target": "delta_logmstar",
+      "metric": "R2",
+      "score": 0.24667090705544567,
+      "ci_lo": 0.22308409240516172,
+      "ci_hi": 0.26820848071432823,
+      "n_listwise": 7362,
+      "n_features": 6,
+      "feature_names": [
+        "int_log_mstar",
+        "int_log_mgas",
+        "int_log_sfr",
+        "int_log_ssfr",
+        "int_log_rstar",
+        "int_metallicity"
+      ]
+    },
+    "halo": {
+      "class_key": "halo",
+      "target": "delta_logmstar",
+      "metric": "R2",
+      "score": 0.2568349699343781,
+      "ci_lo": 0.23803893030383483,
+      "ci_hi": 0.27539996921992627,
+      "n_listwise": 7362,
+      "n_features": 5,
+      "feature_names": [
+        "halo_log_msub",
+        "halo_vmax",
+        "halo_veldisp",
+        "halo_log_spin",
+        "halo_fstar"
+      ]
+    }
+  },
+  "per_feature": {
+    "env_log_mhalo": {
+      "class": "env",
+      "feature": "env_log_mhalo",
+      "r": -0.2343971607914495,
+      "ci_lo": -0.2563006419821363,
+      "ci_hi": -0.21195595611116672,
+      "n": 7362
+    },
+    "env_log_nsubs": {
+      "class": "env",
+      "feature": "env_log_nsubs",
+      "r": -0.049133894411018224,
+      "ci_lo": -0.07245995942982485,
+      "ci_hi": -0.0267812675098168,
+      "n": 7362
+    },
+    "env_log_n5mpc": {
+      "class": "env",
+      "feature": "env_log_n5mpc",
+      "r": -0.029272887394598334,
+      "ci_lo": -0.05188442427347215,
+      "ci_hi": -0.005211133577732529,
+      "n": 7362
+    },
+    "env_log_rho_local": {
+      "class": "env",
+      "feature": "env_log_rho_local",
+      "r": 0.016716212177323903,
+      "ci_lo": -0.005200098116849791,
+      "ci_hi": 0.03981224184452623,
+      "n": 7362
+    },
+    "int_log_mstar": {
+      "class": "internal",
+      "feature": "int_log_mstar",
+      "r": -0.39127014143132416,
+      "ci_lo": -0.40924026715191814,
+      "ci_hi": -0.37292327853509366,
+      "n": 7362
+    },
+    "int_log_mgas": {
+      "class": "internal",
+      "feature": "int_log_mgas",
+      "r": -0.06335221895860411,
+      "ci_lo": -0.10721737485216133,
+      "ci_hi": -0.026688075541764937,
+      "n": 7362
+    },
+    "int_log_sfr": {
+      "class": "internal",
+      "feature": "int_log_sfr",
+      "r": 0.21085483468036545,
+      "ci_lo": 0.18653940338011019,
+      "ci_hi": 0.23391370990814095,
+      "n": 7362
+    },
+    "int_log_ssfr": {
+      "class": "internal",
+      "feature": "int_log_ssfr",
+      "r": 0.35133015753054786,
+      "ci_lo": 0.334257895583454,
+      "ci_hi": 0.3689181921706271,
+      "n": 7362
+    },
+    "int_log_rstar": {
+      "class": "internal",
+      "feature": "int_log_rstar",
+      "r": -0.04912725290717284,
+      "ci_lo": -0.07348814632616708,
+      "ci_hi": -0.026295650445779074,
+      "n": 7362
+    },
+    "int_metallicity": {
+      "class": "internal",
+      "feature": "int_metallicity",
+      "r": -0.41645448200502305,
+      "ci_lo": -0.43395357503055026,
+      "ci_hi": -0.3996593988266643,
+      "n": 7362
+    },
+    "halo_log_msub": {
+      "class": "halo",
+      "feature": "halo_log_msub",
+      "r": -0.2408964194114871,
+      "ci_lo": -0.259803763715843,
+      "ci_hi": -0.21948095286157585,
+      "n": 7362
+    },
+    "halo_vmax": {
+      "class": "halo",
+      "feature": "halo_vmax",
+      "r": -0.3029094027852484,
+      "ci_lo": -0.32261699597277826,
+      "ci_hi": -0.28412176567264924,
+      "n": 7362
+    },
+    "halo_veldisp": {
+      "class": "halo",
+      "feature": "halo_veldisp",
+      "r": -0.2536604615609572,
+      "ci_lo": -0.2744966663069489,
+      "ci_hi": -0.23393367779922428,
+      "n": 7362
+    },
+    "halo_log_spin": {
+      "class": "halo",
+      "feature": "halo_log_spin",
+      "r": -0.05140006789314384,
+      "ci_lo": -0.07491959841228353,
+      "ci_hi": -0.030588598538472407,
+      "n": 7362
+    },
+    "halo_fstar": {
+      "class": "halo",
+      "feature": "halo_fstar",
+      "r": -0.48143169108218636,
+      "ci_lo": -0.49976065793802676,
+      "ci_hi": -0.4631815567115901,
+      "n": 7362
+    }
+  },
+  "gap": {
+    "best_class": "halo",
+    "second_class": "internal",
+    "gap_mean": 0.010164062878932428,
+    "gap_ci_lo": 0.0008637135246030437,
+    "gap_ci_hi": 0.03222509914612331,
+    "class_r2": {
+      "env": 0.132636496451869,
+      "internal": 0.24667090705544567,
+      "halo": 0.2568349699343781
+    },
+    "n_listwise": 7362
+  },
+  "verdict": "TIE",
+  "quenched_z0": {
+    "env": {
+      "class_key": "env",
+      "target": "quenched_z0",
+      "metric": "AUC",
+      "score": 0.8463015306169265,
+      "ci_lo": 0.8349021981436318,
+      "ci_hi": 0.8578940739327106,
+      "n_listwise": 7362,
+      "n_features": 4,
+      "feature_names": [
+        "env_log_mhalo",
+        "env_log_nsubs",
+        "env_log_n5mpc",
+        "env_log_rho_local"
+      ]
+    },
+    "internal": {
+      "class_key": "internal",
+      "target": "quenched_z0",
+      "metric": "AUC",
+      "score": 0.8648988847555893,
+      "ci_lo": 0.8544530225244528,
+      "ci_hi": 0.8741764434266843,
+      "n_listwise": 7362,
+      "n_features": 6,
+      "feature_names": [
+        "int_log_mstar",
+        "int_log_mgas",
+        "int_log_sfr",
+        "int_log_ssfr",
+        "int_log_rstar",
+        "int_metallicity"
+      ]
+    },
+    "halo": {
+      "class_key": "halo",
+      "target": "quenched_z0",
+      "metric": "AUC",
+      "score": 0.8619330351012172,
+      "ci_lo": 0.852581114062554,
+      "ci_hi": 0.8716955930927598,
+      "n_listwise": 7362,
+      "n_features": 5,
+      "feature_names": [
+        "halo_log_msub",
+        "halo_vmax",
+        "halo_veldisp",
+        "halo_log_spin",
+        "halo_fstar"
+      ]
+    }
+  },
+  "gap_auc": {
+    "best_class": "internal",
+    "second_class": "halo",
+    "gap_mean": 0.0029541115082667435,
+    "gap_ci_lo": 0.00022259331097723988,
+    "gap_ci_hi": 0.006578929117336851,
+    "class_auc": {
+      "env": 0.846305561011843,
+      "internal": 0.8649082153958754,
+      "halo": 0.8619541038876086
+    },
+    "n_listwise": 7362
+  },
+  "verdict_auc": "TIE",
+  "delta_log_msub": {
+    "env": {
+      "class_key": "env",
+      "target": "delta_log_msub",
+      "metric": "R2",
+      "score": 0.00793086768433322,
+      "ci_lo": 0.003596293078757417,
+      "ci_hi": 0.014320543977561684,
+      "n_listwise": 7362,
+      "n_features": 4,
+      "feature_names": [
+        "env_log_mhalo",
+        "env_log_nsubs",
+        "env_log_n5mpc",
+        "env_log_rho_local"
+      ]
+    },
+    "internal": {
+      "class_key": "internal",
+      "target": "delta_log_msub",
+      "metric": "R2",
+      "score": 0.005549011278513283,
+      "ci_lo": 0.0026098378349894967,
+      "ci_hi": 0.010269484985703597,
+      "n_listwise": 7362,
+      "n_features": 6,
+      "feature_names": [
+        "int_log_mstar",
+        "int_log_mgas",
+        "int_log_sfr",
+        "int_log_ssfr",
+        "int_log_rstar",
+        "int_metallicity"
+      ]
+    },
+    "halo": {
+      "class_key": "halo",
+      "target": "delta_log_msub",
+      "metric": "R2",
+      "score": 0.015414225244420997,
+      "ci_lo": 0.009396220288510193,
+      "ci_hi": 0.023688625740456517,
+      "n_listwise": 7362,
+      "n_features": 5,
+      "feature_names": [
+        "halo_log_msub",
+        "halo_vmax",
+        "halo_veldisp",
+        "halo_log_spin",
+        "halo_fstar"
+      ]
+    }
+  },
+  "gap_delta_log_msub": {
+    "best_class": "halo",
+    "second_class": "env",
+    "gap_mean": 0.007483357560087778,
+    "gap_ci_lo": 0.0005223060976963978,
+    "gap_ci_hi": 0.015433797399775294,
+    "class_r2": {
+      "env": 0.00793086768433322,
+      "internal": 0.005549011278513283,
+      "halo": 0.015414225244420997
+    },
+    "n_listwise": 7362
+  },
+  "verdict_delta_log_msub": "TIE"
+}
