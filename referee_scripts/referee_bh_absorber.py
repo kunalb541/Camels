@@ -363,16 +363,20 @@ def verdict_text(results, verdict):
     if carries:
         head = (
             "At the upper transition (10.55-10.75) BH mass carries a growth signal that gas does not: "
-            "within the L3-controlled baseline, BH mass adds a significant growth marginal (robust to a "
-            "1000-resample bootstrap, bin-edge shifts, and a permutation null) and survives controlling "
-            "for gas, whereas gas is not independently significant there. This is one small, nearly fully "
-            "quenched bin where BH mass outpredicts gas -- NOT a demonstrated transfer of a previously "
-            "significant gas signal. "
+            "within the L3-controlled baseline, BH mass adds a positive growth marginal (paired bootstrap "
+            "95% CI above zero) and survives controlling for gas, whereas gas is not independently "
+            "significant there. This is one small, nearly fully quenched bin where BH mass outpredicts gas "
+            "-- NOT a demonstrated transfer of a previously significant gas signal. "
         )
         if verdict.endswith("QUENCHING_AT_INTERMEDIATE"):
+            orig = results.get("original", {})
+            nq = orig.get("n_quench")
+            ntot = orig.get("n")
+            nsf = (ntot - nq) if (nq is not None and ntot is not None) else None
+            cnt = f" (n={nq} quenched / {nsf} star-forming)" if nsf is not None else ""
             head += (
-                "More robustly, BH mass carries the quenching signal at intermediate mass (n=1380/1953, "
-                "tight CI), where star-forming and quenched galaxies coexist, whereas gas does not. "
+                f"More robustly, BH mass carries the quenching signal at intermediate mass{cnt}, "
+                "where star-forming and quenched galaxies coexist, whereas gas does not. "
             )
     elif verdict == "BH_QUENCHING_SIGNAL_PRESENT":
         head = (

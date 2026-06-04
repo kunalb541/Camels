@@ -316,28 +316,30 @@ def match_epochs(
     df_late: pd.DataFrame,
     max_dist_ckpc_h: float = 1000.0,
     min_match_fraction: float = 0.5,
+    allow_id_match: bool = False,
 ) -> pd.DataFrame:
     """
     Match central subhalos at snap_early to snap_late.
 
-    Strategy (in order of preference):
-    1. ID match (local_id or SubhaloID) within the same sim_id — valid for
-       synthetic data or when merger trees are available.
-    2. Spatial nearest-neighbour match in comoving coordinates — used for
-       real CAMELS data where catalog indices are not persistent across snaps.
+    Strategy:
+    1. Spatial nearest-neighbour match in comoving coordinates (default) — the
+       only safe option for real CAMELS catalogs, whose per-snapshot SUBFIND
+       row indices (local_id) are NOT persistent across snapshots.
        Positions are in ckpc/h; max_dist_ckpc_h defaults to 1000 ckpc/h = 1 Mpc/h.
        Requires a 1-to-1 match (duplicate late galaxies are dropped).
-
-    The spatial match is a valid pilot approximation: central subhalos that
-    survive to z=0 as centrals should have similar comoving positions across
-    ~5 Gyr.  SubLink merger trees (available on the same Globus endpoint) can
-    replace this in the final paper.
+    2. ID match (local_id/SubhaloID within sim_id) — ONLY when
+       ``allow_id_match=True``.  This is valid solely for synthetic catalogs,
+       where local_id is persistent by construction.  It is NEVER used for real
+       data, because matching by non-persistent row index would silently pair
+       unrelated galaxies.  For real progenitor-safe linking use
+       sublink.match_epochs_sublink() (SubLink merger trees).
     """
-    # ── Try ID match first ────────────────────────────────────────────────────
+    # ── ID match: synthetic catalogs only (persistent IDs); guarded off by
+    #    default so real per-snapshot SUBFIND indices are never used as IDs ────
     id_col = None
-    if "local_id" in df_early.columns and "local_id" in df_late.columns:
+    if allow_id_match and "local_id" in df_early.columns and "local_id" in df_late.columns:
         id_col = "local_id"
-    elif "SubhaloID" in df_early.columns and "SubhaloID" in df_late.columns:
+    elif allow_id_match and "SubhaloID" in df_early.columns and "SubhaloID" in df_late.columns:
         id_col = "SubhaloID"
 
     if id_col is not None:

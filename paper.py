@@ -107,7 +107,7 @@ def run_synthetic(n_galaxies: int = 2000, n_boot: int = 200) -> Dict:
 
     df_early  = select_centrals(sub_early, fof)
     df_late   = select_centrals(sub_late,  synth["fof_late"])
-    df        = match_epochs(df_early, df_late)
+    df        = match_epochs(df_early, df_late, allow_id_match=True)  # synthetic IDs are persistent
 
     # Inject the known target (ground truth from synthetic generator)
     if len(df) > 0 and "local_id" in df.columns:

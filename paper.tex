@@ -284,7 +284,13 @@ last major-merger snapshot, for a total of 13 assembly-history features.
 Three control statistics are computed for each predictor family.
 The \textit{marginal} $R^2$/AUC is the increment in cross-validated score
 when the family is added to the assembly-history control; 95\% CIs come from
-a shared bootstrap ($n_\mathrm{boot} = 1000$).
+a shared bootstrap ($n_\mathrm{boot} = 1000$) that resamples galaxies.
+We verified that the key mid-mass internal-family marginal is robust to
+realization-level resampling: grouping the cross-validation folds by simulation
+(\textsc{GroupKFold} over the 27 CV realizations, so no realization spans train
+and test) and resampling whole realizations in a simulation-cluster bootstrap
+both reproduce it ($+0.139\,[+0.117, +0.165]$, versus $+0.139\,[+0.118, +0.161]$
+for the galaxy-level bootstrap).
 \textit{Residualization} OLS-regresses each predictor feature column against
 the assembly-history control set and replaces it with the OLS residual before
 the predictive model is fit (it is the feature columns, not the target, that
@@ -479,7 +485,7 @@ information is entirely gravity-proxied.
 \caption{Intermediate-mass growth phase diagram.
   Internal (solid) and halo L1 marginal $R^2$ (upper) and L3 marginal $R^2$
   (lower) versus sliding-window centre (0.5-dex windows, step 0.1 dex).
-  L1 significant interval: 9.55--10.65 dex (13 windows).
+  L1 significant interval: 9.55--10.75 dex (13 windows).
   L3 significant interval (green shading): 9.55--10.55 dex (\WindowNWindowsL{}
   overlapping significant windows), where internal $\Rmarg$ is individually
   significant.
@@ -617,9 +623,11 @@ L3 residualization.
 \includegraphics[width=\columnwidth]{outputs/figures/fig04_feature_winner.pdf}
 \caption{Feature-winner map across the intermediate-mass growth regime.
   L3-residualized permutation importance at four window positions.
-  Gas mass (dark green) dominates the internal class at onset through peak;
-  stellar mass (hatched) is the sole surviving internal feature at the close.
-  $\fstar$ (purple) is the stable halo carrier throughout.
+  Gas mass (dark green) is the dominant internal feature at the onset and
+  mid-window and then declines toward the peak, where its L3-residualized
+  importance falls below $\fstar$; stellar mass (hatched) is the sole surviving
+  internal feature at the close. $\fstar$ (purple) is the persistent halo carrier
+  across the regime.
 \label{fig:features}}
 \end{figure}
 
@@ -651,7 +659,8 @@ None (full L3) & \nodata & $0.185$ & $0.135^*\,[0.095, 0.184]$ & \nodata & $\LTh
 \caption{Assembly ablation map.
   Internal class marginal $R^2$ recovery when each gravity-feature family
   is removed from the L3 assembly-history: merger features (recovery
-  $+0.000$), late accretion ($+0.014$), peak/halfmass timing ($+0.026$).
+  $\AblationMergerRecovery$), late accretion ($\AblationLongAccretionRecovery$),
+  peak/halfmass timing ($\AblationTimingRecovery$).
   Assembly timing is the strongest gravitational absorber of the internal
   signal; merger counts carry zero.
 \label{fig:ablation}}
