@@ -163,8 +163,7 @@ to the Fig. 2 caption:
 
 We confirm and now interpret this result (see the revised halo-growth paragraph, §3.1).
 Predicting halo growth (Δlog M_sub) from any
-family gives R² of order 0.01–0.03 — internal +0.009, halo +0.016, environment +0.000
-in the intermediate window — an order of magnitude below stellar growth (internal-family
+family gives R² of order 0.01–0.03 (each family ≲ 0.016 in the intermediate window) — an order of magnitude below stellar growth (internal-family
 R² ~ 0.2–0.3). We add:
 
 > That halo growth is near-unpredictable from any z ≈ 0.77 family is itself
