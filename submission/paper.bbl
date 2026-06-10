@@ -1,0 +1,204 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\href{#1}{#1}}
+\providecommand{\dodoi}[1]{doi:~\href{http://doi.org/#1}{\nolinkurl{#1}}}
+\providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
+\providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
+
+% type= article
+\bibitem[{P. Behroozi {et~al.}(2019)Behroozi, Wechsler, Hearin, \&
+  Conroy}]{behroozi2019}
+Behroozi, P., Wechsler, R.~H., Hearin, A.~P., \& Conroy, C. 2019,
+  \bibinfo{title}{{UniverseMachine}: The correlation between galaxy growth and
+  dark matter halo assembly from $z=0$--10,} MNRAS, 488, 3143,
+  \dodoi{10.1093/mnras/stz1182}
+
+% type= article
+\bibitem[{A.~F.~L. Bluck {et~al.}(2023)Bluck, Piotrowska, \&
+  Maiolino}]{bluck2022}
+Bluck, A. F.~L., Piotrowska, J.~M., \& Maiolino, R. 2023, \bibinfo{title}{The
+  Fundamental Signature of Star Formation Quenching from {AGN} Feedback: A
+  Critical Dependence of Quiescence on Supermassive Black Hole Mass, Not
+  Accretion Rate,} ApJ, 944, 108, \dodoi{10.3847/1538-4357/acac7c}
+
+% type= article
+\bibitem[{N. Bouch\'e {et~al.}(2010)Bouch\'e, Dekel, Genzel, Genel, Cresci,
+  Schreiber, Shapiro, Davies, \& Tacconi}]{bouche2010}
+Bouch\'e, N., Dekel, A., Genzel, R., {et~al.} 2010, \bibinfo{title}{The Impact
+  of Cold Gas Accretion Above a Mass Floor on Galaxy Scaling Relations,} ApJ,
+  718, 1001, \dodoi{10.1088/0004-637X/718/2/1001}
+
+% type= article
+\bibitem[{B. Catinella {et~al.}(2018)Catinella {et~al.}}]{catinella2018}
+Catinella, B., {et~al.} 2018, \bibinfo{title}{{xGASS}: total cold gas scaling
+  relations and molecular-to-atomic gas ratios of galaxies in the local
+  Universe,} MNRAS, 476, 875, \dodoi{10.1093/mnras/sty089}
+
+% type= article
+\bibitem[{D.~J. Croton {et~al.}(2006)Croton {et~al.}}]{croton2006}
+Croton, D.~J., {et~al.} 2006, \bibinfo{title}{The many lives of active galactic
+  nuclei: cooling flows, black holes and the luminosities and colours of
+  galaxies,} MNRAS, 365, 11, \dodoi{10.1111/j.1365-2966.2005.09675.x}
+
+% type= article
+\bibitem[{R. Dav\'e {et~al.}(2019)Dav\'e, Angl\'es-Alc\'azar, Narayanan, Li,
+  Rafieferantsoa, \& Appleby}]{dave2019}
+Dav\'e, R., Angl\'es-Alc\'azar, D., Narayanan, D., {et~al.} 2019,
+  \bibinfo{title}{{SIMBA}: Cosmological simulations with black hole growth and
+  feedback,} MNRAS, 486, 2827, \dodoi{10.1093/mnras/stz937}
+
+% type= article
+\bibitem[{R. Dav\'e {et~al.}(2012)Dav\'e, Finlator, \& Oppenheimer}]{dave2012}
+Dav\'e, R., Finlator, K., \& Oppenheimer, B.~D. 2012, \bibinfo{title}{An
+  analytic model for the evolution of the stellar, gas and metal content of
+  galaxies,} MNRAS, 421, 98, \dodoi{10.1111/j.1365-2966.2011.20148.x}
+
+% type= article
+\bibitem[{J.~J. Davies {et~al.}(2020)Davies, Crain, Oppenheimer, \&
+  Schaye}]{davies2019}
+Davies, J.~J., Crain, R.~A., Oppenheimer, B.~D., \& Schaye, J. 2020,
+  \bibinfo{title}{The quenching and morphological evolution of central galaxies
+  is facilitated by the feedback-driven expulsion of circumgalactic gas,}
+  MNRAS, 491, 4462, \dodoi{10.1093/mnras/stz3201}
+
+% type= article
+\bibitem[{A. Dekel {et~al.}(2009)Dekel, Birnboim, Engel, Freundlich, Goerdt,
+  Mumcuoglu, Neistein, Pichon, Teyssier, \& Zinger}]{dekel2009}
+Dekel, A., Birnboim, Y., Engel, G., {et~al.} 2009, \bibinfo{title}{Cold streams
+  in early massive hot haloes as the main mode of galaxy formation,} Nature,
+  457, 451, \dodoi{10.1038/nature07648}
+
+% type= article
+\bibitem[{L. Gao {et~al.}(2005)Gao, Springel, \& White}]{gao2005}
+Gao, L., Springel, V., \& White, S. D.~M. 2005, \bibinfo{title}{The age
+  dependence of halo clustering,} MNRAS, 363, L66,
+  \dodoi{10.1111/j.1745-3933.2005.00084.x}
+
+% type= article
+\bibitem[{S. Genel {et~al.}(2018)Genel {et~al.}}]{genel2019}
+Genel, S., {et~al.} 2018, \bibinfo{title}{The size evolution of star-forming
+  and quenched galaxies in the {IllustrisTNG} simulation,} MNRAS, 474, 3976,
+  \dodoi{10.1093/mnras/stx3078}
+
+% type= article
+\bibitem[{C. Lacey \& S. Cole(1993)Lacey \& Cole}]{lacey1993}
+Lacey, C., \& Cole, S. 1993, \bibinfo{title}{Merger Rates in Hierarchical
+  Models of Galaxy Formation,} MNRAS, 262, 627, \dodoi{10.1093/mnras/262.3.627}
+
+% type= article
+\bibitem[{S.~J. Lilly {et~al.}(2013)Lilly, Carollo, Pipino, Renzini, \&
+  Peng}]{lilly2013}
+Lilly, S.~J., Carollo, C.~M., Pipino, A., Renzini, A., \& Peng, Y. 2013,
+  \bibinfo{title}{Gas Regulation of Galaxies: The Evolution of the Cosmic
+  Specific Star Formation Rate, the Metallicity--Mass--Star Formation Rate
+  Relation, and the Stellar Content of Halos,} ApJ, 772, 119,
+  \dodoi{10.1088/0004-637X/772/2/119}
+
+% type= article
+\bibitem[{C.~C. Lovell {et~al.}(2019)Lovell, Acquaviva, Thomas, Iyer, Gawiser,
+  \& Wilkins}]{lovell2019}
+Lovell, C.~C., Acquaviva, V., Thomas, P.~A., {et~al.} 2019,
+  \bibinfo{title}{Learning the relationship between galaxies' spectra and their
+  star formation histories using convolutional neural networks and cosmological
+  simulations,} MNRAS, 490, 5503, \dodoi{10.1093/mnras/stz2851}
+
+% type= article
+\bibitem[{Y.-Y. Mao {et~al.}(2018)Mao, Zentner, \& Wechsler}]{mao2018}
+Mao, Y.-Y., Zentner, A.~R., \& Wechsler, R.~H. 2018, \bibinfo{title}{Beyond
+  assembly bias: exploring secondary halo biases for cluster-size haloes,}
+  MNRAS, 474, 5143, \dodoi{10.1093/mnras/stx3111}
+
+% type= article
+\bibitem[{J. Matthee \& J. Schaye(2019)Matthee \& Schaye}]{matthee2019}
+Matthee, J., \& Schaye, J. 2019, \bibinfo{title}{The origin of scatter in the
+  star formation rate--stellar mass relation,} MNRAS, 484, 915,
+  \dodoi{10.1093/mnras/stz030}
+
+% type= article
+\bibitem[{B.~P. Moster {et~al.}(2013)Moster, Naab, \& White}]{moster2013}
+Moster, B.~P., Naab, T., \& White, S. D.~M. 2013, \bibinfo{title}{Galactic star
+  formation and accretion histories from matching galaxies to dark matter
+  haloes,} MNRAS, 428, 3121, \dodoi{10.1093/mnras/sts261}
+
+% type= article
+\bibitem[{Y. Peng {et~al.}(2015)Peng, Maiolino, \& Cochrane}]{peng2010}
+Peng, Y., Maiolino, R., \& Cochrane, R. 2015, \bibinfo{title}{Strangulation as
+  the primary mechanism for shutting down star formation in galaxies,} Nature,
+  521, 192, \dodoi{10.1038/nature14439}
+
+% type= article
+\bibitem[{A. Pillepich {et~al.}(2018{\natexlab{a}})Pillepich
+  {et~al.}}]{pillepich2018gas}
+Pillepich, A., {et~al.} 2018{\natexlab{a}}, \bibinfo{title}{First results from
+  the {IllustrisTNG} simulations: the stellar mass content of groups and
+  clusters of galaxies,} MNRAS, 475, 648, \dodoi{10.1093/mnras/stx3112}
+
+% type= article
+\bibitem[{A. Pillepich {et~al.}(2018{\natexlab{b}})Pillepich
+  {et~al.}}]{pillepich2018}
+Pillepich, A., {et~al.} 2018{\natexlab{b}}, \bibinfo{title}{Simulating galaxy
+  formation with the {IllustrisTNG} model,} MNRAS, 473, 4077,
+  \dodoi{10.1093/mnras/stx2656}
+
+% type= article
+\bibitem[{V. Rodriguez-Gomez {et~al.}(2015)Rodriguez-Gomez
+  {et~al.}}]{rodriguez-gomez2015}
+Rodriguez-Gomez, V., {et~al.} 2015, \bibinfo{title}{The merger rate of galaxies
+  in the {Illustris} simulation: a comparison with observations and
+  semi-empirical models,} MNRAS, 449, 49, \dodoi{10.1093/mnras/stv264}
+
+% type= article
+\bibitem[{A. Saintonge {et~al.}(2017)Saintonge {et~al.}}]{saintonge2017}
+Saintonge, A., {et~al.} 2017, \bibinfo{title}{{xCOLD GASS}: The Complete {IRAM}
+  30\,m Legacy Survey of Molecular Gas for Galaxy Evolution Studies,} ApJS,
+  233, 22, \dodoi{10.3847/1538-4365/aa97e0}
+
+% type= article
+\bibitem[{H. Teimoorinia {et~al.}(2016)Teimoorinia, Bluck, \&
+  Ellison}]{teimoorinia2016}
+Teimoorinia, H., Bluck, A. F.~L., \& Ellison, S.~L. 2016, \bibinfo{title}{An
+  artificial neural network approach for ranking quenching parameters in
+  central galaxies,} MNRAS, 457, 2086, \dodoi{10.1093/mnras/stw036}
+
+% type= article
+\bibitem[{F. Villaescusa-Navarro {et~al.}(2021)Villaescusa-Navarro
+  {et~al.}}]{villaescuza-navarro2021}
+Villaescusa-Navarro, F., {et~al.} 2021, \bibinfo{title}{The {CAMELS} Project:
+  Cosmology and Astrophysics with Machine Learning Simulations,} ApJ, 915, 71,
+  \dodoi{10.3847/1538-4357/abf7ba}
+
+% type= article
+\bibitem[{R.~H. Wechsler \& J.~L. Tinker(2018)Wechsler \&
+  Tinker}]{wechsler2018}
+Wechsler, R.~H., \& Tinker, J.~L. 2018, \bibinfo{title}{The Connection Between
+  Galaxies and Their Dark Matter Halos,} ARA\&A, 56, 435,
+  \dodoi{10.1146/annurev-astro-081817-051756}
+
+% type= article
+\bibitem[{R.~H. Wechsler {et~al.}(2006)Wechsler, Zentner, Bullock, Kravtsov, \&
+  Allgood}]{wechsler2006}
+Wechsler, R.~H., Zentner, A.~R., Bullock, J.~S., Kravtsov, A.~V., \& Allgood,
+  B. 2006, \bibinfo{title}{The Dependence of Halo Clustering on Halo Formation
+  History, Concentration, and Occupation,} ApJ, 652, 71, \dodoi{10.1086/507120}
+
+% type= article
+\bibitem[{R. Weinberger {et~al.}(2017)Weinberger {et~al.}}]{weinberger2017}
+Weinberger, R., {et~al.} 2017, \bibinfo{title}{Simulating galaxy formation with
+  black hole driven thermal and kinetic feedback,} MNRAS, 465, 3291,
+  \dodoi{10.1093/mnras/stw2944}
+
+% type= article
+\bibitem[{R. Weinberger {et~al.}(2018)Weinberger {et~al.}}]{weinberger2018}
+Weinberger, R., {et~al.} 2018, \bibinfo{title}{Supermassive black holes and
+  their feedback effects in the {IllustrisTNG} simulation,} MNRAS, 479, 4056,
+  \dodoi{10.1093/mnras/sty1733}
+
+% type= article
+\bibitem[{A.~R. Wetzel {et~al.}(2013)Wetzel, Tinker, Conroy, \& van~den
+  Bosch}]{wetzel2013}
+Wetzel, A.~R., Tinker, J.~L., Conroy, C., \& van~den Bosch, F.~C. 2013,
+  \bibinfo{title}{Galaxy evolution in groups and clusters: satellite star
+  formation histories and quenching time-scales in a hierarchical Universe,}
+  MNRAS, 432, 336, \dodoi{10.1093/mnras/stt469}
+
+\end{thebibliography}

@@ -55,3 +55,7 @@ notebooks/
 # Large regenerable referee dumps (regenerate via referee_catalog_inventory.py)
 outputs/referee/catalog_field_inventory.csv
 outputs/referee/catalog_field_inventory.md
+
+# Referee's confidential report --- never commit or publish
+outputs/referee/Untitled document-3.pdf
+referee_report.txt
