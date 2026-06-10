@@ -1,7 +1,7 @@
 Dear Editors of New Astronomy,
 
-I am submitting the manuscript "A Finite Intermediate-Mass Window where
-Internal Galaxy State Outpredicts Halo Assembly History" for consideration
+I am submitting the manuscript "Gas Reservoirs Predict Future Galaxy Growth Beyond Halo
+Assembly History in CAMELS" for consideration
 as a Research Article.
 
 The paper addresses a fundamental question in galaxy formation: after
@@ -21,11 +21,12 @@ epoch, merger counts, and major-merger timing).
 
 The main findings are:
 
-1. A finite intermediate-mass window (9.55–10.55 dex) where internal galaxy
-   state retains significant marginal predictive power for stellar growth
-   under the full assembly-history control, with a flat internal–halo gap of
-   +0.052 to +0.089 across 13 consecutive sliding windows (all 95% CIs
-   positive).
+1. An upper-bounded intermediate-mass regime in which internal galaxy state
+   retains significant marginal predictive power for stellar growth under the
+   full assembly-history control, significant up to log M* ~ 10.55 dex (the
+   lower edge near 9.55 dex is a resolution/recovery limit, not a physical
+   threshold), with a broadly stable internal–halo gap of +0.052 to +0.089
+   across 13 overlapping sliding windows (all 95% CIs positive).
 
 2. Gas mass is the sole surviving internal carrier after full assembly-
    history residualization. Peak-mass timing — not merger history — is the
