@@ -86,6 +86,7 @@ exact simulation variable or timescale (the catalogs are not phase-separated).
 ```
 camels/
 ├── paper.tex                 # Manuscript source (AASTeX 7.0.1)
+├── paper.pdf                 # Compiled manuscript (tracked)
 ├── build.sh                  # paper.py → latexmk → paper.pdf
 ├── refs.bib                  # BibTeX references
 ├── requirements.txt          # Python dependencies
@@ -97,13 +98,15 @@ camels/
 ├── camels_catalog.py         # CAMELS catalog loading
 ├── camels_data.py            # CAMELS data loading + caching
 ├── config.py                 # Paths and hyperparameters
-├── make_figures.py           # Main-text figure generation
+├── make_figures.py           # Main-text figures fig01–fig05 (read from computed JSONs)
+├── figures.py                # Data-driven figure helpers
 ├── referee_scripts/          # Referee-revision diagnostics + figure generators (see referee_scripts/README.md)
 ├── outputs/
 │   ├── data/paper_macros.tex # Pipeline-generated LaTeX macros (tracked, so the paper compiles without rerunning)
 │   ├── figures/              # Main-text figure PDFs (fig01–fig05)
 │   └── referee/              # Diagnostic reports, CSVs, figures, and response_to_referee.md (see outputs/referee/README.md)
-├── cover_letter.txt          # AAS submission materials
+├── submission/               # Flat New Astronomy upload bundle (paper.tex, .bbl, f1–f14, class/bst, response PDF)
+├── cover_letter.txt          # Submission materials (New Astronomy)
 ├── declaration_of_interest.txt
 ├── highlights.txt
 ├── README.md
@@ -111,9 +114,10 @@ camels/
 ```
 
 Large/regenerable artifacts are **not** tracked (see `.gitignore`): the raw CAMELS
-catalogs (`outputs/cache/`, HDF5), run pickles (`outputs/baseline_*`,
-`outputs/simba_CV`), LaTeX aux (`outputs/logs/`), and `paper.pdf`. Everything
-needed to **compile the manuscript** and to **read the analysis** is tracked.
+catalogs (`outputs/cache/`, HDF5), run pickles and bulk JSON under `outputs/baseline_*`
+and `outputs/simba_CV` (except the small figure-source JSONs, which **are** tracked so
+the figures regenerate), and LaTeX aux (`outputs/logs/`). The compiled `paper.pdf` **is**
+tracked. Everything needed to **compile the manuscript** and to **read the analysis** is tracked.
 
 ---
 
@@ -164,14 +168,15 @@ Main text:
 | --- | --- |
 | Fig. 1 | 3×3 family × target score matrices (TNG and SIMBA) |
 | Fig. 2 | Phase diagram: internal marginal vs. stellar mass under L1 and L3 controls |
-| Fig. 3 | Broadly flat, positive internal − halo paired gap under L3 |
+| Fig. 3 | Broadly stable, positive internal − halo paired gap under L3 |
 | Fig. 4 | Feature-winner map (L3-residualized permutation importance) |
 | Fig. 5 | Assembly ablation map |
 | Fig. 6 | Mechanism: gas survives SF control / amount-not-efficiency / assembly-shaped residual / BH at the cutoff |
 | Fig. 7 | Cross-simulation comparison at a matched L1 control (TNG vs. SIMBA, growth and quenching) |
 
-Appendix Figs. 8–13 reproduce the full diagnostics (gas-vs-SFR, depletion time,
-assembly encoding, BH absorber, matched pairs, lower-edge winsorization).
+Appendix Figs. 8–14 reproduce the full diagnostics (gas-vs-SFR, depletion time,
+assembly encoding, BH absorber, matched pairs, lower-edge winsorization, and
+boundary population profiles).
 
 ---
 
