@@ -63,3 +63,7 @@ referee_report.txt
 # Local upload/reference helpers (regenerable from submission/ and outputs/referee/)
 camels_em_latex.zip
 response_to_referee.txt
+
+# Redundant raster copies of figures (the .pdf versions are what the paper/reports use)
+outputs/referee/*.png
+outputs/figures/*.png
