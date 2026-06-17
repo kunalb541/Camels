@@ -131,8 +131,9 @@ The figures and pipeline macros are tracked, so a clean clone compiles directly:
 latexmk -pdf -outdir=outputs/logs paper.tex && cp outputs/logs/paper.pdf .
 ```
 
-Requires a TeX distribution with `latexmk` and the AASTeX 7 class
-(`aastex701.cls`, on CTAN / TeX Live).
+Requires `latexmk` and the AASTeX 7 class + bib style (`aastex701.cls`,
+`aasjournalv7.bst`) — on CTAN / TeX Live, or copy the bundled pair from
+[`submission/`](submission/) if your TeX installation lacks them.
 
 ### 2. Regenerate the full analysis (requires CAMELS data)
 
