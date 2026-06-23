@@ -46,24 +46,30 @@ from config import (
 
 log = logging.getLogger(__name__)
 
-# ── CAMELS snapshot redshift table (IllustrisTNG flavour) ─────────────────────
-# Confirmed from CAMELS documentation and data headers.
-# snap 033 = z=0, snap 010 ≈ z=0.5.
+# ── CAMELS snapshot redshift table (IllustrisTNG, FOF 0–90 numbering) ─────────
+# Verified from the group-catalog Header/Redshift fields (the authoritative
+# source). The FOF_Subfind catalogs use snapshots 000–090 (groups_NNN.hdf5);
+# only the low-z subset exercised by this project is listed here. snap 090 = z=0.
+# NOTE: earlier versions of this table used an incorrect 0–33 numbering with a
+# duplicate z=0 entry; the snapshot numbers below match the actual file names
+# (e.g. groups_066.hdf5 → z=0.774, groups_090.hdf5 → z=0).
 SNAP_REDSHIFTS: Dict[int, float] = {
-     0: 6.000,  1: 5.000,  2: 4.000,  3: 3.000,  4: 2.000,
-     5: 1.500,  6: 1.280,  7: 1.000,  8: 0.810,  9: 0.600,
-    10: 0.500, 11: 0.400, 12: 0.300, 13: 0.200, 14: 0.100,
-    15: 0.000,
-    # CAMELS TNG has additional intermediate snapshots (16–33)
-    # that mirror the full TNG100 output schedule.
-    # The values above cover the standard CV/LH output set.
-    33: 0.000,   # snap_033 = z=0 for the full CAMELS-TNG runs
-    25: 0.500,   # alternate snap_025 ≈ z=0.5 in some CAMELS runs
+    66: 0.7747,   # groups_066.hdf5
+    80: 0.2696,
+    82: 0.2101,
+    84: 0.1541,
+    86: 0.1001,
+    88: 0.0485,
+    90: 0.0000,   # groups_090.hdf5
 }
 
 
 def snap_to_redshift(snap: int) -> float:
-    """Return the nominal redshift for a CAMELS snapshot number."""
+    """Nominal redshift for a CAMELS FOF snapshot (0–90 numbering).
+
+    The authoritative redshift is each catalog's Header/Redshift; this table
+    covers the low-z snapshots verified for this project. Returns NaN otherwise.
+    """
     return SNAP_REDSHIFTS.get(snap, float("nan"))
 
 

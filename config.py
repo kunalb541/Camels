@@ -33,7 +33,7 @@ OMEGA_B  = 0.0486
 BOX_SIZE_CKPC_H = 25_000.0    # 25 Mpc/h in ckpc/h (comoving)
 
 # ── Snapshot pair ─────────────────────────────────────────────────────────────
-# Values confirmed from CAMELS snapshot table (see camels_data.SNAP_REDSHIFTS).
+# Redshifts confirmed from each catalog's Header/Redshift (see Z_EARLY/Z_LATE below).
 SNAP_EARLY  = 66     # z = 0.774  (closest available even snap to z~0.8)
 SNAP_LATE   = 90     # z = 0.000
 Z_EARLY     = 0.774  # confirmed from groups_066.hdf5 Header/Redshift
